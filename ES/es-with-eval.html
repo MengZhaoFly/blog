@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+var x = 10;
+var o = { x: 30 };
+var storage = {};
+
+(function foo(flag) {
+  "use strict";
+  if (flag == 2) {
+    eval("var xx = 20;");
+    console.log('eval x', x);
+  }
+
+  if (flag == 3) {
+    storage = o;
+  }
+
+  // with (storage) {
+  //   // x可能被解析到全局作用域中，值为10
+  //   // 也可能被解析的函数的局部作用域中，值为20
+  //   // 来源于eval方法执行结果的，或者从storage对象中获取
+  //   console.log(x); // ? – 变量x的作用域在编译阶段无法确定
+  // }
+  // 递归调用3次
+  console.log(x);
+  if (flag < 3) {
+    foo(++flag);
+  }
+})(1);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+FROM  node 
+# 将容器的工作目录设置为/app
+WORKDIR /app
+# 将当前文件夹中的所有内容，复制到容器的/app中
+ADD . /app/
+# 容器对外暴露端口
+EXPOSE 3000
+WORKDIR /app
+RUN npm install
+CMD ["node","./index.js"]
