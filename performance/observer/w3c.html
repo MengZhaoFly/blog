@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head></head>
+
+<body onload="init()">
+<img id="image0" src="https://www.w3.org/Icons/w3c_main.png" />
+<script>
+function init() {
+  // see [[USER-TIMING-2]]
+  performance.mark("startWork");
+  setTimeout(() => {
+    performance.mark("endWork");
+    measurePerf();
+  }, 2000);
+
+}
+function measurePerf() {
+  performance
+    .getEntries()
+    // .getEntriesByType('mark')
+    .map(entry => JSON.stringify(entry, null, 2))
+    .forEach(json => console.log(json));
+}
+  </script>
+</body>
+
+</html>

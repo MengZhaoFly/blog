@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>No Promote</title>
+  <style>
+    #wrap {
+
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+
+    #target {
+
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      margin: 50px auto 0;
+    }
+
+    .active {
+
+      opacity: .4;
+    }
+  </style>
+</head>
+<body>
+  <p>no promote element</p>
+  <div id="wrap">
+    <div id="target">
+      test target element
+    </div>
+  </div>
+  <!-- <button onclick="go()">Go</button> -->
+  <script>
+    setTimeout(function() {
+
+      var targetElement = document.getElementById('target');
+      targetElement.classList.add('active');
+    }, 3000);
+  </script>
+</body>
+</html>

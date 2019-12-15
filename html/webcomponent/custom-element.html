@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>custom-element</title>
+  </head>
+  <body>
+    
+    <!-- <hello-world>
+        123
+    </hello-world> -->
+    <button is="hello-world">123</button>
+    <script>
+      // https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements
+      // HTMLElement
+      // 
+      class HelloWorld extends HTMLButtonElement {
+        constructor() {
+          // 必须首先调用 super 方法
+          super()
+          // 元素的功能代码写在这里
+          this.addEventListener('click', () => {
+            alert('hello')
+          })
+        }
+      }
+      // 方法用来注册一个 custom element
+      // HelloWorld:用于定义元素行为的 类 。
+      // 可选参数，一个包含 extends 属性的配置对象，是可选参数。
+      // 它指定了所创建的元素继承自哪个内置元素，可以继承任何内置元素
+      customElements.define('hello-world', HelloWorld, { extends: 'button' })
+    </script>
+  </body>
+</html>

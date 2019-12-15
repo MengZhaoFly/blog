@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img id="img" src="https://b-gold-cdn.xitu.io/v3/static/img/simplify-logo.3e3c253.svg" alt="">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"
+  id="scriptnode"
+  ></script>
+  <script>
+    const img = document.querySelector('img');
+    const scriptnode = document.getElementById('scriptnode');
+    img.onload = function() {
+      console.log('img.onload');
+    }
+    window.onload = function() {
+      console.log('window.onload');
+    }
+  </script>
+</body>
+</html>

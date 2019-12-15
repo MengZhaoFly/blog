@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <script>
+    var observer = new PerformanceObserver(list => {
+      list.getEntries().forEach(entry => {
+        // Display each reported measurement on console
+        if (console) {
+          console.log("Name: " + entry.name +
+            ", Type: " + entry.entryType +
+            ", Start: " + entry.startTime +
+            ", Duration: " + entry.duration + "\n");
+        }
+      })
+    });
+    observer.observe({ entryTypes: ['resource', 'mark', 'measure'] });
+    performance.mark('registered-observer');
+
+    function clicked(elem) {
+      performance.measure('button clicked');
+    }
+    performance.measure('start')
+    setTimeout(() => {
+      performance.measure('end')
+    }, 1000);
+  </script>
+</head>
+
+<body>
+  <button onclick="clicked(this)">Measure</button>
+  <a href="./index.html">111</a>
+  <script>
+    // window.('unload', () => {
+    //   alert(123);
+    // })
+
+    window.onunload = function () {
+      localStorage.setItem("onunload", "window.unload");
+    }
+    window.addEventListener('unload', ()=>{
+   localStorage.setItem("unload","addEventListener.unload");
+})
+  </script>
+</body>
+
+</html>

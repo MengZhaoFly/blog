@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Accelerated Transition</title>
+	<style>
+		.target {
+			
+			width: 50px;
+			height: 50px;
+			position: relative;
+			background-color: green;
+			opacity: 0;
+			transition: opacity 2s;
+		}
+
+		.loaded .target {
+		    opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="target"></div>
+	<script>
+		window.addEventListener('load', function() {
+
+			document.body.classList.add("loaded");	
+		}, false);
+		
+	</script>
+</body>
+</html>

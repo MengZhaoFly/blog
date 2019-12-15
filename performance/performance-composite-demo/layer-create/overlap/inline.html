@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Overlap Inline</title>
+	<style>
+		.box {
+			position: relative;
+			width: 100px;
+			height: 100px;
+		}
+
+		.composited {
+
+			will-change: transform;
+		}
+	</style>
+</head>
+<body>
+	<div class="box composited" style="transform: translateX(0); background-color: blue;"></div>
+	<div class="box" style="background-color: yellow;"></div>
+</body>
+</html>

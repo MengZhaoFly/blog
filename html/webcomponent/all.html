@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>web component</title>
+  </head>
+  <body>
+    <!-- 创建页面模板，并不会渲染 -->
+    <template id="common-title">
+      <h1>
+        <slot name="title"></slot>
+      </h1>
+      <p>hello-world component</p>
+    </template>
+    <!-- 定义标签
+    把模板里面的内容 当做 shadow-dom 当做内容
+    -->
+    <hello-world data-title="my-title">
+      <span slot="title">自定义 title</span>
+    </hello-world>
+
+    <script>
+      // 1、创建一个自定义标签
+      // 2、创建 template
+      // 3、shadow dom 封装、隔离组件  形成一个沙盒的环境
+
+      class HelloWorld extends HTMLElement {
+        constructor() {
+          super()
+          //   获取 template
+          const template = document.getElementById('common-title')
+          //  shadow dom
+          const shadow = this.attachShadow({ mode: 'open' })
+
+          shadow.appendChild(template.content)
+
+          // 绑定事件
+          this.addEventListener('click', () => {
+            alert('click')
+          })
+
+          //   获取自定义属性
+          const title = this.getAttribute('data-title')
+          console.warn('title:',title)
+        }
+      }
+
+      customElements.define('hello-world', HelloWorld)
+    </script>
+  </body>
+</html>

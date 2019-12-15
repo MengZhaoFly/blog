@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Switching layer in and out of preserve-3d</title>
+
+  <style type="text/css" media="screen">
+   
+    #container {
+      position: relative;
+      height: 300px;
+      width: 300px;
+      margin: 50px 100px;
+      border: 2px solid blue;
+      -webkit-perspective: 500;
+    }
+
+    #child {
+      margin: 10px;
+      width: 280px;
+      height: 280px;
+      background-color: yellow;
+      opacity: 0.8;
+      transform: rotateX(-60deg) rotateY(40deg);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <div id="child"></div>
+  </div>
+
+</body>
+</html>

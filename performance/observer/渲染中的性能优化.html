@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>渲染中的性能优化</title>
+	<style>
+		body {
+			padding: 30px;
+			text-align: center;
+		}
+
+		.container {
+			position: relative;
+			min-height: 400px;
+		}
+
+		.ball-running {
+			animation: run-around 4s infinite;
+		}
+
+		.ball {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+		}
+
+		@keyframes run-around {
+			0% {
+				top: 0;
+                left: 0;
+				/* transform: translate(0, 0) */
+			}
+
+			25% {
+				top: 0;
+                left: 200px;
+				/* transform: translate(200px, 0) */
+			}
+
+			50% {
+				top: 200px;
+                left: 200px;
+				/* transform: translate(200px, 200px) */
+			}
+
+			75% {
+				top: 200px;
+                left: 0;
+				/* transform: translate(0, 200px) */
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div id="ball" class="ball"></div>
+	</div>
+	<script>
+		var balls = document.getElementById("ball");
+		balls.classList.add("ball");
+		balls.classList.add("ball-running");
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>x-tag</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcss.com/x-tag/2.0.9-alpha/x-tag-raw.min.js"></script>
+    <script>
+      xtag.create(
+        'x-clock',
+        class extends XTagElement {
+          connectedCallback() {
+            this.start()
+          }
+          start() {
+            this.update()
+            this._interval = setInterval(() => this.update(), 1000)
+          }
+          stop() {
+            this._interval = clearInterval(this._data.interval)
+          }
+          update() {
+            this.textContent = new Date().toLocaleTimeString()
+          }
+          'tap::event'() {
+            if (this._interval) this.stop()
+            else this.start()
+          }
+        }
+      )
+    </script>
+
+    <x-clock></x-clock>
+  </body>
+</html>

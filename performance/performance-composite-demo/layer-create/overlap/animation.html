@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Overlap Animation</title>
+	<style>
+		@-webkit-keyframes slide {
+			from { transform: none; }
+			to { transform: translateX(100px); }
+	    }
+
+	    .animating {
+			
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			color: #fff;
+	    	-webkit-animation: slide 10s alternate linear infinite;
+	    }
+
+		.overlap {
+
+			width: 100px;
+			height: 100px;
+			color: #fff;
+			position: relative;
+			margin: 10px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="animating">composited animating</div>
+	<div class="overlap">overlap</div>
+</body>
+</html>

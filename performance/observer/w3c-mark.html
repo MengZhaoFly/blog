@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+const doTask = (ms) => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve()
+  }, ms);
+})
+async function run() {
+  performance.mark("startTask1");
+  await doTask(1000); // Some developer code
+  performance.mark("endTask1");
+
+  performance.mark("startTask2");
+  await doTask(2000); // Some developer code
+  performance.mark("endTask2");
+
+  // Log them out
+  const entries = performance.getEntriesByType("mark");
+  for (const entry of entries) {
+    console.table(entry.toJSON());
+  }
+}
+run();
+  </script>
+</body>
+
+</html>

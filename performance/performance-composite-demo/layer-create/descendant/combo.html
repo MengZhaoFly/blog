@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Descendant</title>
+	<style>
+		
+		.outer {
+
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin: 20px;
+		}
+
+		.inner {
+
+			width: 50px;
+			height: 50px;
+			margin: 20px; 
+			background-color: green;
+		}
+
+		.composited {
+
+			will-change: transform;
+		}
+
+		.mask {
+
+			-webkit-mask: linear-gradient(transparent, black);
+		}
+
+		.opacity {
+
+			opacity: .5;
+		}
+
+		.transform {
+
+			transform: rotate(30deg);
+		}
+
+		.reflection {
+
+			-webkit-box-reflect: right 10px;
+		}
+
+		.filter {
+
+			-webkit-filter: drop-shadow(-25px -25px 0 gray);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="outer mask">
+		mask
+		<div class="inner composited"></div>
+	</div>
+	<div class="outer opacity">
+		opacity
+		<div class="inner composited"></div>
+	</div>
+	<div class="outer transform">
+		transform
+		<div class="inner composited"></div>
+	</div>
+	<div class="outer reflection">
+		reflection
+		<div class="inner composited"></div>
+	</div>
+	<div class="outer filter">
+		filter
+		<div class="inner composited"></div>
+	</div>
+</body>
+</html>

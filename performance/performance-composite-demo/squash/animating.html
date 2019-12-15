@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<style>
+		.animation {
+
+			width: 80px;
+    		height: 80px;
+    		background-color: green;
+    		-webkit-animation: swing 1s linear 5;
+    		will-change: transform;
+		}
+
+		@-webkit-keyframes swing {
+			from { transform: rotate(0deg); }
+			to   { transform: rotate(90deg); }
+		}
+
+		.overlap {
+
+			position: absolute;
+			width: 80px;
+    		height: 80px;
+    		background-color: blue;
+			top: 40px;
+			left: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="animation"></div>
+	<div class="overlap"></div>
+</body>
+</html>

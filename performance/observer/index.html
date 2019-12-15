@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>性能的指标</title>
+    <script src="./demo/navigation.js"></script>
+    <!-- <script src="./demo/fp.js"></script> -->
+    <script src="./demo/longtask.js"></script>
+    <!-- <script src="./demo/resource.js"></script> -->
+    <style>
+        /* body{
+            background: yellowgreen;
+        } */
+    </style>
+</head>
+
+<body>
+    <script>
+        let t = Date.now()
+    </script>
+    <iframe src="./longTaskiframe.html" frameborder="0"></iframe>
+    <img id="ltask" src="https://images.unsplash.com/photo-1455582916367-25f75bfc6710?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="">
+    <script src="./demo/longCal.js"></script>
+    <script>
+        // const perfEntries = performance.getEntriesByName("laoyuan");
+        // for (const entry of perfEntries) {
+        //     console.log(entry.name)
+        //     console.log(entry.startTime)
+        //     console.log(entry.duration)
+        // }
+        // performance.mark("finish");
+        // performance.measure('load customer', 'laoyuan', 'finish')
+
+        // const perfEntries = performance.getEntriesByType("mark");
+        // // const perfEntries = performance.getEntriesByType("measure");
+        // for (const entry of perfEntries) {
+        //     console.log(entry.name)
+        //     console.log(entry.startTime)
+        //     console.log(entry.duration)
+        // }
+    </script>
+</body>
+
+</html>

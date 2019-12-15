@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shadow-dom</title>
+    <style>
+    button {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <video src="xxxx"></video>
+    <script>
+        // https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM
+        const container = document.getElementById('container')
+        const shadow =  container.attachShadow({mode:'open'})
+
+        // 添加一个button
+        const button = document.createElement('button')
+        button.textContent = 'hello'
+        button.addEventListener('click', () => {
+            console.log(456);
+        })
+        // 插入 shadow dom
+        shadow.appendChild(button)
+    </script>
+</body>
+</html>

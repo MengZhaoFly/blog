@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test Overlap Filter</title>
+    <!-- If the test passes, the light green drop shadow should appear over the the black div where they intersect. -->
+    <style>
+        #software {
+
+            background-color: green;
+            -webkit-filter: drop-shadow(25px 25px 0 lightgreen);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            color: #fff;
+        }
+        #composited {
+
+            background-color: black;
+            position: absolute;
+            top: 105px;
+            left: 105px;
+            width: 100px;
+            height: 100px;
+            transform: translate3d(0, 0, 0);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="composited">composited</div>
+    <div id="software">overlap</div>
+</body>
+</html>

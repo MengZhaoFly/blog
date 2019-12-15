@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>No Promote</title>
+  <style>
+
+    #header {
+
+      width: 400px;
+      height: 100px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border: 1px solid #000;
+    }
+
+    #target {
+
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      margin-top: 100px;
+    }
+
+    #target.active {
+
+      background-color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    fixed header
+  </div>
+  <div id="target">
+
+  </div>
+  <!-- <button onclick="go()">Go</button> -->
+  <script>
+
+    setTimeout(function() {
+
+      var targetElement = document.getElementById('target');
+      targetElement.classList.add('active');
+    }, 3000);
+  </script>
+</body>
+</html>

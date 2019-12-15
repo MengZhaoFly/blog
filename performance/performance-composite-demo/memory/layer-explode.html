@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Layer Explosion</title>
+	<style>
+		@-webkit-keyframes slide {
+			from { transform: none; }
+			to { transform: translateX(100px); }
+	    }
+	    .animating {
+			
+			width: 300px;
+			height: 30px;
+			background-color: orange;
+			color: #fff;
+	    	-webkit-animation: slide 5s alternate linear infinite;
+	    }
+
+		ul {
+
+			padding: 5px;
+			border: 1px solid #000;
+		}
+
+	    .box {
+
+			width: 600px;
+			height: 30px;
+			margin-bottom: 5px;
+			background-color: blue;
+			color: #fff;
+			position: relative;
+			/* 会导致无法压缩：squashingClippingContainerMismatch */
+			overflow: hidden;
+	    }
+
+	    .inner {
+	    	position: absolute;
+	    	top: 2px;
+	    	left: 2px;
+	    	font-size: 16px;
+	    	line-height: 16px;
+	    	padding: 2px;
+	    	margin: 0;
+	    	background-color: green;
+	    }
+	</style>
+</head>
+<body>
+
+	<div class="animating">composited animating</div>
+	<ul id="list"></ul>
+	<script>
+		var template = function(i){
+            return [
+                '<li class="box">',
+                	'<p class="inner">asume overlap, 因为 squashingClippingContainerMismatch 无法压缩</p>',
+                '</li>'
+            ].join('');
+        };
+        var size = 200;
+        var html = '';
+        for(var i = 0; i < size; i++){
+            html += template(i);
+        }
+		document.getElementById('list').innerHTML = html;
+	</script>
+</body>
+</html>

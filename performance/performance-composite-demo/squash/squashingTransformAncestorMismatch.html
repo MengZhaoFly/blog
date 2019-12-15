@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<style>
+		.transform-container {
+
+			height: 10px; 
+			background-color: blue;
+			transform: translate(-10px, 0px);
+		}
+
+		.composited {
+
+			transform: translateZ(0); 
+			height: 10px; 
+			background-color: red;
+		}
+
+		.target {
+
+			position:absolute; 
+			top: 0px; 
+			height:100px; 
+			width:100px; 
+			background-color: green;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="transform-container">
+		<div class="composited"></div>
+	</div>
+	<div class="target">不会被压缩到 composited div 上</div>
+</body>
+</html>

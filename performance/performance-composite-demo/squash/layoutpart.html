@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<style>
+		.composited {
+
+			transform: translateZ(0);
+		}
+
+		.iframe {
+
+			position: absolute;
+			height: 100px; 
+			width: 100px; 
+			background: blue;
+		}
+
+		.box {
+
+			position: absolute;
+			width: 200px; 
+			height: 120px; 
+			background: gray; 
+			padding: 80px 0 0;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<iframe class="composited iframe" style="top: 0px; left: 0px;"></iframe>
+	<div class="box" style="top: 50px; left: 50px;">无法将别的渲染层压缩到 iframe 所在的合成层上</div>
+	
+	<div class="composited box" style="top: 350px; left: 50px;">iframe 的渲染层无法被压缩</div>
+	<iframe class="iframe" style="top: 300px; left: 0px;"></iframe>
+</body>
+</html>

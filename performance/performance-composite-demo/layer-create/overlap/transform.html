@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Overlap Transform</title>
+	<style>
+		.composited {
+
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			transform: translateZ(0);
+			color: #fff;
+		}
+
+		.overlap {
+
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			color: #fff
+		}
+
+		.rotate {
+
+			transform: rotate(45deg);
+		}
+
+		.translate {
+
+			transform: translateY(-2px);
+		}
+	</style>
+</head>
+<body>
+	<div class="composited">composited</div>
+	<div class="overlap rotate">overlap</div>
+	<br><br>
+	<div class="composited">composited</div>
+	<div class="overlap translate">overlap</div>
+</body>
+</html>

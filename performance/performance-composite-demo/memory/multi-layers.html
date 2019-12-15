@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<style>
+		.box {
+
+			position: relative;
+			width: 50px;
+			height: 50px;
+			margin-bottom: 10px;
+			background: url(https://img.alicdn.com/tps/TB1EPeYLVXXXXa_XXXXXXXXXXXX-50-50.png);
+		}
+
+		.composited {
+
+			will-change: transform;
+		}
+	</style>
+</head>
+<body>
+	<div id="list"></div>
+	<script>
+		var template = function(i){
+            return '<div class="composited box"></div>';
+        };
+        var size = 2000;
+        var html = '';
+        for(var i = 0; i < size; i++){
+            html += template(i);
+        }
+		document.getElementById('list').innerHTML = html;
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .box {
+    width: 30px;
+    height: 30px;
+  }
+  .box1 {
+    /* will-change: transform; */
+    position: relative;
+    border: 1px solid #000;
+  }
+  .box2 {
+    border: 1px solid green;
+  }
+  </style>
+</head>
+<body>
+  <div class="box box1">1</div>
+  <div class="box box2">
+    2
+  </div>
+  <script>
+  const box1 = document.querySelector('.box1');
+  setTimeout(() => {
+    // box1.style.transform = 'translateX(60px)'
+    box1.style.left = '60px'
+  }, 3000);
+  </script>
+</body>
+</html>
