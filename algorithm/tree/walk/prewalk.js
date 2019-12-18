@@ -35,4 +35,5 @@ function preOrder(tree, arr = []) {
   }
   return arr;
 }
+// [ 1, 2, 4, 5, 6, 8, 7, 9, 3 ]
 console.log(preOrder(tree));

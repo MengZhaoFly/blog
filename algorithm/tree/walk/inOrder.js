@@ -35,4 +35,5 @@ function inOrder(tree, arr = []) {
   }
   return arr;
 }
+// [ 5, 4, 8, 6, 2, 7, 9, 1, 3 ]
 console.log(inOrder(tree));
