@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let tree = {
+      val: 1,
+      left: {
+        val: 2,
+        left: {
+          val: 4,
+          left: {
+            val: 5
+          },
+          right: {
+            val: 6,
+            left: {
+              val: 8
+            }
+          }
+        },
+        right: {
+          val: 7,
+          right: {
+            val: 9
+          }
+        }
+      },
+      right: {
+        val: 3
+      }
+    }
+    var inorderTraversal = function (root) {
+      const result = [];
+      const stack = [];
+      let current = root;
+      while (current || stack.length > 0) {
+        while (current) {
+          stack.push(current);
+          current = current.left;
+        }
+        current = stack.pop();
+        result.push(current.val);
+        current = current.right;
+      }
+      return result;
+    };
+    console.log(inorderTraversal(tree));
+  </script>
+</body>
+
+</html>

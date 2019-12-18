@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var postorderTraversal = function (root) {
+      const result = [];
+      const stack = [];
+      let last = null; // 标记上一个访问的节点
+      let current = root;
+      while (current || stack.length > 0) {
+        while (current) {
+          stack.push(current);
+          current = current.left;
+        }
+        current = stack[stack.length - 1];
+        // 2.栈顶节点的右节点为空或右节点被访问过 -> 节点出栈并访问他，将节点标记为已访问
+        if (!current.right || current.right == last) {
+          current = stack.pop();
+          result.push(current.val);
+          last = current;
+          current = null; // 继续弹栈
+        } else {
+          current = current.right;
+        }
+      }
+      return result;
+    }
+  </script>
+</body>
+</html>

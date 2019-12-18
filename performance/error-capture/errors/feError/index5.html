@@ -1,0 +1,13 @@
+<script>
+    window.addEventListener("unhandledrejection", function (e) {
+        e.preventDefault();
+        console.log(e.reason);
+        // return true;
+    })
+    // Promise.reject("xxxx");
+    new Promise((resolve) => {
+        resolve(123);
+    }).then(() => {
+        throw "我来给你错误"
+    })
+</script>
