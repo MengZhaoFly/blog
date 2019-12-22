@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./base.css">
+  <!-- 问题：
+  1： html 结构 导致页面主体渲染时，顺序靠后
+  -->
+  <style>
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  </style>
+</head>
+<body>
+  <div class="left">left</div>
+  <div class="right">right</div>
+  <div class="middle">middle</div>
+  <div>123</div>
+</body>
+</html>

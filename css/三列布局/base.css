@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.left {
+  background-color: aqua;
+}
+.middle {
+  background-color: yellow;
+}
+.right {
+  background-color: teal;
+}

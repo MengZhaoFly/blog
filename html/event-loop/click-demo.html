@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #outer {
+      background-color: aqua;
+      width: 500px;
+      height: 500px;
+    }
+
+    #inner {
+      background-color: red;
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">outer
+    <div id="inner">inner</div>
+  </div>
+  <script>
+    const inner = document.getElementById("inner");
+    const outer = document.getElementById("outer");
+
+    // 监听 outer 的属性变化。
+    new MutationObserver(() => console.log("mutate outer"))
+      .observe(outer, { attributes: true });
+
+    // 处理 click 事件。
+    function onClick() {
+      console.log("click");
+      setTimeout(() => console.log("timeout"), 0);
+      Promise.resolve().then(() => console.log("promise"));
+      outer.setAttribute("data-mutation", Math.random());
+    }
+
+    // 监听 click 事件。
+    inner.addEventListener("click", onClick);
+    outer.addEventListener("click", onClick);
+  </script>
+</body>
+
+</html>

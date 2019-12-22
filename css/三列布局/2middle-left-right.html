@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./base.css">
+  <style>
+  .left,
+  .right,
+  .middle
+  {
+    float: left;
+  }
+  .left,
+  .right {
+    width: 100px;
+  }
+  .middle {
+    width: 100%;
+  }
+  .left {
+    /* 外边距 影响盒模型，相邻元素的值
+     */
+    margin-left: -100%;
+  }
+  .right {
+    margin-left: -100px;
+  }
+  /* middle 内容被遮挡问题 */
+  .middle {
+    padding: 0 100px 0 100px;
+    box-sizing: border-box;
+    /* 或者 再加一个 inner 子元素 */
+  }
+  </style>
+</head>
+<body>
+  <div class="middle">middle</div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</body>
+</html>
