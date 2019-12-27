@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "Service-Worker",
+  "description": "[alloyteam-member-blog](https://github.com/youngwind/blog/issues/113) [renren-fe-blog](https://zhuanlan.zhihu.com/p/29869709)",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -11,6 +11,7 @@ let val1: unknown
 val1 = 123
 val1 = 456
 val1 = '789'
+let ss: void = undefined
 // console.log(val1.a); // error
 let empty: number[] = []
 empty = [1, 2, 3]
@@ -27,5 +28,5 @@ const enum Direction {
   Left = 'Left',
   Right = 'Right'
 }
-const a = Direction.Up;
-console.log(Direction.Right)
+// const a = Direction.Up;
+// console.log(Direction.Right)

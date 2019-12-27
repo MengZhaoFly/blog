@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .div-1 {
+        width: 50px;
+        height: 50px;
+        background-image: paint(simple);
+    }
+    .div-2 {
+        width: 100px;
+        height: 100px;
+
+        background-size: 50% 50%;
+        background-image: paint(simple);
+    }
+</style>
+</head>
+
+<body>
+  <div class=div-1></div>
+<div class=div-2></div>
+  <script>
+  CSS.paintWorklet.addModule('paint-bgc.js');
+  </script>
+</body>
+
+</html>

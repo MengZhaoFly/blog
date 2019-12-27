@@ -17,6 +17,4 @@ var Person;
     Person[Person["hand"] = 0] = "hand";
     Person[Person["foot"] = 1] = "foot";
 })(Person || (Person = {}));
-var a = "Up";
-console.log("Right");
 //# sourceMappingURL=index.js.map

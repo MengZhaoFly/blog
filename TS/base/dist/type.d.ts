@@ -1,0 +1,14 @@
+declare const isLoading: boolean;
+declare const decLitteral: number;
+declare const hexLiteral: number;
+declare const book: string;
+declare function user1(): void;
+declare const a: undefined;
+declare const b: null;
+declare let u: any;
+declare let n: any;
+declare const sym1: unique symbol;
+declare const sym2: unique symbol;
+declare const max: number;
+declare const max1: number;
+declare const max2: number;

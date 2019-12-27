@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* root element selector (全域) */
+    :root {
+      --main-color: #ff00ff;
+      --main-bg: rgb(200, 255, 255);
+      --block-font-size: 1rem;
+    }
+
+    .btn__active::after {
+      --btn-text: 'This is btn';
+
+      /* 相等於 --box-highlight-text:'This is btn been actived'; */
+      --btn-highlight-text: var(--btn-text)' been actived';
+
+      content: var(--btn-highlight-text);
+
+      /* 也能使用 calc 來做運算 */
+      font-size: calc(var(--block-font-size)*1.5);
+    }
+
+    body {
+      /* variable usage */
+      color: var(--main-color);
+      background-color: var(--main-bg);
+    }
+    .box {
+      --box-size: 40px;
+      width: var(--box-size);
+      height: var(--box-size);
+      border: 1px solid #000;
+      transition: all 3s;
+    }
+  </style>
+</head>
+
+<body>
+  文字
+  <button class="btn__active">按钮</button>
+  <div class="box"></div>
+  <script>
+  const box = document.querySelector('.box');
+  box.addEventListener('click', () => {
+    box.style.setProperty('--box-size', '60px');
+  })
+  </script>
+</body>
+
+</html>

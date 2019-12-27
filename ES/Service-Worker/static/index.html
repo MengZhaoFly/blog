@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Service Worker Demo</title>
+	<span>图片头像</span>
+	<img src="./img/avatar_v1.jpg" alt="">
+	<hr />
+	<span>Ajax Get 数据</span>
+	<ul id="list"></ul>
+</head>
+
+<body>
+	<script src="js/bundle.js"></script>
+	<script type="text/javascript">
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('./sw.js', { scope: './' })
+		.then(function (reg) {
+			console.log('注册 sw.js 完成');
+		})
+		.catch(function (err) {
+			console.error('注册 sw.js 出错');
+		})
+}
+	</script>
+</body>
+
+</html>

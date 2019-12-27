@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      --primary-theme-color: tomato;
+      transition: --primary-theme-color 1s ease-in-out;
+      background-color: var(--primary-theme-color);
+    }
+
+    body.night-theme {
+      --primary-theme-color: darkred;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+  setTimeout(() => {
+    document.body.classList.add('night-theme');
+  }, 3000);
+  </script>
+</body>
+
+</html>

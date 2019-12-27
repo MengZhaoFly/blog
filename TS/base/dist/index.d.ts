@@ -12,4 +12,3 @@ declare const enum Direction {
     Left = "Left",
     Right = "Right"
 }
-declare const a = Direction.Up;
