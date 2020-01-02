@@ -17,6 +17,7 @@
     <script>
         // https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM
         const container = document.getElementById('container')
+        //  you can access the shadow DOM using JavaScript written in the main page context
         const shadow =  container.attachShadow({mode:'open'})
 
         // 添加一个button

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function minNumberInRotateArray(arr) {
+      let len = arr.length;
+      if (len == 0) return 0;
+      let low = 0, high = len - 1;
+      while (low < high) {
+        let mid = low + Math.floor((high - low) / 2);
+        // [7,8,9,10,0,1,2]
+        if (arr[mid] > arr[high]) {
+          low = mid + 1;
+        } else if (arr[mid] == arr[high]) {  // [1,0,1,1,1]或者[1,1,1,0,1]
+          // high = high - 1;
+          low = low + 1;
+        } else {
+          high = mid;
+        }
+      }
+
+      return arr[low];
+    }
+    console.log(minNumberInRotateArray([3,4,5,6,0,1,2]))
+  </script>
+</body>
+
+</html>

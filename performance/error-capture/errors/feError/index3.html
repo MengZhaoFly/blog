@@ -1,18 +1,18 @@
-<img src="xxx.png"/>
+<img src="xxx.png" />
 <script>
     window.onerror = function (msg, url, row, col, error) {
         console.log("我已经捕获到错误");
         console.log(msg, url, row, col, error);
         return true;
     }
-    // try {
-    //     setTimeout(() => {
-    //         error
-    //     })
-    // } catch (e) {
-    //     console.log(e);
-    // }
-    // console.log(error)
+    try {
+        setTimeout(() => {
+            error
+        })
+    } catch (e) {
+        console.log(e);
+    }
+    console.log(error)
 </script>
 
 1.onerror用来捕获意料之外的错误

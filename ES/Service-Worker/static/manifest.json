@@ -1,0 +1,19 @@
+{
+  "name": "Progressive Times web app",
+  "short_name": "第一个PWA",
+  "start_url": "/index.html",
+  "display": "FullScreen",
+  "description": "应用描述",
+  "orientation": "natural",
+  "prefer_related_applications": false,
+  "theme_color": "#FFDF00",
+  "background_color": "#FFDF00",
+  "icons": [
+     {
+        "src": "icon.png",
+        "sizes": "144x144",
+        "type": "image/png"
+     }
+  ],
+  "scope": "/"
+}

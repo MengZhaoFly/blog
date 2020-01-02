@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = [0, 1, 2, 3, 4, 5, 6, 7];
+    function binarySearch(array, target, start, end) {
+      let mid = start + Math.floor((end - start) / 2);
+      console.log(start, end)
+      if (array[mid] === target) {
+        return mid;
+      }
+      if (start >= end) {
+        return -1;
+      }
+      if (array[mid] > target) {
+        return binarySearch(array, target, start, mid-1);
+      }
+      if (arr[mid] < target) {
+        return binarySearch(array, target, mid+1, end);
+      }
+    }
+    function find(array, target) {
+      return binarySearch(array, target, 0, array.length);
+    }
+    console.log(find(arr, 5))
+
+  </script>
+</body>
+
+</html>

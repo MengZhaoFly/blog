@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    题目：统计一个数字在排序数组中出现的次数。
+    例如输入排序数组{1,2,3,3,3,3,4,5}和数字3，
+    由于3在这个数组中出现了4次，因此输出4。
+  </div>
+  <div>
+    <li>
+      使用二分查找分别找到第一个目标值出现的位置和最后一个位置
+      时间复杂度O(logn)
+    </li>
+    <p>使用二分查找在数组中寻找某个数</p>
+    <li>
+      找到第一次和最后一次出现的位置我们只需要对上面的代码进行稍加的变形
+    </li>
+    <li>
+      第一次位置：找到目标值，并且前一位的数字和当前值不相等
+    </li>
+    <li>
+      最后一次位置：找到目标值，并且后一位的数字和当前值不相等
+
+    </li>
+  </div>
+  <script>
+    function GetNumberOfK(data, k) {
+      if (data && data.length > 0 && k != null) {
+        const firstIndex = getFirstK(data, k, 0, data.length - 1);
+        const lastIndex = getLastK(data, k, 0, data.length - 1);
+        if (firstIndex != -1 && lastIndex != -1) {
+          return lastIndex - firstIndex + 1;
+        }
+      }
+      return 0;
+    }
+    function getFirstK(array, target, start, end) {
+      let mid = start + Math.floor((end - start) / 2);
+      if (array[mid] === target) {
+        if (array[mid - 1] !== target) {
+         return mid;
+        }
+        else {
+          return getFirstK(array, target, start, mid - 1)
+        }
+      }
+      if (start >= end) {
+        return -1;
+      }
+      if (array[mid] > target) {
+        return getFirstK(array, target, start, mid-1);
+      }
+      if (array[mid] < target) {
+        return getFirstK(array, target, mid+1, end);
+      }
+    }
+    function getLastK(array, target, start, end) {
+      let mid = start + Math.floor((end - start) / 2);
+      if (array[mid] === target) {
+        if (array[mid + 1] !== target) {
+         return mid;
+        }
+        else {
+          return getLastK(array, target, mid + 1, end)
+        }
+      }
+      if (start >= end) {
+        return -1;
+      }
+      if (array[mid] > target) {
+        return getLastK(array, target, start, mid-1);
+      }
+      if (array[mid] < target) {
+        return getLastK(array, target, mid+1, end);
+      }
+    }
+    console.log(GetNumberOfK([1,2,2,2,2,2,4,5], 2))
+  </script>
+</body>
+</html>

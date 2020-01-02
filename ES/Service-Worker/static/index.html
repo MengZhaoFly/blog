@@ -4,25 +4,56 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Service Worker Demo</title>
+	<link rel="manifest" href="./manifest.json" />
+</head>
+
+<body>
 	<span>图片头像</span>
 	<img src="./img/avatar_v1.jpg" alt="">
 	<hr />
 	<span>Ajax Get 数据</span>
+	<button id="Notification">Notification</button>
 	<ul id="list"></ul>
-</head>
-
-<body>
 	<script src="js/bundle.js"></script>
 	<script type="text/javascript">
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('./sw.js', { scope: './' })
-		.then(function (reg) {
-			console.log('注册 sw.js 完成');
-		})
-		.catch(function (err) {
-			console.error('注册 sw.js 出错');
-		})
-}
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('./sw.js', { scope: './' })
+				.then(function (reg) {
+					console.log('注册 sw.js 完成');
+				})
+				.catch(function (err) {
+					console.error('注册 sw.js 出错');
+				})
+		}
+	</script>
+	<script>
+		const btn = document.getElementById('Notification');
+		btn.addEventListener('click', function () {
+			alert(Notification.requestPermission)
+			Notification.requestPermission(function (status) {
+				console.log('status', status);
+				if (Notification.permission !== status) {
+					Notification.permission = status;
+				}
+				/*
+					default
+					用户还未被询问是否授权，所以通知不会被显示。参看 Getting permission 以了解如何请求显示通知的权限。
+					granted
+					表示之前已经询问过用户，并且用户已经授予了显示通知的权限。
+					denied
+					用户已经明确的拒绝了显示通知的权限。
+				*/
+
+				// 如果用户同意了
+				alert(status);
+				if (status === "granted") {
+					var n = new Notification("Hi，帅哥：", {
+						body: '可以加你为好友吗？',
+						icon: 'https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg'
+					});
+				}
+			});
+		});
 	</script>
 </body>
 

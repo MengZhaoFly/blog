@@ -1,0 +1,15 @@
+{
+  "name": "babel-plugin-import-replace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "comp": "babel test.js  --out-file test-compiled.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/template": "^7.7.4"
+  }
+}

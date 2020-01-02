@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Pop-up info box — web components</title>
+</head>
+
+<body>
+  <h1>Pop-up info widget - web components</h1>
+  <form>
+    <div>
+      <label for="cvc">Enter your CVC
+        <popup-info img="https://www.baidu.com/img/2019dong_33c09d45f5e85ae961a3852d8769f124.gif"
+          data-text="Your card validation code (CVC) is an extra security feature — it is the last 3 or 4 numbers on the back of your card.">
+        </popup-info>
+      </label>
+      <input type="text" id="cvc">
+    </div>
+    <div>
+      <label for="cvc">Enter your CVC
+        <popup-info img="https://www.baidu.com/img/2019dong_33c09d45f5e85ae961a3852d8769f124.gif"
+          data-text="test">
+        </popup-info>
+      </label>
+      <input type="password" id="cvc">
+    </div>
+  </form>
+  <script>
+    // Create a class for the element
+    class PopUpInfo extends HTMLElement {
+      constructor() {
+        // Always call super first in constructor
+        super();
+
+        // Create a shadow root
+        const shadow = this.attachShadow({ mode: 'open' });
+
+        // Create spans
+        const wrapper = document.createElement('span');
+        wrapper.setAttribute('class', 'wrapper');
+
+        const icon = document.createElement('span');
+        icon.setAttribute('class', 'icon');
+        icon.setAttribute('tabindex', 0);
+
+        const info = document.createElement('span');
+        info.setAttribute('class', 'info');
+
+        // Take attribute content and put it inside the info span
+        const text = this.getAttribute('data-text');
+        info.textContent = text;
+
+        // Insert icon
+        let imgUrl;
+        if (this.hasAttribute('img')) {
+          imgUrl = this.getAttribute('img');
+        }
+
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        icon.appendChild(img);
+
+        // Create some CSS to apply to the shadow dom
+        const style = document.createElement('style');
+        console.log(style.isConnected);
+
+        style.textContent = `
+      .wrapper {
+        position: relative;
+      }
+
+      .info {
+        font-size: 0.8rem;
+        width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.6s all;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        z-index: 3;
+      }
+
+      img {
+        width: 1.2rem;
+      }
+
+      .icon:hover + .info, .icon:focus + .info {
+        opacity: 1;
+      }
+    `;
+
+        // Attach the created elements to the shadow dom
+        shadow.appendChild(style);
+        console.log(style.isConnected);
+        shadow.appendChild(wrapper);
+        wrapper.appendChild(icon);
+        wrapper.appendChild(info);
+      }
+    }
+
+    // Define the new element
+    customElements.define('popup-info', PopUpInfo);
+  </script>
+</body>
+
+</html>
