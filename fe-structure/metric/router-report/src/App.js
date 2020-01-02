@@ -15,11 +15,27 @@ export default function BasicExample() {
     // .then(res => {
     //   console.log('mock res', res);
     // })
-    fetch('http://rap2api.taobao.org/app/mock/240109/redux/todolist')
-    .then(res => res.json())
-    .then(data => {
-      console.log('mock res', data);
-    })
+    // fetch('http://rap2api.taobao.org/app/mock/240109/redux/todolist')
+    // .then(res => res.json())
+    // .then(data => {
+    //   console.log('mock res', data);
+    // })
+    var xhr;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    }
+    //异步接受响应
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          //实际操作
+          console.log('res->>>', xhr.responseText);
+        }
+      }
+    }
+    //发送请求
+    xhr.open('get', 'http://rap2api.taobao.org/app/mock/240109/redux/todolist', true);
+    xhr.send();
   }, [])
   return (
     <Router>

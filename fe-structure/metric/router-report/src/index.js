@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './request';
+import './fetch';
 
 const pageChange = function () {
   // 上报访问记录
