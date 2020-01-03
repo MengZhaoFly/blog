@@ -69,9 +69,7 @@ const newGetRoute = function(key) {
 
 我们学架构、学思想也是这样，拥有这个能力后，不一定处处使用，当需要时，自然使出来，他就在那里。
 
-最后祝大家在前端道路上越走越好。
 
 ---
 
-**yours!**
-2019年12月15日
+>[从前端角度彻底搞懂 DIP、IoC、DI、JS](https://zhuanlan.zhihu.com/p/61018434)
