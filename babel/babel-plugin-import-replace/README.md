@@ -55,4 +55,5 @@ import * as utils from '../lib/utils';
 [babel手册](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-stages-of-babel)
 [Babylon AST node types文档](https://github.com/babel/babylon/blob/master/ast/spec.md#importspecifier)
 [babel-types文档](https://www.babeljs.cn/docs/babel-types#importdeclaration)
+[其他案列](https://zhuanlan.zhihu.com/p/72995336)
 
