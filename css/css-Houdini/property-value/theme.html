@@ -16,10 +16,17 @@
     body.night-theme {
       --primary-theme-color: darkred;
     }
+    /* .foo {
+      color: blue;
+      &.bar { color: red; }
+    } */
   </style>
 </head>
 
 <body>
+  <div class="foo bar">
+    foo bar
+  </div>
   <script>
   setTimeout(() => {
     document.body.classList.add('night-theme');
