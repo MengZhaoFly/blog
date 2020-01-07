@@ -1,6 +1,7 @@
 declare function foo(a: number): number;
 declare let value: object;
 declare let val1: unknown;
+declare let ss: void;
 declare let empty: number[];
 declare enum Person {
     hand = 0,

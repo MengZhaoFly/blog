@@ -9,6 +9,7 @@ var val1;
 val1 = 123;
 val1 = 456;
 val1 = '789';
+var ss = undefined;
 var empty = [];
 empty = [1, 2, 3];
 empty.push(456);
