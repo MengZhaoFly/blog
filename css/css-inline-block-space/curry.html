@@ -1,0 +1,16 @@
+<script>
+function curry(fn, ...args) {
+  if (args.length >= fn.length) {
+    return fn(...args)
+  } else {
+    return (...rest) => {
+      return curry(fn, ...args, ...rest);
+    }
+  }
+}
+function add(a, b, c) {
+  return a + b + c;
+}
+let res = curry(add)(1)(2)(3);
+console.log(res);
+</script>

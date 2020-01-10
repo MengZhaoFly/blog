@@ -14,5 +14,9 @@
     "@babel/parser": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/traverse": "^7.7.4"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }

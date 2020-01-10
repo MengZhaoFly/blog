@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #root {
+      width: 400px;
+      border: 3px solid #7abdb6;
+    }
+    ul {
+      /* display: flex; */
+    }
+    ul>li {
+      display: inline-block;
+      background: #27a3ff;
+      color: aliceblue;
+      /* float: left; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <ul>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+    </ul>
+  </div>
+  <div>
+    Here is an English paragraph
+    that is broken into multiple lines
+    in the source code so that it can
+    more easily read in a text editor.
+</div>
+  <script>
+    const ul = document.querySelector('ul');
+    console.log(ul.childNodes);
+  </script>
+</body>
+
+</html>
