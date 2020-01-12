@@ -1,0 +1,25 @@
+{
+  "name": "ts-ioc-books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/koa-static": "^4.0.1",
+    "@types/node": "^13.1.6",
+    "co": "^4.6.0",
+    "inversify": "^5.0.1",
+    "inversify-binding-decorators": "^4.0.0",
+    "inversify-koa-utils": "^1.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-swig": "^2.2.1",
+    "log4js": "^6.1.0",
+    "reflect-metadata": "^0.1.13"
+  }
+}
