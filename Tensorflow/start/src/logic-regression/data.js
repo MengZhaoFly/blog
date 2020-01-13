@@ -36,5 +36,6 @@ function normalRandom(mean = 0, variance = 1) {
   let v1 =  Math.random();  // -1 ~ 1  ^2  1
   let v2 =  Math.random();  // -1 ~ 1
   let result = Math.sqrt(-2 * Math.log(v1)) * Math.cos(2 * Math.PI * v2);
-  return mean + Math.sqrt(variance) * result;
+  // return mean + Math.sqrt(variance) * result;
+  return result + mean;
 }
