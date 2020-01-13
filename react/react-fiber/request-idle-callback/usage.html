@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var tasksNum = 200
+    requestIdleCallback(unImportWork)
+
+    function unImportWork(deadline) {
+      /*
+      deadline:
+      timeRemaining(): 当前帧还剩下多少时间
+      didTimeout: 是否超时
+      */
+      while (deadline.timeRemaining() && tasksNum > 0) {
+        console.log(`执行了${200 - tasksNum + 1}个任务`)
+        tasksNum--
+      }
+
+      if (tasksNum > 0) { // 在未来的帧中继续执行
+        console.log(`分-----------批次`);
+        requestIdleCallback(unImportWork)
+      }
+    }
+
+  </script>
+</body>
+
+</html>
