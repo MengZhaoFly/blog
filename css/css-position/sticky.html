@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .out {
+    border: 1px solid #000;
+    height: 200px;
+    width: 100px;
+    overflow: scroll;
+  }
+  .inner {
+    border: 1px solid red;
+    width: 20px;
+    height: 20px;
+    margin-top: 1000px;
+  }
+  .inner1 {
+    border: 1px solid green;
+    width: 20px;
+    height: 20px;
+    margin-top: 40px;
+    position: sticky;
+    top: 10px;
+  }
+  </style>
+</head>
+<body>
+  <div class="out">
+    <div class="inner1"></div>
+    <div class="inner"></div>
+  </div>
+</body>
+</html>

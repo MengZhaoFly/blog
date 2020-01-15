@@ -1,0 +1,10 @@
+.dragbox {
+  min-width: 100px;
+  min-height: 100px;
+  background: #ccc;
+  position: absolute;
+  cursor: pointer;
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  user-select:none; 
+}
