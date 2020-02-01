@@ -13,10 +13,11 @@
     "removeComments": true, // 是否删除编译后的所有注释
     "noImplicitReturns": true, // 不是函数的虽有返回路径都有返回值是报错
     "importHelpers": true,
+    "strictPropertyInitialization":false,
     "lib": ["ES6", "DOM"], // 指定要包含在编译中的库文件
     "typeRoots": ["node_modules/@types"],
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
   },
   "include": [
     "./src/**/*.ts"
