@@ -35,8 +35,8 @@ title
 8. Chrome
 
 将当前页面的请求转发至指定的IP: （负载均衡，后端）
-/buy  140.143.242.226
-/buy  144.34.213.152
+1次：  /buy  140.143.242.226  30w人
+2次：  /buy  144.34.213.152   10w人
 
 9. http
 
@@ -45,17 +45,25 @@ display:none 不显示
 10. 定位
 
 relative
+absolut: 父级第一个非 static 定位定位元素
 
 11. flutter
 
 flutter技术实现的APP，不是hybrid app；(原生 + h5)
 
+
+pwa：
+service-work：缓存 断网也能访问这个页面
+应用添加到桌面
+通知
+
+
 12. 技术选项
 
 对到页面之间交互展示基本没有公共模块的流程，我们也推荐使用SPA的方式进行页面开发
-图片验证码主要是防止非人为
-防止CSRF：token，google same-site
-内联JS：也有应用场景
+图片验证码：人为操作，主要是防止非人为
+防止CSRF：token，google：cookie：same-site
+内联JS：也有应用场景，移动的端rem适配 html：font-size 内联
 
 13. string
 a[2];
@@ -71,8 +79,8 @@ a.toUpperCase()
 
 17. 封装、继承和多态 
 18. fetch
-19. (1) grunt、gulp
-(2) webpack
+19. (1) grunt、gulp：js打包完 -> 图片压缩  -> 上线
+(2) webpack：打包  a.js b.is import export js  -> main.js
 
 20. (1) fenqile.com
 (2) m.fenqile.com

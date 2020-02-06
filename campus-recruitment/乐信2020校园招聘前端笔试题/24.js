@@ -13,3 +13,12 @@ AIDog.prototype.init = function() {
 AIDog.prototype.clean = function() {}
 AIDog.prototype.wakeUp = function() {}
 new AIDog('white')
+// declare some variables and initialize them
+var a = 5
+let b = 'xy'
+const c = true
+
+// assign new values
+a = 6
+b = b + 'z'
+c = false // TypeError: Assignment to constant variable
