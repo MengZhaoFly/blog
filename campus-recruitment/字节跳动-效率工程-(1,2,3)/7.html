@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    参考：[解法](http://www.conardli.top/docs/algorithm/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html)
+    回溯法解决的问题的所有选项可以用树状结构
+    */
+    function getAllCombin(array, n, sum, temp) {
+      if (temp.length === n) {
+        if (temp.reduce((t, c) => t + c) === sum) {
+          return temp;
+        }
+        return;
+      }
+      for (let i = 0; i < array.length; i++) {
+        const current = array.shift();
+        temp.push(current);
+        
+        console.log(i, array.toString(), temp);
+        const result = getAllCombin(array, n, sum, temp);
+        if (result) {
+          return result;
+        }
+        console.log('current', array, temp)
+        temp.pop();
+        array.push(current);
+      }
+    }
+    const arr = [1, 2, 3, 4, 5, 6];
+
+    console.log(getAllCombin(arr, 3, 16, []));
+  </script>
+</body>
+
+</html>

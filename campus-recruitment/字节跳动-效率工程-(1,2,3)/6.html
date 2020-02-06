@@ -1,0 +1,33 @@
+<script>
+
+
+
+var slice = Array.prototype.slice
+  Function.prototype.mybind = function() {
+    var thatFunc = this, thatArg = arguments[0];
+    var args = slice.call(arguments, 1);
+
+    function fn(){
+      var isNewCall = this instanceof fn;
+      var funcArgs = args.concat(slice.call(arguments))
+      return thatFunc.apply(isNewCall ? this : thatArg, funcArgs);
+    };
+    fn.prototype = Object.create(thatFunc.prototype);
+    return fn;
+  };
+
+  function Animal(name, color) {
+    this.name = name;
+    this.color = color;
+  }
+  Animal.prototype.say = function () {
+    return `I'm a ${this.color} ${this.name}`;
+  };
+  const Cat = Animal.mybind(null, 'cat');
+  const cat = new Cat('white');
+  if (cat.say() === 'I\'m a white cat' && cat instanceof Cat && cat instanceof Animal) {
+    console.log('success');
+  }
+
+  
+</script>
