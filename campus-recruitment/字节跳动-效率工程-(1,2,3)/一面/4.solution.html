@@ -1,0 +1,31 @@
+<script>
+  async function async1() {
+    console.log('async1 start');
+    await async2();
+    // await 后面的代码等待 Promise.then
+    console.log('async1 end');
+  }
+  async function async2() {
+    console.log('async2');
+  }
+  console.log('script start');
+  setTimeout(function () {
+    console.log('setTimeout');
+  }, 0);
+  async1();
+  new Promise(function (resolve) {
+    console.log('promise1');
+    resolve();
+  }).then(function () {
+    console.log('promise2');
+  });
+  console.log('script end');
+  // event-loop
+  // 同步运行的代码
+  // 异步的：setTimeOut Promose.then()  Event-loop
+  // Macrotask/Task: [setTimeout]
+  // Microtask     : [await async2(); Promise.then]
+  // 每次 清空所有的 Microtask  -> Macrotask 取出一个任务  -> 清空所有的 Microtask -> Macrotask 取出一个任务
+  // script start / async1 start / async2  / promise1 / script end
+  // async1 end / promise2 / setTimeout
+</script>

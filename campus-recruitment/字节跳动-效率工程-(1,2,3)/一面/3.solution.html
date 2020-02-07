@@ -1,0 +1,18 @@
+<script>
+var pri = [].toString();
+// '' == 0  -> 0 === 0  true
+if ([] == false) {console.log(1);};  //  true
+// [object Object] == 0  NaN === 0
+if ({} == false ) {console.log(2);};  // false
+if ([]) {console.log(3);};   // true
+if ([1] === [1]) {console.log(4);};  // false
+let arr = [1,2,3]
+if (arr) {
+  console.log(1)
+}
+// null undefined false 0 ''
+let a = {a: 1}
+if (a) {
+
+}
+</script>

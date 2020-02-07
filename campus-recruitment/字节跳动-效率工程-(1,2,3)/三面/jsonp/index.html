@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  协议://域名.com:port(默认80)
+  http://www.baidu.com:80
+  https://www.baidu.com:443
+
+  3部分 只要有一个不同 就会产生跨域
+
+  baidu.com  -> api.baidu.com ? 会
+  <script>
+  </script>
+  <script>
+  function getBook(data) {
+    console.log('data', data);
+  }
+  </script>
+  <!-- getBook([1,2,3]) -->
+  <!-- https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?jsonpCallback=jQuery34103471873142886259_1571900106936&g_tk=1928093487&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=h5&uin=0&needNewCode=1&_=1571900106937 -->
+  <script src="http://localhost:3002/api/books?callback=getBook"></script>
+  <!-- 
+    封装一个 jsonP
+    jsonP({
+      url: 'http://localhost:3002/api/books',
+      callback: 'callback'
+    })
+    .then(res => {})
+   -->
+   <script>
+  // 
+   function jsonP(option) {
+     const { url, callback } = option;
+     return new Promise((resolve, reject) => {
+       let methodName = 'abcdef';
+       window[methodName] = function(data) {
+         resolve(data);
+         delete window[methodName];
+         document.body.removeChild(scriptNode);
+       }
+       var scriptNode = document.createElement('script');
+       scriptNode.src =  `${url}?${callback}=${methodName}`;
+       document.body.appendChild(scriptNode);
+       scriptNode.onerror = function() {
+         reject('error');
+       }
+     })
+   }
+   jsonP({
+    url: 'http://localhost:3002/api/books',
+    callback: 'callback'
+   }).then(res => {
+     console.log('------', res);
+   })
+   </script>
+</body>
+</html>

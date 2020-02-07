@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  * {
+  margin: 0;padding: 0;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    
+  }
+  .out {
+    background-color: blue;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    /* height: 50%;  // width */
+    /* padding: 百分比 相对于 宽度来计算 */
+    
+  }
+  .in {
+    height: 0;
+    padding: 25% 0;
+  }
+  </style>
+</head>
+<body>
+  <div class="out">
+    <div class="in">
+      A
+    </div>
+  </div>
+</body>
+</html>
