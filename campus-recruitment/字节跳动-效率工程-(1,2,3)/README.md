@@ -67,10 +67,27 @@ console.log('script end');
 
 
 ## 二面
+1. 输出
+```JS
+var a =  function () {
+this.b = 3;
+}
+var c = new a();
+var b = 7;
+a();
+console.log(b);
+console.log(c.b)
+```
 
 ### extends
 1. 原型链继承
    `Child1.prototype = new Parent1();`
+   ```js
+   function Foo() { this.name = '123' }
+   Foo.prototype.say = function() { console.log('say') }
+   const p = new Foo();
+   p.say()  // say
+   ```
 2. 原型式继承
    ```js
    function create(obj) {
@@ -79,10 +96,12 @@ console.log('script end');
       return new F();
     }
     Child1.prototype = create(Parent1.prototype);
+    // Object.create()
     ```
-3. 寄生组合继承
+3. 寄生组合继承  extends
    ```js
-   function Child1() {
+   // 属性
+    function Child1() {
       Parent1.call(this);
     }
     function create(obj) {
@@ -90,17 +109,37 @@ console.log('script end');
       F.prototype = obj;
       return new F();
     }
+    // 继承方法
     Child1.prototype = create(Parent1.prototype);
+    Child1.prototype.constructor = Child1;
     ```
+
+4. 数组
+   排序：略
+   数组长度： <  2 ^ 32 - 1
+   两个数组存储：先把数组排序  -> 两个有序的数组合并
 
 ### 哈希表
 哈希表（Hash table，也叫散列表）
 是根据键（Key）而直接访问在内存储存位置的数据结构。
-
+```js
+var map = new Map()
+```
 它通过计算一个关于键值的函数，将所需查询的数据`映射`到表中一个位置来访问记录，这加快了查找速度。这个映射函数称做 `散列函数`，存放记录的数组称做散列表.
 哈希表存储的是键值对，其查找的时间复杂度与元素数量多少无关，哈希表在查找元素时是通过计算哈希码值来定位元素的位置从而直接访问元素的，因此，哈希表查找的时间复杂度为O（1）。
 
 但是就像“人无完人”一样，哈希查找也有缺点，会产生冲突，而冲突是无法避免的，我们只能说尽可能的减少冲突来优化哈希表并且要解决冲突。（99%）
+学生：
+数组：
+
+```js
+[ {name: 'tom', age: ''}, {name: 'jack', age: '' } ]
+// find  O(n)
+```
+
+// 构造出一个 通过 name 可直接取到个人信息的 hash table
+1: lies  -> hash function = 9;
+2: find 也计算出来 9 直接去 第9格里面取出来   O(1)
 
 ### 哈希函数
  
@@ -139,7 +178,10 @@ console.log('script end');
 
 5. 数组和链表的区别
    数组是一种线性表数据结构，一组连续的内存空间
+   [0, 1, 2, 3]
    链表它并不需要一块连续的内存空间，通过 next 指针 把各部分连起来，和数组相比,链表更适合插入、删除操作频繁的场景
+   let a = {val: 1} let b = {val: 2}
+   a.next = b;
    [图文解释](https://www.cnblogs.com/klyjb/p/11237361.html)
   
 6. 浏览器渲染过程

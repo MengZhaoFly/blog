@@ -1,0 +1,12 @@
+<script>
+  let a = [];
+  // length: 2 ^ 32 - 1
+  // index: 2 ^ 32 - 2
+  a[Math.pow(2, 32) - 2] = 1;
+
+  try {
+    a.push(2);
+  } catch (error) {
+    console.log(error instanceof RangeError)
+  }
+</script>

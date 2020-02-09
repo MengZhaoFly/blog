@@ -1,0 +1,27 @@
+<script>
+/**
+ * 
+function repeat(func, times, wait) {
+}
+const repeatFunc = repeat(alert, 4, 3000)
+ */
+// 高阶函数 输入一个函数 返回也是一个函数
+// 函数是一等公民：
+function repeat(func, times, wait) {
+  return (...rest) => {
+    for (let i = 0; i < times; i++) {
+      setTimeout(() => {
+        func(...rest)
+      }, wait * i)
+    }
+    // 0
+    // 3
+    // 6
+    // 9
+  }
+}
+const repeatFunc = repeat(alert, 4, 3000)
+repeatFunc('hellworld')
+// alert(123)
+// alert(456)
+</script>
