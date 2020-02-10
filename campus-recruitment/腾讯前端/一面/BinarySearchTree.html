@@ -1,0 +1,41 @@
+<script>
+  function BinarySearchTree() {
+    var Node = function (key) { //{1} 
+      this.key = key;
+      this.left = null;
+      this.right = null;
+    };
+    this.root = null; //{2}
+    this.insert = function (key) {
+      var newNode = new Node(key); //{1} 
+      if (this.root === null) { //{2} 
+        this.root = newNode;
+      } else {
+        insertNode(this.root, newNode); //{3}
+      }
+    };
+    var insertNode = function (node, newNode) {
+      if (newNode.key < node.key) { //{4}
+        if (node.left === null) { //{5} 
+          node.left = newNode; //{6}
+        } else {
+          insertNode(node.left, newNode); //{7}
+        }
+      } else {
+        if (node.right === null) { //{8}
+          node.right = newNode; //{9} 
+        } else {
+          insertNode(node.right, newNode); //{10}
+        }
+      }
+    };
+  }
+  var tree = new BinarySearchTree();
+  // let treeNodes = [11, 7, 15, 5, 3, 9, 8, 10, 13, 12, 14, 20, 18, 25]
+  let treeNodes = [11, 12, 13, 14, 15, 16]
+  treeNodes.forEach(e => {
+    tree.insert(e);
+  })
+  
+
+</script>
