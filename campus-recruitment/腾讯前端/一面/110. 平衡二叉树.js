@@ -8,7 +8,7 @@
 /**
  * @param {TreeNode} root
  * @return {boolean}
- 任何 一个节点左右两侧子树的高度之差最多为1。
+   任何 一个节点左右两侧子树的高度之差最多为1。
  */
 var isBalanced = function(root) {
     let cache = new Map();

@@ -1,18 +1,19 @@
-var maxSubArray = function(nums) {
-  if (Array.isArray(nums) && nums.length > 0) {
-    let sum = nums[0];
-    let max = nums[0];
-    for (let i = 1; i < nums.length; i++) {
-      if (sum < 0) {
-        sum = nums[i];
-      } else {
-        sum = sum + nums[i];
-      }
-      if (sum > max) {
-        max = sum;
-      }
-    }
-    return max;
-  }
-  return 0;
-}
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var maxSubArray = function(nums) {
+  let i, k, thisSum, maxSum;
+     maxSum = -Number.MAX_VALUE;
+     for (let i = 0; i < nums.length; i ++) {
+       thisSum = 0;
+       for (let k = i; k < nums.length; k ++) {
+         thisSum += nums[k];
+         if (thisSum > maxSum) {
+           maxSum = thisSum;
+         }
+         // start: i end: k
+       }
+     }
+     return maxSum;
+ };

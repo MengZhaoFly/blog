@@ -8,20 +8,24 @@
     this.root = null; //{2}
     this.insert = function (key) {
       var newNode = new Node(key); //{1} 
+      // 作为根节点的
       if (this.root === null) { //{2} 
         this.root = newNode;
       } else {
+        // 插在左右 还是右边？？？
         insertNode(this.root, newNode); //{3}
       }
     };
     var insertNode = function (node, newNode) {
       if (newNode.key < node.key) { //{4}
+      // 放到左边
         if (node.left === null) { //{5} 
           node.left = newNode; //{6}
+          // 12 8 新插入 6
         } else {
           insertNode(node.left, newNode); //{7}
         }
-      } else {
+      } else {   // 放到右边
         if (node.right === null) { //{8}
           node.right = newNode; //{9} 
         } else {
