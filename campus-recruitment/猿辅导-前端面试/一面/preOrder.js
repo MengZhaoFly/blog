@@ -10,7 +10,7 @@
  * @return {number[]}
  */
 
- var preorderTraversal = function(root) {
+var preorderTraversal = function(root) {
   let res = [];
    if (root) {
      res.push(root.val);
