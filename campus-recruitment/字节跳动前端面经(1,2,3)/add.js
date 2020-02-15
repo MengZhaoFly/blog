@@ -8,7 +8,7 @@ function add1(str1, str2) {
   return (a + b).toString(36)
 }
 
-const chars = '0123456789ABCDEFGHIJKLMNOPGQRSTUVWXYZ';
+const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 function add(str1, str2) {
   let a = str1.split(''), b = str2.split('');
   let alength = a.length;
@@ -20,20 +20,20 @@ function add(str1, str2) {
     let ia = i < alength ? chars.indexOf(a[alength - i - 1]) : 0;
     let ib = i < blength ? chars.indexOf(b[blength - i - 1]) : 0;
     let sum = ia + ib + inc;
-    if (sum > 37) {
+    if (sum >= 36) {
       inc = 1
     } else {
       inc = 0;
     }
     // 12
-    res = chars.charAt(sum % 37) + res;
+    res = chars.charAt(sum % 36) + res;
   }
   if (inc === 1) {
     res = 1 + res;
   }
   return res;
 }
-console.log(add('1X', '2B') === add1('1X', '2B'))
+console.log(add('1G', '2G'), add1('1G', '2G'))
 // 19 + 91 
 // 9 + 1
 // 1 + 9
