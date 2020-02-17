@@ -3,7 +3,6 @@ function createTask(ms) {
     console.log('start', ms);
     return new Promise(r => setTimeout(() => {
       console.log('end', ms);
-      
       r(ms);
     }, ms));
   }
