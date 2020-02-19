@@ -1,12 +1,4 @@
 /**
- * @param {number} n
- * @return {string[][]}
- */
-/**
- * @param {number} n
- * @return {string[][]}
- */
-/**
    * @params row 行数，每次递归调用都加一，知道最后一行则输出结果
    * @params tmp 用于暂存列索引
    */
