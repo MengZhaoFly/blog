@@ -6,11 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+  .hidden {
+    display: none;
+  }
+  </style>
 </head>
 
 <body>
+  <div id="box">box</div>
   <script>
-    var tasksNum = 200
+    var tasksNum = 200;
+    for (let i = 0; i < 10000; i ++) {
+    }
     requestIdleCallback(unImportWork)
 
     function unImportWork(deadline) {
@@ -25,7 +33,7 @@
       }
 
       if (tasksNum > 0) { // 在未来的帧中继续执行
-        console.log(`分-----------批次`);
+        console.log(`分----------------------------批次`);
         requestIdleCallback(unImportWork)
       }
     }

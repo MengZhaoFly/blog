@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { unstable_batchedUpdates as batchedUpdates } from "react-dom";
 // batchedUpdates  批处理更新
 // batchedUpdates(() => {
@@ -109,3 +109,77 @@ class App extends Component {
 }
 
 export default App;
+
+// ReactDOM.render(<App />, document.getElementById('app'))
+// <APP>
+//   <Modal>
+//   </Model>
+// </APP>
+// ReactDOM.createPortal(Model, 'modal')
+// <div id="app">
+
+// </div>
+// <div id="modal">
+
+// </div>
+
+// es-module  import: 代码静态分析的时候，就知道引入了哪些模块，tree shaking（优化打包：没使用的模块，不打包）也是依赖于 es-module
+// 不好做懒加载
+// es7 ~
+// import clickModule from './drag.js'
+// button.onclick = () => {
+//   import('./drag.js').then(res => {
+//     res.drag();
+//   })
+// }
+// commonjs  执行
+for () {
+  const model = require('./a.js');
+}
+
+ref = 'refa'
+ref = react.createRef();
+
+// 纯函数：
+<A a="a"/>
+static getDerivedStateFromProps(props, state) {
+  // 
+  return {
+    'statea': props.a
+  }
+}
+shouldComponentUpdate(nextProps, nextState) {
+  return true;
+}
+// 进程  >  线程   >  纤程
+// fiber: 纤程
+react 15: stack reconciler
+vnode:
+{
+  tag: 'div',
+  id: 'app',
+  children: [
+
+  ]
+} 
+click:
+dom diff: 找不同的地方，更新它
+// 递归：一旦递归起来，不容易打断，等着我 diff 出结果出来，再去更新
+// 一帧：16.6666 ms 60fps, 递归的过程比较长的话，页面卡了
+// js 页面渲染 互斥
+react 16: fiber reconciler (花了一年重构出来，)
+// Render: 计算我们的页面哪些地方需要更新。
+// 有更高优先级的任务（用户的click，输入）插进来，这使得任务可以中断，而且还能再次调起
+// 操作系统：FCFS（先来先服务），（合作调度）
+// js 线程  <-> 页面渲染, 为了用户的体验，达成协议，
+// Commit：已经计算完了
+// 把这些更新应用的页面上：不可中断的。
+// 理论
+```js
+while(true) {}
+btn.click = function() {
+  consloe.log(1)  //
+}
+```
+
+15 lifeCycle vs 16 
