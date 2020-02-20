@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const el = document.getElementById('root')
+    const btn = document.getElementById('btn')
+    const ch = new MessageChannel()
+    let pendingCallback
+    let startTime
+    let timeout
+
+    ch.port2.onmessage = function work() {
+      // 在绘制之后被执行
+      if (pendingCallback) {
+        const now = performance.now()
+        // 通过now - startTime可以计算出requestAnimationFrame到绘制结束的执行时间
+        // 通过这些数据来计算剩余时间
+        // 另外还要处理超时(timeout)，避免任务被饿死
+        // ...
+        if (hasRemain && noTimeout) {
+          pendingCallback(deadline)
+        }
+      }
+    }
+
+    // ...
+
+    function simpleRequestIdleCallback(callback, timeout) {
+      requestAnimationFrame(function animation() {
+        // 在绘制之前被执行
+        // 记录开始时间
+        startTime = performance.now()
+        timeout = timeout
+        dosomething()
+        // 调度回调到绘制结束后执行
+        pendingCallback = callback
+        ch.port1.postMessage('hello')
+      })
+    }
+
+  </script>
+</body>
+
+</html>

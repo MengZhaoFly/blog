@@ -62,9 +62,10 @@
       const children = node.instance.render();
       return link(node, children);
     }
-
+    // 便于中断的
     function walk(deadline) {
       let i = 1
+      console.log('-----')
       // while (true) {
       while (deadline.timeRemaining() > 0) {
         // link 该节点以及其 子节点
@@ -72,10 +73,10 @@
         let child = doWork(node);
 
         // 每处理 3 个节点，我们sleep 1 秒，
-        if (i > 2) {
-            sleep(1000);
-        }
-        i++;
+        // if (i > 2) {
+          
+        // }
+        // i++;
 
         if (child) {
           // 有子节点的话 跳过余下的循环 继续
@@ -85,6 +86,7 @@
         if (node === root) {
           return;
         }
+        // 没有兄弟的节点的时候，一层一层往上退，一直到有兄弟节点
         while (!node.sibling) {
           if (!node.return || node.return === root) {
             return;
