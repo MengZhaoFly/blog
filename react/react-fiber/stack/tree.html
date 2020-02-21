@@ -32,11 +32,12 @@
 
     function doWork(com) {
       console.log(com.name);
+      
     }
 
     function walk(instance) {
       doWork(instance);
-
+      // dfs
       const children = instance.render();
       children.forEach((com) => {
         walk(com);

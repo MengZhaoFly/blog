@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="../request-idle-callback/tree.png" alt="">
+  <script>
+    // 所有的调用栈 由浏览器管理
+    const a1 = { name: 'a1' };
+    const b1 = { name: 'b1' };
+    const b2 = { name: 'b2' };
+    const b3 = { name: 'b3' };
+    const c1 = { name: 'c1' };
+    const c2 = { name: 'c2' };
+    const d1 = { name: 'd1' };
+    const d2 = { name: 'd2' };
+
+    a1.render = () => [b1, b2, b3];
+    b1.render = () => [];
+    b2.render = () => [c1];
+    b3.render = () => [c2];
+    c1.render = () => [d1, d2];
+    c2.render = () => [];
+    d1.render = () => [];
+    d2.render = () => [];
+
+    class Node {
+      constructor(instance) {
+        this.instance = instance;
+        this.child = null;
+        this.sibling = null;
+        this.return = null;
+      }
+    }
+    // 宿主节点
+    const hostNode = new Node(a1);
+    let node = hostNode;
+    walk(hostNode);
+    function link(parent, children) {
+      if (children === null) children = [];
+      parent.child = children.reduceRight((pre, next) => {
+        const node = new Node(next);
+        node.return = parent
+        node.sibling = pre;
+        return node;
+      }, null)
+      return parent.child
+    }
+    function doWork(node) {
+      console.log(node.instance.name);
+      const children = node.instance.render();
+      // child
+      return link(node, children)
+    }
+    function walk(node) {
+      // 栈
+      while(true) {
+        let child = doWork(node)
+        if (child) {
+          node = child;
+          continue;  // 跳过余下的逻辑
+        }
+        if (node === hostNode) {
+          return;
+        }
+        // 冒到 有兄弟节点的那一层
+        while(!node.sibling) {
+          if (!node.return || node.return === hostNode) return;
+          node = node.return;
+        }
+        node = node.sibling;
+      }
+    }
+  </script>
+</body>
+
+</html>
