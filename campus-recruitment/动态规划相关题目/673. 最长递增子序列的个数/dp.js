@@ -8,7 +8,7 @@ var findNumberOfLIS = function (nums) {
   }
 
   let dp = new Array(nums.length).fill(1);
-  let combination = new Array(nums.length).fill(1);
+  let combination = new Array(nums.length).fill(1);  // 表示递增子序列的组合方式
 
   let max = 1, res = 0;
 
@@ -28,6 +28,7 @@ var findNumberOfLIS = function (nums) {
 
   for (let i = 0; i < nums.length; i++)
     if (dp[i] == max) res += combination[i];
+  console.log(dp, combination)
   return res;
 };
 console.log(findNumberOfLIS([1,3,5,4,7]))
