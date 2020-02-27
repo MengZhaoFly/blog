@@ -16,3 +16,4 @@ var numTrees = function (n) {
   }
   return dp[n]
 };
+console.log(numTrees(3))
