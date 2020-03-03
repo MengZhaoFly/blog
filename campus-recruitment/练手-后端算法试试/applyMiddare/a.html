@@ -1,0 +1,39 @@
+<script>
+  /* var newMethod = applyMiddleWare(rawMethod, middleware3, middleware2);
+   * var x = newMethod(1); // 调用顺序：middleware2 -> middleware3 -> rawMethod，结果：x=4
+   *
+   * var newMethod2 = applyMiddleWare(newMethod, middleware1);
+   * var y = newMethod2(10); // 调用顺序：middleware1 -> middleware2 -> middleware3 -> rawMethod，结果：y=14
+   *
+   */
+  function rawMethod(a) {
+    console.log('rawMethod')
+    return a + 1
+  }
+  function middleware1(next) {
+    return function (a) {
+      console.log('m1')
+      return next(a) + 1
+    }
+  }
+  function middleware2(next) {
+    return function (a) {
+      console.log('m2', next);
+      return next(a) + 1
+    }
+  }
+  function middleware3(next) {
+    return function (a) {
+      console.log('m3', next)
+      return next(a) + 1
+    }
+  }
+  
+  var newMethod = applyMiddleWare(rawMethod, middleware3, middleware2);
+  // console.log(newMethod);
+  var x = newMethod(1); // 调用顺序：middleware2 -> middleware3 -> rawMethod，结果：x=4
+  console.log(x);
+  var newMethod2 = applyMiddleWare(newMethod, middleware1);
+  var y = newMethod2(10); // 调用顺序：middleware1 -> middleware2 -> middleware3 -> rawMethod，结果：y=14
+  console.log(y);
+</script>
