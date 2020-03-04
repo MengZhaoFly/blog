@@ -6,6 +6,8 @@
    * var y = newMethod2(10); // 调用顺序：middleware1 -> middleware2 -> middleware3 -> rawMethod，结果：y=14
    *
    */
+  // 原始的
+  // 最后一个中间 没有 next
   function rawMethod(a) {
     console.log('rawMethod')
     return a + 1
@@ -28,6 +30,8 @@
       return next(a) + 1
     }
   }
+  // middleware2(middleware3(rawMethod))
+
   
   var newMethod = applyMiddleWare(rawMethod, middleware3, middleware2);
   // console.log(newMethod);
@@ -36,4 +40,18 @@
   var newMethod2 = applyMiddleWare(newMethod, middleware1);
   var y = newMethod2(10); // 调用顺序：middleware1 -> middleware2 -> middleware3 -> rawMethod，结果：y=14
   console.log(y);
+
+  function applyMiddleWare(...fns) {
+    // your code here
+    const raw = fns.shift();
+
+    const compose = (...args) => args.reduceRight((fna, fnb) => (...params) => {
+      return fna(fnb(...params));
+    })
+    const chain = compose(...fns);
+    // 方法
+    // chain(raw) 返回的也是一个函数
+    return chain(raw);
+    // middleware2(middleware3(方法))
+  }
 </script>

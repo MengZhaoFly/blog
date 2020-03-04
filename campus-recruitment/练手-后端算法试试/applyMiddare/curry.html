@@ -1,0 +1,39 @@
+<script>
+// 柯里化 curry 
+const add = (a, b, c) => a + b + c;
+add(1,2,3)
+
+function curry(fn) {
+  let allArgs = [];
+  let len = fn.length; // 参数长度
+  return function next(...args) {
+    allArgs = allArgs.concat(args);
+    if (allArgs.length >= len) {
+      // 够了
+      let temp = allArgs;
+      allArgs = [];
+      return fn(...temp)
+    } else {
+      return next;
+    }
+  }
+}
+const addCurried = curry(add);
+console.log(addCurried(20)(30, 40));
+// addCurried 拼好了 allArgs
+// 下面 这个 addCurried 直接拿到了 上一次的 allArgs
+console.log(addCurried(1))
+console.log(addCurried(1)(2)(3))
+
+function foo() {
+  let count = 0;
+  return function() {
+    return count ++;
+  }
+}
+let bar = foo();
+console.log(bar())
+console.log(bar())
+console.log(bar())
+console.log(bar())
+</script>
