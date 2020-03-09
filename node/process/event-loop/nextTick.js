@@ -1,3 +1,10 @@
+// chrome.exe  静态 c:/desktop/
+let a = 1, b = 2;
+let c = a + b;
+// 指令： +
+// 数据：1 2
+// .js .py 字符串 
+
 setImmediate(() => {
   console.log('timeout1')
   Promise.resolve().then(() => console.log('promise resolve'))
