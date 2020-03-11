@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded')
+  })
+  </script>
+</head>
+<body>
+  <div id="app">
+    div
+  </div>
+  <script src="./a.js" defer></script>
+  <script>
+  let start = Date.now();
+  while(Date.now() - start < 1000) {
+  }
+  </script>
+  <script src="./b.js" defer></script>
+</body>
+</html>

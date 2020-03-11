@@ -1,0 +1,29 @@
+<script>
+// function foo1() {
+//   // 申明变量的时候 不加关键词  全局的
+//   foo1 = '123'
+//   return function() {
+//     console.log(foo1)
+//   }
+// }
+// foo1()()
+
+let map = {}
+// one 
+function sum(a, b, c) {
+  //
+  if (map[]) return  ''
+  let res =  a + b + c
+  map[] = res;
+  return res;
+}
+// 很多个 纯函数 都需要 缓存这一个过程 抽象出来了
+function Memo(func) {
+  // 一样的
+  let map = {}
+  return function() {
+    // 不同
+    let res = func()
+  }
+}
+</script>

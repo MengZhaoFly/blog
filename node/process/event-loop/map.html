@@ -1,0 +1,36 @@
+<script>
+Array.prototype.myMap = function(cb) {
+  let myArr = this;
+  // let t = [];
+  // for () {
+  //   //
+  // }
+  // return t;
+  // PM
+  return myArr.reduce((pre, next) => {
+    pre = pre.concat(cb(next))
+    return pre;
+  }, []);
+}
+let att = [1,2,3];
+console.log(att.map(x => x * 2));
+console.log(att.myMap(x => x * 2));
+// some
+Array.prototype.myReduce = function(cb, init) {
+  let pre, next, arr = this, start = 0;
+  if (init) {
+    pre = init;
+    start = 0;
+  } else {
+    pre = arr[0]
+    start = 1;
+  }
+  let res = null
+  for (let i = start; i < arr.length; i ++) {
+    res = cb(pre, arr[i]);
+    pre = res;
+  }
+  return res;
+}
+console.log(att.reduce((a, b) => a + b, 10))
+</script>
