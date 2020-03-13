@@ -20,6 +20,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
@@ -28,7 +29,12 @@ module.exports = {
 							// by default it uses publicPath in webpackOptions.output
 							hmr: devMode,
 						},
-					}, 'css-loader'],
+					},
+					'css-loader',
+					{
+						loader: 'postcss-loader'
+          }
+				],
 			},
 			{
 				test: /\.(jpg|png|jpeg)$/,
