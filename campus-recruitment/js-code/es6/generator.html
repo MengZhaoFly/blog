@@ -1,0 +1,17 @@
+<script>
+  // async await => generator
+  function* foo() {
+    console.log(1);
+    const a = yield 1
+    console.log(a);
+    const c = yield bar();
+    console.log(c)
+  }
+  function bar() {
+    return 'bar'
+  }
+  const obj = foo();
+  console.log('next', obj.next());
+  console.log('next', obj.next('传给a'));
+  console.log('next', obj.next('传给c'));
+</script>

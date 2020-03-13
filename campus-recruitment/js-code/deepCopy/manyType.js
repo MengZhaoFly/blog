@@ -1,10 +1,11 @@
 function cloneSet(set) {
   let t = new Set();
-  t.forEach(v => {
+  set.forEach(v => {
     t.add(clone(v));
   })
   return t;
 }
+// Map  for
 function cloneArray(arr) {
   let t = [];
   arr.forEach(v => {
@@ -13,6 +14,7 @@ function cloneArray(arr) {
   return t;
 }
 function cloneReg(targe) {
+  //{}
   const result = new RegExp(targe.source);
   result.lastIndex = targe.lastIndex;
   return result;
@@ -75,6 +77,7 @@ function clone(data) {
   if (whiteList.includes(type)) return data;
   return needClone[type](data)
 }
+
 let c = function(a, b) { return a + b }
 let data = { obj: { a: 1 }, b: [1], c: /[a-z]/, fun: c}
 let data1 = clone(data);

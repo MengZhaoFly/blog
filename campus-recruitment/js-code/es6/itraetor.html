@@ -1,0 +1,22 @@
+<script>
+  var some = {};
+  some[Symbol.iterator] = function () {
+    return {
+      next: function () {
+        if (this._first < 3) {
+          this._first++;
+          // done for of 遍历 结束？？？
+          return { value: "bye" + this._first, done: false };
+        } else {
+          return { done: true };
+        }
+      },
+      _first: 0
+    };
+  };
+  for (let a of some) {
+    console.log(a);
+  }
+  console.log([...some]);
+  // 元编程：对编程语言再编程（自定义）
+</script>

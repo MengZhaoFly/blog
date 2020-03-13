@@ -13,3 +13,10 @@ ReactDOM.render(
 	</div> ,
 	document.getElementById('app')
 );
+
+// koa
+router.get('*', () => {
+	ctx.render('index.html');
+	// js 接管 url
+})
+// nginx

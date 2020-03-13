@@ -13,6 +13,6 @@ function cloneDeep(obj, map = new Map()) {
       t[k] = obj[k];
     }
   })
-  return t
+  return t;
 }
 console.log(cloneDeep(a));

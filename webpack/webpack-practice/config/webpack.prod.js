@@ -16,8 +16,7 @@ module.exports = webpackMerge(baseConfig, {
   //   path.resolve(__dirname, '../src/pageEntry/index/index.js')
   // ],
   entry: {
-    index: path.resolve(__dirname, '../src/pageEntry/index/index.js'),
-    login: path.resolve(__dirname, '../src/pageEntry/login/login.js'),
+    index: path.resolve(__dirname, '../src/pageEntry/index/index.js')
   },
   // optimization: {
   //   splitChunks: {

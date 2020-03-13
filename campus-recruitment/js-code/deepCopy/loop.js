@@ -8,7 +8,6 @@ var a = {
         }
     }
 }
-
     a
   /   \
  a1   a2        
@@ -41,7 +40,9 @@ function cloneLoop(x) {
   while (queue.length !== 0) {
     let node = queue.shift();
     let { key, value, parent } = node;
+    // a2
     if (typeof value === 'object') {
+      // parent[a2] = {}
       if (!parent[key]) parent[key] = {}
       Object.keys(value).forEach(k => {
         queue.push({
@@ -57,3 +58,11 @@ function cloneLoop(x) {
   return root;
 }
 console.log(cloneLoop(a), cloneLoop(a).a2 === a.a2);
+/**
+let queue = []
+while (queue.length !== 0) {
+  queue.shift();
+  if(node.left) queue.push(node.left);
+  if(node.right) queue.push(node.right);
+}
+*/
