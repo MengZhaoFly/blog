@@ -1,4 +1,5 @@
-let arr = [3,1,6,4,5,2]
+let arr = [3,1,6,4,5,2];
+// let arr = [3,1,6,4,9,2]
 function solution() {
   let max = Number.MIN_VALUE;
   let pos = null;

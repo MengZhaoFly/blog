@@ -1,15 +1,9 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-import common from '../../common/index';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(common(1))
-
-// import App from './App';
+import App from './App';
 
 
-// ReactDOM.render(
-// 	<div>
-// 		<App />
-// 	</div> ,
-// 	document.getElementById('app')
-// );
+ReactDOM.render( <App /> ,
+	document.getElementById('app')
+);

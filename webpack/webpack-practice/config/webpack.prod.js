@@ -7,7 +7,7 @@ const baseConfig = require('./webpack.base.js');
 const templatePath = path.join(__dirname, '../public/index.html')
 
 module.exports = webpackMerge(baseConfig, {
-  mode: 'none',
+  mode: 'development',
   // externals: {
   //   'react':  'React',   // main.js 没有 react , 让他去 window.React   CDN
   //   'react-dom': 'ReactDOM'   // 让他去 window.ReactDOM   // CDN

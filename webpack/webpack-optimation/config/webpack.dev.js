@@ -16,7 +16,8 @@ module.exports = webpackMerge(baseConfig, {
   ],
   devServer: {
 		hot: true,
-	},
+  },
+  devtool: 'source-map',
   plugins: [
     new HtmlWebPackPlugin({
 			template: templatePath
