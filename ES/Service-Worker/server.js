@@ -9,10 +9,10 @@ const router = new Router();
 // app.use(serve('static', {
 //     maxage: 365 * 24 * 60 * 60 * 1000
 // }));
-app.use(serve('static'));
-
+// app.use(serve('static'));
 
 router.get('/getList', ctx => {
+	console.log('req is here')
 	ctx.body = {
 		code: 0,
 		data: [

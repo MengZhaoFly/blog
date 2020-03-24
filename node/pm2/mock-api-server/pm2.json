@@ -1,0 +1,9 @@
+// {
+//   "name": "mock-server-api",
+//   "script": "./src/app.js",
+//   "interpreter_args": "–watch",
+//   "ignore_watch:": ["node_modules"],
+//   "watch": [
+//     "./src"
+//   ]
+// }

@@ -1,0 +1,8 @@
+{
+  "name": "manage",
+  "script": "",
+  "cwd":"./",
+  "watch":[
+    "./src"
+  ]
+}

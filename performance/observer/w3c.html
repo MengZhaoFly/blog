@@ -22,6 +22,16 @@ function measurePerf() {
     .map(entry => JSON.stringify(entry, null, 2))
     .forEach(json => console.log(json));
 }
+// 定义一个观察者
+var observer = new PerformanceObserver(list => {
+    list.getEntries().forEach((entry) => {
+        console.log('entry对象', entry);
+    });
+});
+// 观察的类型
+observer.observe({
+    entryTypes: ['paint']
+});
   </script>
 </body>
 

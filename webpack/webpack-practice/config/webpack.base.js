@@ -9,14 +9,36 @@ const devMode = process.env.NODE_ENV !== 'production';
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 module.exports = {
 	resolve: {
-		extensions: ['.js', '.jsx', '.json', '.css']
+		extensions: ['.js', '.jsx', '.json', '.css'],
+		alias: {
+			'react-native': 'react-native-web',
+			'react': path.resolve(__dirname, '../src/react/packages/react'),
+			'react-dom': path.resolve(__dirname, '../src/react/packages/react-dom'),
+			'shared': path.resolve(__dirname, '../src/react/packages/shared'),
+			'react-reconciler': path.resolve(__dirname, '../src/react/packages/react-reconciler'),
+			'events': path.resolve(__dirname, '../src/react/packages/events')
+		}
 	},
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: 'happypack/loader?id=babel',
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							"presets":[
+								"@babel/preset-env", 
+								"@babel/preset-react",
+								"@babel/preset-flow"
+							],
+							"plugins": [
+								"@babel/plugin-syntax-dynamic-import"
+							]
+						}
+					}
+				],
 			},
 			{
 				test: /\.css$/,
@@ -33,7 +55,7 @@ module.exports = {
 					'css-loader',
 					{
 						loader: 'postcss-loader'
-          }
+					}
 				],
 			},
 			{
@@ -56,11 +78,16 @@ module.exports = {
 			chunkFilename: '[id].css',
 			ignoreOrder: false, // Enable to remove warnings about conflicting order
 		}),
-		new HappyPack({ // 基础参数设置
-			id: 'babel', // 上面loader?后面指定的id
-			loaders: ['babel-loader'], // 实际匹配处理的loader
-			threadPool: happyThreadPool,
-			verbose: true
+		// new HappyPack({ // 基础参数设置
+		// 	id: 'babel', // 上面loader?后面指定的id
+		// 	loaders: ['babel-loader'], // 实际匹配处理的loader
+		// 	threadPool: happyThreadPool,
+		// 	verbose: true
+		// }),
+		new webpack.DefinePlugin({
+			__DEV__: true,
+			__PROFILE__: true,
+			__UMD__: true
 		})
 	]
 };

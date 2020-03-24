@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+     margin: 0;padding: 0;}
+  #move {
+    width: 20px;height: 20px;background-color: aqua;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="move"></div>
+  <script>
+    var start = null;
+    var element = document.getElementById("move")
+    element.style.position = 'absolute';
+
+    function step(timestamp) {
+      console.log("timestamp", timestamp)
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      element.style.left = Math.min(progress / 10, 200) + 'px';
+      if (progress < 400) {
+
+        window.requestAnimationFrame(step);
+        window.postMessage({}, "*");
+      }
+    }
+
+    var idleTick = function () {
+      console.log("idleTick")
+    }
+
+    window.addEventListener('message', idleTick, false);
+
+    window.requestAnimationFrame(step);
+  </script>
+</body>
+
+</html>

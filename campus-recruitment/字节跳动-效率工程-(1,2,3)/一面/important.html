@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,29 @@
   <title>Document</title>
   <link rel="stylesheet" href="./test.css">
 </head>
+
 <body>
-  <p style="color: blue;">123456</p>
+  <!-- <p style="color: blue;">123456</p>
+   -->
+  <script>
+    let str = '${year}-${month}-${day}';
+    let reg = /\$\{([a-z]+)\}/g;
+    const year = '2017';
+    const month = '09';
+    const day = '21';
+    let obj = {
+      year,
+      day,
+      month
+    }
+    // str = str.replace(/\$\{([a-z]+)\}/g, '00$1');
+    str = str.replace(/\$\{([a-z]+)\}/g, `${obj['$1']}$1`);
+    // str = str.replace(reg, (...rest) => {
+    //   console.log(rest)
+    //   return obj[rest[1]]
+    // })
+    console.log('str', str)
+  </script>
 </body>
+
 </html>

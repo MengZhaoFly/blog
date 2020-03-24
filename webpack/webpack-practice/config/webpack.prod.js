@@ -29,7 +29,7 @@ module.exports = webpackMerge(baseConfig, {
   //     }
   //   }
   // },
-  // devtool: '',  // dev    prod
+  devtool: 'source-map',  // dev    prod
   optimization: {
     splitChunks: {
       cacheGroups: {
