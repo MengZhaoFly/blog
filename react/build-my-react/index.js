@@ -1,7 +1,3 @@
-/**
- * 
- * wipRoot: work in progress tree
- */
 function createElement(type, props, ...children) {
   return {
     type,
@@ -73,7 +69,7 @@ function updateDom(dom, prevProps, nextProps) {
   // Set new or changed properties
   Object.keys(nextProps)
     .filter(isProperty)
-    .filter(isNew(prevProps, nextProps))
+    .filter(isNew(prevProps, nextProps)) 
     .forEach(name => {
       dom[name] = nextProps[name]
     })
@@ -150,7 +146,6 @@ function render(element, container) {
     alternate: currentRoot,
   }
   deletions = []
-  // 从 root 节点 开始 performwork
   nextUnitOfWork = wipRoot
 }
 
@@ -161,7 +156,6 @@ let deletions = null
 
 function workLoop(deadline) {
   let shouldYield = false
-  // 可 中止
   while (nextUnitOfWork && !shouldYield) {
     nextUnitOfWork = performUnitOfWork(
       nextUnitOfWork
@@ -169,9 +163,8 @@ function workLoop(deadline) {
     // 当前帧还有时间
     shouldYield = deadline.timeRemaining() < 1
   }
-  // 不可打断
+
   if (!nextUnitOfWork && wipRoot) {
-    console.log(wipRoot);
     commitRoot()
   }
 
@@ -208,8 +201,7 @@ let hookIndex = null
 
 function updateFunctionComponent(fiber) {
   wipFiber = fiber
-  hookIndex = 0;
-  // 函数组件 来一个 hooks 数组
+  hookIndex = 0
   wipFiber.hooks = []
   const children = [fiber.type(fiber.props)]
   reconcileChildren(fiber, children)
@@ -250,6 +242,7 @@ function updateHostComponent(fiber) {
   if (!fiber.dom) {
     fiber.dom = createDom(fiber)
   }
+  debugger;
   reconcileChildren(fiber, fiber.props.children)
 }
 // 简单的 diff，too Naive
@@ -322,18 +315,18 @@ const MyReact = {
 
 /** @jsx MyReact.createElement */
 function Counter() {
-  const [state, setState] = MyReact.useState(1)
-  return (
-    <h1 onClick={() => setState(c => c + 1)}>
-      Count: {state}
-    </h1>
-  )
-  // return MyReact.createElement('h1', {
-  //   'onClick': () => setState(c => c + 1)
-  // }, `Count is`)
+  // const [state, setState] = MyReact.useState(1)
+  // return (
+  //   <h1 onClick={() => setState(c => c + 1)}>
+  //     Count: {state}
+  //   </h1>
+  // )
+  return MyReact.createElement('h1', {
+    'onClick': () => setState(c => c + 1)
+  }, `Count is`)
 }
-const element = <Counter />
-// const element = Counter();
+// const element = <Counter />
+const element = Counter();
 console.log(element);
 const container = document.getElementById("root")
 MyReact.render(element, container)
