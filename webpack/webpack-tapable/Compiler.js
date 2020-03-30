@@ -16,6 +16,10 @@ module.exports = class Compiler {
     this.break()
     this.calculateRoutes('Async', 'hook', 'demo')
   }
+  // webpack 内部 的 compiler 到了事件，就触发，就通知外面，
+  // plugin 在外部监听，自然也就也已收到 通知了。
+  // plugin 也就执行
+  // 这就是 webpack 的插件机制了。
   accelerate(speed) {
     this.hooks.accelerate.call(speed);
   }

@@ -6,6 +6,7 @@ const {
 class Car {
   constructor() {
     this.hooks = {
+      // 事件
       // 加速
       accelerate: new SyncHook(['newspeed']),
       // 刹车

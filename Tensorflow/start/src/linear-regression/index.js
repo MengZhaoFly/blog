@@ -17,7 +17,7 @@ window.onload = async () => {
     model.add(tf.layers.dense({ units: 1, inputShape: 1 }));
     // 设置损失函数
     // loss：损失
-    // meanSquaredError: 均方误差
+    // meanSquaredError: 均方误差 告诉模型 错的有多离谱
 
     // optimizer 优化器
     // sgd 随机梯度下降（SGD）
@@ -29,13 +29,12 @@ window.onload = async () => {
     const labels = tf.tensor(ys);
     /**
      * fit: 拟合
-     * epochs: 迭代多少次
-     * batchSize：1 给模型1个数据
-     * epochs：
-     * 超参数：需要不停的试
+     * batchSize：每次训练在训练集中取 batchsize 个样本
+     * epochs：1个epoch等于使用训练集中的全部样本训练一次
+     * 
      */
     await model.fit(inputs, labels, {
-        batchSize: 4,
+        batchSize: 2,
         epochs: 100,
         callbacks: tfvis.show.fitCallbacks(
             { name: '训练过程' },
@@ -44,5 +43,5 @@ window.onload = async () => {
     });
     // 待预测的 数据转为 tensor
     const output = model.predict(tf.tensor([6]));
-    console.log(`如果 x 为 5，那么预测 y 为 ${output.dataSync()[0]}`);
+    console.log(`如果那么预测 y 为 ${output.dataSync()[0]}`);
 };
