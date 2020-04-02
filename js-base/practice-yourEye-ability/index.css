@@ -1,0 +1,50 @@
+/* 初始化 margin padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* .container */
+#page-one {
+  background: yellow;
+  text-align: center;
+  /* height: 100%; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+button {
+  outline: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  background-color: #428bca;
+  width: 300px;
+}
+#page-one h1 {
+  margin-top: 100px;
+}
+#page-one p {
+  margin-top: 100px;
+}
+#page-one button {
+  margin-top: 200px;
+}
+.screen {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.screen .block {
+  height: 200px;
+  position: relative;
+}
+.block-inner {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
