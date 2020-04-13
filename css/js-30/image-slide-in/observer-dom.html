@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  * {
+  margin: 0;padding: 0;
+  }
+  .container {
+    width: 200px;height: 600px;
+    overflow-y: scroll;
+    border: 1px solid #000;
+  }
+  .target {
+    width: 100px;
+    height: 100px;
+    background-color: chocolate;
+    margin-top: 900px;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="target"></div>
+  </div>
+  <script>
+  const observer = new IntersectionObserver((nodes) => {
+    nodes.forEach((node) => {
+      // console.log(node);
+      if (node.isIntersecting) {
+        console.log('我出现了');
+      }
+    })
+  }, {
+    root: document.querySelector('.container'),
+    rootMargin: '0px 0px 0px 0px',
+    threshold: [ 0.3, 0.8 ]  // 0 ~ 1
+  })
+  observer.observe(document.querySelector('.target'))
+  </script>
+</body>
+</html>
