@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <box id="box1"></box>
+    <box id="box2"></box>
+  </div>
+  <!-- <script src="./reactivity.global.js"></script> -->
+  <script type="module">
+  // const { reactive, effect } = VueObserver;
+  import { reactive } from './my-reactivity/reactive.js'
+  import { effect } from './my-reactivity/effect.js'
+  const origin = {
+    count: 0,
+    age: 50,
+    name: 'lihua'
+  }
+  const state = reactive(origin);
+  // 依赖收集
+  // origin -> key -> 有哪些方法依赖
+  effect(() => {
+    document.getElementById('box1').innerHTML = state.count;
+  })
+  effect(() => {
+    document.getElementById('box2').innerHTML = state.age;
+  })
+  setTimeout(() => {
+    state.count = 100;
+  }, 3000);
+  </script>
+</body>
+</html>
