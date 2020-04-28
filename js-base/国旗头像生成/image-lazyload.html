@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    img {
+      display: inline-block;
+      width: 690px;
+      height: 380px;
+      background-color: #666666;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <img src="" alt="">
+  <script>
+  const imgUrl = 'https://yanxuan.nosdn.127.net/b21b20f34d5007f961c182273a5d429f.jpg?imageView&quality=95&thumbnail=690y380';
+  // <img />   异步  同步
+  const imgNode = new Image();
+  imgNode.onload = function() {
+    document.querySelector('img')
+    .src = imgUrl;
+  }
+  imgNode.src = imgUrl;
+  </script>
+</body>
+</html>

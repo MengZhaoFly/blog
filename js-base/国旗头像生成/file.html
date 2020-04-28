@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文件处理</title>
+</head>
+<body>
+  <input type="text" id="name"
+   onchange="nameChange(event)"/>
+  <input type="file" id="image"
+   onchange="fileChange(event)"/>
+  <p>预览</p>
+  <img src="" alt="" id="preview" />
+  <script>
+    function nameChange(event) {
+      console.log(event.target.value);
+    }
+    function fileChange(event) {
+      // console.log(event.target.files);
+      let file = event.target.files[0];
+      let fileReader = new FileReader();
+      fileReader.onload = function(event) {
+        // 读完
+        console.log(event.target.result);
+        const img = document
+        .getElementById('preview');
+        img.src = event.target.result;
+      }
+      // DataURL ???
+      // 内容是 二进制 的，
+      // 读完的时候 我们以 base 64 编码了
+      fileReader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>国旗头像合成</title>
+  <style>
+  * {
+  margin: 0; padding: 0;
+  }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <input type="file" id="fileInput"/>
+    <canvas id="preview" width="290px"
+    height="290px"
+    ></canvas>
+  </div>
+  <script>
+  const fileInput = document.getElementById('fileInput');
+  const preview = document.getElementById('preview');
+  fileInput.addEventListener('change',
+  function(event) {
+    let file = event.target.files[0];
+    let fileReader = new FileReader();
+    fileReader.onload = function(e) {
+      const imgFile = e.target.result;
+      draw(imgFile);
+    }
+    fileReader.readAsDataURL(file);
+  })
+  function draw(imgFile) {
+    const ctx = preview.getContext('2d');
+    ctx.width = 290;
+    ctx.height = 290;
+    // <img />
+    // createelement('img');
+    const avatar = new Image();
+    avatar.onload = function() {
+      // ctx.drawImage(imgFile, 0, 0, 290, 290);
+      ctx.drawImage(avatar, 0, 0, 290, 290);
+      const icon = new Image();
+      icon.onload = function() {
+        ctx.drawImage(icon, 0, 0, 290, 290);
+      }
+      icon.src = './icon.png';
+    }
+    avatar.src = imgFile;
+  }
+
+  </script>
+</body>
+</html>
