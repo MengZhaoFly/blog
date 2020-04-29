@@ -27,10 +27,6 @@ class Drag extends React.Component<drag.DragProps, drag.DragState> {
   private disX: number = 0;
   private disY: number = 0;
 
-  // private _dragStart: (ev: React.TouchEvent & React.MouseEvent) => void;
-  // private _dragMove: (ev: drag.TouchEvent) => any;
-  // private _dragEnd: (ev: TouchEvent) => any;
-
   state = {
     left: this.left,
     top: this.top
@@ -47,7 +43,6 @@ class Drag extends React.Component<drag.DragProps, drag.DragState> {
   // (ev: TouchEvent<Element> & MouseEvent<Element, MouseEvent>)
   public dragStart = (ev: React.TouchEvent<HTMLDivElement> & React.MouseEvent<Element, MouseEvent>): void => {
     const target = ev.target;
-    console.log(ev);
     if (isMoblie && ev.changedTouches) {
       this.startX = ev.changedTouches[0].pageX;
       this.startY = ev.changedTouches[0].pageY;
@@ -67,18 +62,19 @@ class Drag extends React.Component<drag.DragProps, drag.DragState> {
     if (!isMoblie) {
       document.addEventListener('mousemove', this.dragMove, false);
       document.addEventListener('mouseup', this.dragEnd, false);
+    } else {
+      document.addEventListener('touchmove', this.dragMove, false);
+      document.addEventListener('touchend', this.dragEnd, false);
     }
   }
 
-  public dragMove = (ev: React.TouchEvent<HTMLDivElement> 
-    & React.MouseEvent<Element, MouseEvent>
-    & MouseEvent
+  dragMove = (ev: TouchEvent
+    | MouseEvent
     ): void => {
-    console.log(ev);
-    if (isMoblie && ev.changedTouches) {
+    if (isMoblie && ev instanceof TouchEvent) {
       this.clientX = ev.changedTouches[0].pageX;
       this.clientY = ev.changedTouches[0].pageY;
-    } else {
+    } else if (ev instanceof MouseEvent) {
       this.clientX = ev.clientX;
       this.clientY = ev.clientY;
     }
@@ -108,9 +104,8 @@ class Drag extends React.Component<drag.DragProps, drag.DragState> {
   // (ev: TouchEvent<Element> & MouseEvent<Element, MouseEvent>)
   // (ev: TouchEvent<Element> & MouseEvent<Element, MouseEvent>)
 
-  public dragEnd = (ev: React.TouchEvent<HTMLDivElement> 
-    & React.MouseEvent<Element, MouseEvent>
-    & MouseEvent
+  public dragEnd = (ev: TouchEvent
+    | MouseEvent
     ): void => {
     const { onDragEnd } = this.props;
     document.removeEventListener('mousemove', this.dragMove);
@@ -149,10 +144,7 @@ class Drag extends React.Component<drag.DragProps, drag.DragState> {
       <div
         className={cls}
         onTouchStart={this.dragStart}
-        onTouchMove={this.dragMove}
-        onTouchEnd={this.dragEnd}
         onMouseDown={this.dragStart}
-        onMouseUp={this.dragEnd}
         style={styles}
       >
         {this.props.children}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./progress.css">
+</head>
+
+<body>
+  <div id="progress1">
+  </div>
+  <div id="progress2" style="margin-top: 20px">
+  </div>
+  <script type="module">
+    import Progress from './progress.js';
+    new Progress('#progress1', {
+      progress: 0.9,
+      onDrag: (p) => {
+        console.log(p);
+      }
+    })
+    new Progress('#progress2', {
+      progress: 0.5
+    })
+  </script>
+</body>
+
+</html>

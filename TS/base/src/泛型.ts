@@ -20,6 +20,7 @@ function indentify(p: number): number {
 function indentify1<T>(p: T): T {
   return p;
 }
+indentify1(1)
 function getLen<T>(arr: Array<T>) {
   console.log(arr.length);
 }

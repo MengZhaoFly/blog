@@ -1,5 +1,5 @@
 // 线性回归
-// import './linear-regression/index'
+import './linear-regression/index'
 // 归一化
 // import './height-weight-归一化/index';
 // 逻辑回归
