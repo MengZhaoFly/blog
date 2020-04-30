@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../dist/ts-axios.umd.js"></script>
+  <script>
+    axios({
+      method: 'get',
+      url: 'http://neteasecloudmusicapi.zhaoboy.com/search#hash',
+      params: {
+        keywords: '海阔天空',
+        _time: new Date(),
+        arr: ['1', '2']
+      }
+    })
+    .then(res => {
+      console.log(res);
+    })
+  </script>
+</body>
+</html>

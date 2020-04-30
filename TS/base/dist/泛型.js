@@ -11,6 +11,7 @@ function indentify(p) {
 function indentify1(p) {
     return p;
 }
+indentify1(1);
 function getLen(arr) {
     console.log(arr.length);
 }
