@@ -1,0 +1,54 @@
+<script>
+  let p = new Promise((resolve) => {
+    resolve(1);
+  })
+  let p3 = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(3);
+    }, 2000);
+  })
+  let p2;
+  // if promise and x refer to the same object
+  // p2 = p.then(x => p2)
+  // [[Resolve]](promise2, x)
+
+  // If x is a promise
+  // p.then(x => p3)
+  // .then(x => {
+  //   console.log(x);
+  // })
+
+  // p.then(x => ({get then() {
+  //   throw new Error('err')
+  // }}))
+  // .then(x => {
+  //   console.log(x);
+  // })
+  // .catch(console.log)
+
+  // p.then(x => ({then: function(resolve, reject) {
+  //   console.log(this);
+  //   setTimeout(() => {
+  //     resolve('123456')
+  //   }, 2000);
+  // }}))
+  // .then(x => {
+  //   console.log(x);
+  // })
+  // .catch(console.log)
+
+  p.then(x => {
+    function foo() { }
+    foo.then = function (resolve, reject) {
+      console.log(this);
+      setTimeout(() => {
+        resolve('123456')
+      }, 2000);
+    }
+    return foo
+  })
+    .then(x => {
+      console.log(x);
+    })
+    .catch(console.log)
+</script>

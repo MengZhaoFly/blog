@@ -8,6 +8,7 @@
 <body>
   <script src="../dist/ts-axios.umd.js"></script>
   <script>
+    console.log(axios);
     axios({
       method: 'get',
       url: 'http://neteasecloudmusicapi.zhaoboy.com/search#hash',
@@ -18,8 +19,19 @@
       }
     })
     .then(res => {
-      console.log(res);
+      console.log('res', res);
     })
+    axios.get('http://neteasecloudmusicapi.zhaoboy.com/search', {
+      params: {
+        keywords: '海阔天空',
+        _time: new Date(),
+        arr: ['1', '2']
+      }
+    })
+    .then(res => {
+      console.log('get res', res);
+    })
+
   </script>
 </body>
 </html>
