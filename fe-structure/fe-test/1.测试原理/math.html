@@ -1,0 +1,45 @@
+<script type="module">
+  // import { add, minus } from './math.js'
+  // let result
+  // let expected
+  // result = add(3, 7)
+  // expected = 10;
+
+  // if (result !== 10) {
+  //   throw Error(`3 + 7 应该等于 ${expected},但结果却是 ${result}`)
+  // }
+
+  // result = minus(3, 3)
+  // expected = 0;
+
+  // if (result !== 0) {
+  //   throw Error(`3 - 3 应该等于 ${expected},但结果却是 ${result}`)
+  // }
+</script>
+<script type="module">
+  import { add, minus } from './math.js'
+  function expect(result) {
+    return {
+      toBe: function (actual) {
+        if (result !== actual) {
+          throw new Error(`预期值与实际值不相等 预期${actual} 结果却是 ${result}`)
+        }
+      }
+    }
+  }
+
+  function test(desc, fn) {
+    try {
+      fn();
+      console.log(`${desc}通过测试`)
+    } catch (e) {
+      console.log(`${desc}没有通过测试 ${e}`)
+    }
+  }
+  test('测试加法3 + 7', () => {
+    expect(add(3, 7)).toBe(6)
+  })
+  test('测试减法6 - 3', () => {
+    expect(minus(6, 3)).toBe(6)
+  })
+</script>
