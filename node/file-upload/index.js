@@ -1,5 +1,6 @@
 /**
  * 参考了 牛逼的秋风 https://juejin.im/post/5e80511f51882573793e6428
+ * https://www.ietf.org/rfc/rfc1867.txt
  */
 const fs = require('fs');
 const http = require('http');
