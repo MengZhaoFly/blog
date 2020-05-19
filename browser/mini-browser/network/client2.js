@@ -204,6 +204,7 @@ class TrunkedBodyParser {
           this.current = this.WAITING_LENGTH_LINE_END
         }
       } else {
+        // todo: 这个长度是 16 进制
         this.length *= 10
         this.length += char.charCodeAt(0) - '0'.charCodeAt(0)
       }

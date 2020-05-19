@@ -1,0 +1,371 @@
+
+<script type="text/javascript">// <![CDATA[
+function HTMLLexicalParser(){
+
+        function emitToken(token){
+            console.log(token);
+        }
+
+        function error(){
+            console.log("error");
+        }
+
+
+        function StartTagToken(){
+        }
+
+        function EndTagToken(){
+        }
+
+        function Attribute(){
+        }
+        
+        var token;
+        var attribute;
+
+        //function consumeReference();
+
+        //状态函数们……
+        var dataState = function dataState(c){
+            if(c=="<") {
+                return tagOpenState;
+            }
+            else {
+                emitToken(c);
+                return dataState;
+            }
+        };
+        var tagOpenState = function tagOpenState(c){
+            if(c=="/") {
+                return endTagOpenState;
+            }
+            if(c.match(/[A-Z]/)) {
+                token = new StartTagToken();
+                token.name = c.toLowerCase();
+                return tagNameState;
+            }
+            if(c.match(/[a-z]/)) {
+                token = new StartTagToken();
+                token.name = c;
+                return tagNameState;
+            }
+            if(c=="?") {
+                return bogusCommentState;
+            }
+            else {
+                error();
+                return dataState;
+            }
+        };
+        var endTagOpenState = function endTagOpenState(c){
+            if(c.match(/[A-Z]/)) {
+                token = new EndTagToken();
+                token.name = c.toLowerCase();
+                return tagNameState;
+            }
+            if(c.match(/[a-z]/)) {
+                token = new EndTagToken();
+                token.name = c;
+                return tagNameState;
+            }
+            if(c==">") {
+                error();
+                return dataState;
+            }
+            else {
+                error();
+                return bogusCommentState;
+            }
+        };
+        var tagNameState = function tagNameState(c) {
+            if(c.match(/[\t \f\n]/)) {
+                return beforeAttributeNameState;
+            }
+            if(c=="/") {
+                return selfClosingStartTagState;
+            }
+            if(c == ">") {
+                emitToken(token);
+                return dataState;
+            }
+            if(c.match(/[a-z]/))
+            {
+                token.name += c.toLowerCase();
+                return tagNameState;
+            }
+        }
+        var beforeAttributeNameState = function beforeAttributeNameState(c) {
+            if(c.match(/[\t \f\n]/)) {
+                return beforeAttributeNameState;
+            }
+            if(c=="/") {
+                return selfClosingStartTagState;
+            }
+
+
+            if(c == ">") {
+                emitToken(token);
+                return dataState;
+            }
+            if(c.match(/[a-z]/))
+            {
+                attribute = new Attribute();
+                attribute.name = c.toLowerCase();
+                attribute.value = "";
+                return attributeNameState;
+            }
+            if(c=="\"" || c=="'" || c=="<" || c=="\"") {
+                error();
+            }
+            else {
+                attribute = new Attribute();
+                attribute.name = c;
+                attribute.value = "";
+                return attributeNameState;
+            }
+        }
+        var attributeNameState = function attributeNameState(c) {
+            if(c=="/") {
+                token[attribute.name] = attribute.value;
+                return selfClosingStartTagState;
+            }
+            if(c=="/") {
+                token[attribute.name] = attribute.value;
+                return selfClosingStartTagState;
+            }
+            if(c=="=") {
+                return beforeAttributeValueState;
+            }
+            if(c.match(/[\t \f\n]/)) {
+                return afterAttributeNameState;
+            }
+            if(c.match(/[A-Z]/))
+            {
+                attribute.name += c.toLowerCase();
+                return attributeNameState;
+            }
+            else {
+                attribute.name += c;
+                return attributeNameState;
+            }
+        }
+
+        var afterAttributeNameState = function afterAttributeNameState(c) {
+            if(c=="/") {
+                token[attribute.name] = attribute.value;
+                return selfClosingStartTagState;
+            }
+            if(c=="/") {
+                token[attribute.name] = attribute.value;
+                return selfClosingStartTagState;
+            }
+            if(c=="=") {
+                return beforeAttributeValueState;
+            }
+            if(c.match(/[\t \f\n]/)) {
+                return afterAttributeNameState;
+            }
+            if(c.match(/[A-Z]/))
+            {
+                attribute = new Attribute();
+                attribute.name = c.toLowerCase();
+                attribute.value = "";
+                
+                return attributeNameState;
+            }
+            else {
+                attribute = new Attribute();
+                attribute.name = c;
+                attribute.value = "";
+                return attributeNameState;
+            }
+        }
+
+        var beforeAttributeValueState = function beforeAttributeValueState(c) {
+
+            if(c=="\"") {
+                return attributeValueDoubleQuotedState;
+            }
+            if(c=="\'") {
+                return attributeValueSingleQuotedState;
+            }
+
+            if(c.match(/[\t \f\n]/)) {
+                return beforeAttributeValueState;
+            }
+            else {
+                attribute.value += c;
+                return attributeValueUnquotedState;
+            }
+        }
+        var attributeValueDoubleQuotedState = function attributeValueDoubleQuotedState(c) {
+            if(c=="\"") {
+                token[attribute.name] = attribute.value;
+                return beforeAttributeNameState;
+            }
+            else {
+                attribute.value += c;
+                return attributeValueDoubleQuoted;
+            }
+        }
+
+        var attributeValueSingleQuotedState = function attributeValueSingleQuotedState(c) {
+            if(c=="\'") {
+                token[attribute.name] = attribute.value;
+                return beforeAttributeNameState;
+            }
+            else {
+                attribute.value += c;
+                return attributeValueSingleQuoted;
+            }
+        }
+
+        var attributeValueUnquotedState = function attributeValueUnquotedState(c) {
+            if(c.match(/[\t \f\n]/)) {
+                token[attribute.name] = attribute.value;
+                return beforeAttributeNameState;
+            }
+            else {
+                attribute.value += c;
+                return attributeValueUnquoted;
+            }
+        }
+        var selfClosingStartTagState = function selfClosingStartTagState(c) {
+            if(c == ">") {
+                emitToken(token);
+                return dataState;
+            }
+        }
+        var bogusCommentState = function bogusCommentState(c) {
+            if(c == ">") {
+                return dataState;
+            }
+            else {
+                return bogusCommentState;
+            }
+        }
+
+
+        var state = dataState;
+        this.receiveInput = function(char) {
+            console.log("字符：", char);
+            visualizer.visualize(state.name);
+            state = state(char);
+        }
+        
+    }
+
+    var visualizer = {
+        current:null,
+        visualize:function visualize(name)
+        {
+            if(name == "attributeValueDoubleQuotedState"
+                || name == "attributeValueSingleQuotedState"
+                || name == "attributeValueUnquotedState")
+                name = "attributeValueState";
+            if(this.current)
+                this.current.style.fill = "#3F80CD";
+
+            this.current = document.querySelector("#"+name);
+            if(!this.current)
+                console.log(name);
+            this.current.style.fill = "red";
+            
+        }
+    }
+
+    function startParse(){
+        var parser = new HTMLLexicalParser();
+        var sourceCode = document.querySelector("#source").value;
+
+        var i = 0;
+        (function next(){
+            parser.receiveInput(sourceCode.charAt(i++));
+            if(i<sourceCode.length)
+                setTimeout(next,1000);
+        })();
+
+    }
+// ]]></script>
+<script id="svgSource" type="text/svg+xml">// <![CDATA[
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800">
+    <defs>
+      <marker id="Triangle"
+        viewBox="-10 0 10 10" refX="0" refY="5"
+        markerUnits = "strokeWidth"
+        markerWidth="8" markerHeight="6"
+        orient="auto" style="fill:3F80CD;">
+        <polygon points="-15,0 1,5 -15,10" />
+      </marker>
+      <marker id="Circle"
+        viewBox="0 0 10 10" refX="0" refY="5"
+        markerUnits = "strokeWidth"
+        markerWidth="8" markerHeight="6"
+        orient="auto" style="fill:black;">
+        <circle cx="5" cy="5" r="4" />
+      </marker>
+    </defs>
+    <ellipse id="dataState" cx="179" cy="396" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="74" y="422" width="91" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">data</foreignObject>
+    <ellipse id="tagOpenState" cx="366" cy="549" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="331" y="587" width="110" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">tag open</foreignObject>
+    <ellipse id="markupDeclarationState" cx="217" cy="646" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="21" y="669" width="326" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">markup declaration open</foreignObject>
+    <ellipse id="endTagOpenState" cx="539" cy="608" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="475" y="646" width="164" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">end tag open</foreignObject>
+    <ellipse id="tagNameState" cx="494" cy="459" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="520" y="440" width="179" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">tag name</foreignObject>
+    <foreignObject xml:space="preserve" x="440" y="569" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">/</foreignObject>
+    <foreignObject xml:space="preserve" x="494" y="521" width="105" height="42" style="font-family:Calibri;font-size:11pt;fill:#000000;">[letter]</foreignObject>
+    <ellipse id="beforeAttributeNameState" cx="431" cy="192" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="221" y="11" width="267" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">before attribute value</foreignObject>
+    <ellipse id="selfClosingStartTagState" cx="343" cy="325" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <ellipse id="attributeNameState" cx="562" cy="105" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="592" y="117" width="267" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">attribute name</foreignObject>
+    <ellipse id="beforeAttributeValueState" cx="484" cy="41" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <ellipse id="attributeValueState" cx="300" cy="119" rx="19" ry="19" style="fill:#3F80CD;stroke:#4A7EBB;stroke-width:0.75pt;"/>
+    <foreignObject xml:space="preserve" x="446" y="212" width="267" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">before attribute name</foreignObject>
+    <foreignObject xml:space="preserve" x="118" y="100" width="164" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">attribute value</foreignObject>
+    <line x1="494" y1="440" x2="431" y2="212" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="417" y1="206" x2="357" y2="311" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="480" y1="446" x2="357" y2="338" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="539" y1="588" x2="508" y2="473" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="380" y1="562" x2="520" y2="608" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="353" y1="562" x2="231" y2="633" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="192" y1="410" x2="353" y2="535" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="380" y1="535" x2="480" y2="473" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="329" y1="338" x2="192" y2="382" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="475" y1="459" x2="198" y2="396" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="412" y1="192" x2="192" y2="382" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="445" y1="178" x2="548" y2="119" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="548" y1="92" x2="498" y2="55" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="470" y1="55" x2="313" y2="105" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <line x1="313" y1="133" x2="417" y2="178" style="stroke:#4F81BD;stroke-width:2pt;" marker-end="url(#Triangle)"/>
+    <foreignObject xml:space="preserve" x="351" y="414" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">&gt;</foreignObject>
+    <foreignObject xml:space="preserve" x="418" y="304" width="105" height="42" style="font-family:Calibri;font-size:11pt;fill:#000000;">[WhiteSpace]</foreignObject>
+    <foreignObject xml:space="preserve" x="267" y="348" width="149" height="102" style="font-family:Calibri;font-size:18pt;fill:#000000;">Self-closing start tag</foreignObject>
+    <foreignObject xml:space="preserve" x="416" y="377" width="34" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">/</foreignObject>
+    <foreignObject xml:space="preserve" x="240" y="340" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">&gt;</foreignObject>
+    <foreignObject xml:space="preserve" x="366" y="255" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">/</foreignObject>
+    <foreignObject xml:space="preserve" x="281" y="267" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">&gt;</foreignObject>
+    <foreignObject xml:space="preserve" x="451" y="137" width="105" height="42" style="font-family:Calibri;font-size:11pt;fill:#000000;">[letter]</foreignObject>
+    <foreignObject xml:space="preserve" x="513" y="53" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">=</foreignObject>
+    <foreignObject xml:space="preserve" x="369" y="61" width="105" height="42" style="font-family:Calibri;font-size:11pt;fill:#000000;">[letter]</foreignObject>
+    <foreignObject xml:space="preserve" x="317" y="138" width="105" height="42" style="font-family:Calibri;font-size:11pt;fill:#000000;">[whitespace]</foreignObject>
+    <foreignObject xml:space="preserve" x="281" y="572" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">!</foreignObject>
+    <foreignObject xml:space="preserve" x="389" y="488" width="105" height="42" style="font-family:Calibri;font-size:11pt;fill:#000000;">[letter]</foreignObject>
+    <foreignObject xml:space="preserve" x="270" y="468" width="30" height="59" style="font-family:Calibri;font-size:18pt;fill:#000000;">&lt;</foreignObject>
+  </svg>
+// ]]></script>
+</p>
+<script type="text/javascript">// <![CDATA[
+document.write(document.querySelector("#svgSource").firstChild.textContent.replace("// ]"+"]>","").replace("// <![CDATA[",""));
+// ]]></script>
+<p><textarea id="source" style="width: 100%; height: 300px;">&lt;html maaa=a &gt;
+    &lt;head&gt;
+        &lt;title&gt;cool&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+</textarea> <button onclick="startParse();">parse</button></p>

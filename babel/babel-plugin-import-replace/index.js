@@ -28,16 +28,16 @@ module.exports = function (babel) {
           path.replaceWithMultiple(declarations);
         }
       },
-      Program(path) {
-        const buildRequire = template(`
-          var IMPORT_NAME = require(SOURCE);
-        `);
-        const ast = buildRequire({
-          IMPORT_NAME: types.identifier("myModule"),
-          SOURCE: types.stringLiteral("my-module"),
-        });
-        path.node.body.push(ast);
-      }
+      // Program(path) {
+      //   const buildRequire = template(`
+      //     var IMPORT_NAME = require(SOURCE);
+      //   `);
+      //   const ast = buildRequire({
+      //     IMPORT_NAME: types.identifier("myModule"),
+      //     SOURCE: types.stringLiteral("my-module"),
+      //   });
+      //   path.node.body.push(ast);
+      // }
     }
   };
 }
