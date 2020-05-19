@@ -13,15 +13,17 @@ let htmlStr = `
     </style>
 </head>
 <body>
-    <div>
-      <img id="myid"/>
+    <div class="wrap">
+      <img />
       <img />
     </div>
 </body>
 </html>
 `
+// 正则表达式：实现 就是 状态机
+// KMP：     indexOf   
 // htmlStr = `<img id="myid"/>`
-// htmlStr = `<div class="abc"><img id="myid"/></div>`
+// htmlStr = `<div class="abc" id="wrap"><img id="myid"/></div>`
 let currentToken = null;
 let currentAttribute = null;
 let currentTextNode = null;
@@ -31,15 +33,17 @@ let stack = [
 const EOF = Symbol('EOF');
 
 function emit(token) {
-  console.log(token)
+  console.log(token);
   let top = stack[stack.length - 1];
   if (token.type == 'startTag') {
     let element = {
       type: 'element',
       children: [],
-      attributes: []
+      attributes: token.attributes
     }
     element.tagName = token.tagName;
+    // 理论上（最佳实践） 一个 element 生成的时候 css 已经分析完成
+    // computerCss()
     top.children.push(element);
     if (token.isSelfClosing) {
       // 自封闭 不需要入栈进行配对
@@ -87,6 +91,7 @@ function tagOpen(c) {
   } else if (c.match(/^[a-zA-Z]$/)) {
     currentToken = {
       type: 'startTag',
+      attributes: [],
       tagName: ''
     }
     return tagName(c);
@@ -129,8 +134,44 @@ function beforeAttributeName(c) {
   } else if (c == '>') {
     emit(currentToken)
     return data;
+  } else if (c.match(/^[a-zA-Z]$/)) {
+    currentAttribute = {
+      name: c,
+      value: ''
+    }
+    return attributeName;
   } else {
     return beforeAttributeName;
+  }
+}
+/**
+ * 1: 合格 拼接自己的 attributeName
+   2: = 处理属性
+ */
+function attributeName(c) {
+  if (c.match(/^[a-zA-Z]$/)) {
+    currentAttribute.name += c;
+    return attributeName;
+  } else if (c === '=') {
+    return attributeValue
+  }
+}
+/**
+ * 1: 合格 拼接自己的 attributeValue
+   2: = 处理属性
+ */
+function attributeValue(c) {
+  if (c === "\"" || c === "\"") {
+    return attributeValue
+  } else if (c.match(/^[a-zA-Z]$/)) {
+    currentAttribute.value += c;
+    return attributeValue;
+  } else {
+    // 处理完一个属性
+    currentToken.attributes.push(currentAttribute);
+    currentAttribute = null;
+    // <div class="abc"> 处理完 attributeValue 消耗一个 字符
+    return beforeAttributeName(c);
   }
 }
 function selfClosingStartTag(c) {
