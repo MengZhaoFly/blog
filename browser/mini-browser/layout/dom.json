@@ -1,0 +1,201 @@
+{
+  "type": "document",
+  "children": [
+    {
+      "type": "text",
+      "content": "\n"
+    },
+    {
+      "type": "element",
+      "children": [
+        {
+          "type": "text",
+          "content": "\n"
+        },
+        {
+          "type": "element",
+          "children": [
+            {
+              "type": "text",
+              "content": "\n    "
+            },
+            {
+              "type": "element",
+              "children": [
+                {
+                  "type": "text",
+                  "content": "\n    #myid{\n      width:500px;\n      display: flex;\n      background-color: rgb(0, 0, 255);\n      align-items: center;\n      height: 500px;\n      justify-content: center;\n      flex-direction: row;\n    }\n    .main {\n      width: 200px;\n      height: 100px;\n      background-color: rgb(255, 0, 0);\n    }\n    .side {\n      width: 200px;\n      height: 200px;\n      background-color: rgb(0, 255, 0);\n    }\n    "
+                }
+              ],
+              "attributes": [],
+              "tagName": "style",
+              "computerStyle": {},
+              "style": {}
+            },
+            {
+              "type": "text",
+              "content": "\n"
+            }
+          ],
+          "attributes": [],
+          "tagName": "head",
+          "computerStyle": {},
+          "style": {}
+        },
+        {
+          "type": "text",
+          "content": "\n"
+        },
+        {
+          "type": "element",
+          "children": [
+            {
+              "type": "text",
+              "content": "\n    "
+            },
+            {
+              "type": "element",
+              "children": [
+                {
+                  "type": "text",
+                  "content": "\n      "
+                },
+                {
+                  "type": "element",
+                  "children": [],
+                  "attributes": [
+                    {
+                      "name": "class",
+                      "value": "main"
+                    }
+                  ],
+                  "tagName": "div",
+                  "computerStyle": {
+                    "width": {
+                      "value": "200px"
+                    },
+                    "height": {
+                      "value": "100px"
+                    },
+                    "background-color": {
+                      "value": "rgb(255, 0, 0)"
+                    }
+                  },
+                  "style": {
+                    "width": 200,
+                    "height": 100,
+                    "background-color": "rgb(255, 0, 0)",
+                    "backgroundColor": "rgb(255, 0, 0)",
+                    "left": 50,
+                    "top": 200
+                  }
+                },
+                {
+                  "type": "text",
+                  "content": "\n      "
+                },
+                {
+                  "type": "element",
+                  "children": [],
+                  "attributes": [
+                    {
+                      "name": "class",
+                      "value": "side"
+                    }
+                  ],
+                  "tagName": "div",
+                  "computerStyle": {
+                    "width": {
+                      "value": "200px"
+                    },
+                    "height": {
+                      "value": "200px"
+                    },
+                    "background-color": {
+                      "value": "rgb(0, 255, 0)"
+                    }
+                  },
+                  "style": {
+                    "width": 200,
+                    "height": 200,
+                    "background-color": "rgb(0, 255, 0)",
+                    "backgroundColor": "rgb(0, 255, 0)",
+                    "left": 250,
+                    "top": 150
+                  }
+                },
+                {
+                  "type": "text",
+                  "content": "\n    "
+                }
+              ],
+              "attributes": [
+                {
+                  "name": "id",
+                  "value": "myid"
+                }
+              ],
+              "tagName": "div",
+              "computerStyle": {
+                "width": {
+                  "value": "500px"
+                },
+                "display": {
+                  "value": "flex"
+                },
+                "background-color": {
+                  "value": "rgb(0, 0, 255)"
+                },
+                "align-items": {
+                  "value": "center"
+                },
+                "height": {
+                  "value": "500px"
+                },
+                "justify-content": {
+                  "value": "center"
+                },
+                "flex-direction": {
+                  "value": "row"
+                }
+              },
+              "style": {
+                "width": 500,
+                "display": "flex",
+                "background-color": "rgb(0, 0, 255)",
+                "backgroundColor": "rgb(0, 0, 255)",
+                "align-items": "center",
+                "alignItems": "center",
+                "height": 500,
+                "justify-content": "center",
+                "justifyContent": "center",
+                "flex-direction": "row",
+                "flexDirection": "row"
+              }
+            },
+            {
+              "type": "text",
+              "content": "\n"
+            }
+          ],
+          "attributes": [],
+          "tagName": "body",
+          "computerStyle": {},
+          "style": {}
+        },
+        {
+          "type": "text",
+          "content": "\n"
+        }
+      ],
+      "attributes": [],
+      "tagName": "html",
+      "computerStyle": {},
+      "style": {}
+    },
+    {
+      "type": "text",
+      "content": "\n"
+    }
+  ]
+}
