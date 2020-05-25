@@ -1,0 +1,885 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test CategorySelect component should render the component to match the snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <CategorySelect
+    categories={
+        Array [
+            Object {
+              "iconName": "ios-plane",
+              "id": "1",
+              "name": "旅行",
+              "type": "outcome",
+            },
+            Object {
+              "iconName": "logo-yen",
+              "id": "2",
+              "name": "理财",
+              "type": "income",
+            },
+            Object {
+              "iconName": "logo-yen",
+              "id": "3",
+              "name": "理财",
+              "type": "income",
+            },
+          ]
+    }
+    onSelectCategory={[Function]}
+    selectedCategory={
+        Object {
+            "iconName": "ios-plane",
+            "id": "1",
+            "name": "旅行",
+            "type": "outcome",
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="row"
+>
+        <div
+                className="category-item col-3 active"
+                onClick={[Function]}
+                role="button"
+                style={
+                        Object {
+                                "textAlign": "center",
+                              }
+                }
+        >
+                <Ionicon
+                        beat={false}
+                        className="rounded-circle"
+                        color="#fff"
+                        fontSize="50px"
+                        icon="ios-plane"
+                        rotate={false}
+                        shake={false}
+                        style={
+                                Object {
+                                        "backgroundColor": "#347eff",
+                                        "padding": "5px",
+                                      }
+                        }
+                />
+                <p>
+                        旅行
+                </p>
+        </div>
+        <div
+                className="category-item col-3"
+                onClick={[Function]}
+                role="button"
+                style={
+                        Object {
+                                "textAlign": "center",
+                              }
+                }
+        >
+                <Ionicon
+                        beat={false}
+                        className="rounded-circle"
+                        color="#555"
+                        fontSize="50px"
+                        icon="logo-yen"
+                        rotate={false}
+                        shake={false}
+                        style={
+                                Object {
+                                        "backgroundColor": "#efefef",
+                                        "padding": "5px",
+                                      }
+                        }
+                />
+                <p>
+                        理财
+                </p>
+        </div>
+        <div
+                className="category-item col-3"
+                onClick={[Function]}
+                role="button"
+                style={
+                        Object {
+                                "textAlign": "center",
+                              }
+                }
+        >
+                <Ionicon
+                        beat={false}
+                        className="rounded-circle"
+                        color="#555"
+                        fontSize="50px"
+                        icon="logo-yen"
+                        rotate={false}
+                        shake={false}
+                        style={
+                                Object {
+                                        "backgroundColor": "#efefef",
+                                        "padding": "5px",
+                                      }
+                        }
+                />
+                <p>
+                        理财
+                </p>
+        </div>
+</div>,
+      "className": "category-select-component",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="category-item col-3 active"
+            onClick={[Function]}
+            role="button"
+            style={
+                        Object {
+                                    "textAlign": "center",
+                                  }
+            }
+>
+            <Ionicon
+                        beat={false}
+                        className="rounded-circle"
+                        color="#fff"
+                        fontSize="50px"
+                        icon="ios-plane"
+                        rotate={false}
+                        shake={false}
+                        style={
+                                    Object {
+                                                "backgroundColor": "#347eff",
+                                                "padding": "5px",
+                                              }
+                        }
+            />
+            <p>
+                        旅行
+            </p>
+</div>,
+          <div
+            className="category-item col-3"
+            onClick={[Function]}
+            role="button"
+            style={
+                        Object {
+                                    "textAlign": "center",
+                                  }
+            }
+>
+            <Ionicon
+                        beat={false}
+                        className="rounded-circle"
+                        color="#555"
+                        fontSize="50px"
+                        icon="logo-yen"
+                        rotate={false}
+                        shake={false}
+                        style={
+                                    Object {
+                                                "backgroundColor": "#efefef",
+                                                "padding": "5px",
+                                              }
+                        }
+            />
+            <p>
+                        理财
+            </p>
+</div>,
+          <div
+            className="category-item col-3"
+            onClick={[Function]}
+            role="button"
+            style={
+                        Object {
+                                    "textAlign": "center",
+                                  }
+            }
+>
+            <Ionicon
+                        beat={false}
+                        className="rounded-circle"
+                        color="#555"
+                        fontSize="50px"
+                        icon="logo-yen"
+                        rotate={false}
+                        shake={false}
+                        style={
+                                    Object {
+                                                "backgroundColor": "#efefef",
+                                                "padding": "5px",
+                                              }
+                        }
+            />
+            <p>
+                        理财
+            </p>
+</div>,
+        ],
+        "className": "row",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Ionicon
+                beat={false}
+                className="rounded-circle"
+                color="#fff"
+                fontSize="50px"
+                icon="ios-plane"
+                rotate={false}
+                shake={false}
+                style={
+                                Object {
+                                                "backgroundColor": "#347eff",
+                                                "padding": "5px",
+                                              }
+                }
+/>,
+              <p>
+                旅行
+</p>,
+            ],
+            "className": "category-item col-3 active",
+            "onClick": [Function],
+            "role": "button",
+            "style": Object {
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "beat": false,
+                "className": "rounded-circle",
+                "color": "#fff",
+                "fontSize": "50px",
+                "icon": "ios-plane",
+                "rotate": false,
+                "shake": false,
+                "style": Object {
+                  "backgroundColor": "#347eff",
+                  "padding": "5px",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "旅行",
+              },
+              "ref": null,
+              "rendered": "旅行",
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Ionicon
+                beat={false}
+                className="rounded-circle"
+                color="#555"
+                fontSize="50px"
+                icon="logo-yen"
+                rotate={false}
+                shake={false}
+                style={
+                                Object {
+                                                "backgroundColor": "#efefef",
+                                                "padding": "5px",
+                                              }
+                }
+/>,
+              <p>
+                理财
+</p>,
+            ],
+            "className": "category-item col-3",
+            "onClick": [Function],
+            "role": "button",
+            "style": Object {
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "beat": false,
+                "className": "rounded-circle",
+                "color": "#555",
+                "fontSize": "50px",
+                "icon": "logo-yen",
+                "rotate": false,
+                "shake": false,
+                "style": Object {
+                  "backgroundColor": "#efefef",
+                  "padding": "5px",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "理财",
+              },
+              "ref": null,
+              "rendered": "理财",
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "2",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Ionicon
+                beat={false}
+                className="rounded-circle"
+                color="#555"
+                fontSize="50px"
+                icon="logo-yen"
+                rotate={false}
+                shake={false}
+                style={
+                                Object {
+                                                "backgroundColor": "#efefef",
+                                                "padding": "5px",
+                                              }
+                }
+/>,
+              <p>
+                理财
+</p>,
+            ],
+            "className": "category-item col-3",
+            "onClick": [Function],
+            "role": "button",
+            "style": Object {
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "beat": false,
+                "className": "rounded-circle",
+                "color": "#555",
+                "fontSize": "50px",
+                "icon": "logo-yen",
+                "rotate": false,
+                "shake": false,
+                "style": Object {
+                  "backgroundColor": "#efefef",
+                  "padding": "5px",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "理财",
+              },
+              "ref": null,
+              "rendered": "理财",
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="row"
+>
+          <div
+                    className="category-item col-3 active"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                              Object {
+                                        "textAlign": "center",
+                                      }
+                    }
+          >
+                    <Ionicon
+                              beat={false}
+                              className="rounded-circle"
+                              color="#fff"
+                              fontSize="50px"
+                              icon="ios-plane"
+                              rotate={false}
+                              shake={false}
+                              style={
+                                        Object {
+                                                  "backgroundColor": "#347eff",
+                                                  "padding": "5px",
+                                                }
+                              }
+                    />
+                    <p>
+                              旅行
+                    </p>
+          </div>
+          <div
+                    className="category-item col-3"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                              Object {
+                                        "textAlign": "center",
+                                      }
+                    }
+          >
+                    <Ionicon
+                              beat={false}
+                              className="rounded-circle"
+                              color="#555"
+                              fontSize="50px"
+                              icon="logo-yen"
+                              rotate={false}
+                              shake={false}
+                              style={
+                                        Object {
+                                                  "backgroundColor": "#efefef",
+                                                  "padding": "5px",
+                                                }
+                              }
+                    />
+                    <p>
+                              理财
+                    </p>
+          </div>
+          <div
+                    className="category-item col-3"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                              Object {
+                                        "textAlign": "center",
+                                      }
+                    }
+          >
+                    <Ionicon
+                              beat={false}
+                              className="rounded-circle"
+                              color="#555"
+                              fontSize="50px"
+                              icon="logo-yen"
+                              rotate={false}
+                              shake={false}
+                              style={
+                                        Object {
+                                                  "backgroundColor": "#efefef",
+                                                  "padding": "5px",
+                                                }
+                              }
+                    />
+                    <p>
+                              理财
+                    </p>
+          </div>
+</div>,
+        "className": "category-select-component",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="category-item col-3 active"
+              onClick={[Function]}
+              role="button"
+              style={
+                            Object {
+                                          "textAlign": "center",
+                                        }
+              }
+>
+              <Ionicon
+                            beat={false}
+                            className="rounded-circle"
+                            color="#fff"
+                            fontSize="50px"
+                            icon="ios-plane"
+                            rotate={false}
+                            shake={false}
+                            style={
+                                          Object {
+                                                        "backgroundColor": "#347eff",
+                                                        "padding": "5px",
+                                                      }
+                            }
+              />
+              <p>
+                            旅行
+              </p>
+</div>,
+            <div
+              className="category-item col-3"
+              onClick={[Function]}
+              role="button"
+              style={
+                            Object {
+                                          "textAlign": "center",
+                                        }
+              }
+>
+              <Ionicon
+                            beat={false}
+                            className="rounded-circle"
+                            color="#555"
+                            fontSize="50px"
+                            icon="logo-yen"
+                            rotate={false}
+                            shake={false}
+                            style={
+                                          Object {
+                                                        "backgroundColor": "#efefef",
+                                                        "padding": "5px",
+                                                      }
+                            }
+              />
+              <p>
+                            理财
+              </p>
+</div>,
+            <div
+              className="category-item col-3"
+              onClick={[Function]}
+              role="button"
+              style={
+                            Object {
+                                          "textAlign": "center",
+                                        }
+              }
+>
+              <Ionicon
+                            beat={false}
+                            className="rounded-circle"
+                            color="#555"
+                            fontSize="50px"
+                            icon="logo-yen"
+                            rotate={false}
+                            shake={false}
+                            style={
+                                          Object {
+                                                        "backgroundColor": "#efefef",
+                                                        "padding": "5px",
+                                                      }
+                            }
+              />
+              <p>
+                            理财
+              </p>
+</div>,
+          ],
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Ionicon
+                  beat={false}
+                  className="rounded-circle"
+                  color="#fff"
+                  fontSize="50px"
+                  icon="ios-plane"
+                  rotate={false}
+                  shake={false}
+                  style={
+                                    Object {
+                                                      "backgroundColor": "#347eff",
+                                                      "padding": "5px",
+                                                    }
+                  }
+/>,
+                <p>
+                  旅行
+</p>,
+              ],
+              "className": "category-item col-3 active",
+              "onClick": [Function],
+              "role": "button",
+              "style": Object {
+                "textAlign": "center",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "beat": false,
+                  "className": "rounded-circle",
+                  "color": "#fff",
+                  "fontSize": "50px",
+                  "icon": "ios-plane",
+                  "rotate": false,
+                  "shake": false,
+                  "style": Object {
+                    "backgroundColor": "#347eff",
+                    "padding": "5px",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "旅行",
+                },
+                "ref": null,
+                "rendered": "旅行",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Ionicon
+                  beat={false}
+                  className="rounded-circle"
+                  color="#555"
+                  fontSize="50px"
+                  icon="logo-yen"
+                  rotate={false}
+                  shake={false}
+                  style={
+                                    Object {
+                                                      "backgroundColor": "#efefef",
+                                                      "padding": "5px",
+                                                    }
+                  }
+/>,
+                <p>
+                  理财
+</p>,
+              ],
+              "className": "category-item col-3",
+              "onClick": [Function],
+              "role": "button",
+              "style": Object {
+                "textAlign": "center",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "beat": false,
+                  "className": "rounded-circle",
+                  "color": "#555",
+                  "fontSize": "50px",
+                  "icon": "logo-yen",
+                  "rotate": false,
+                  "shake": false,
+                  "style": Object {
+                    "backgroundColor": "#efefef",
+                    "padding": "5px",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "理财",
+                },
+                "ref": null,
+                "rendered": "理财",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Ionicon
+                  beat={false}
+                  className="rounded-circle"
+                  color="#555"
+                  fontSize="50px"
+                  icon="logo-yen"
+                  rotate={false}
+                  shake={false}
+                  style={
+                                    Object {
+                                                      "backgroundColor": "#efefef",
+                                                      "padding": "5px",
+                                                    }
+                  }
+/>,
+                <p>
+                  理财
+</p>,
+              ],
+              "className": "category-item col-3",
+              "onClick": [Function],
+              "role": "button",
+              "style": Object {
+                "textAlign": "center",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "beat": false,
+                  "className": "rounded-circle",
+                  "color": "#555",
+                  "fontSize": "50px",
+                  "icon": "logo-yen",
+                  "rotate": false,
+                  "shake": false,
+                  "style": Object {
+                    "backgroundColor": "#efefef",
+                    "padding": "5px",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "理财",
+                },
+                "ref": null,
+                "rendered": "理财",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
