@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .inline-1 {
+      /* vertical-align:text-bottom;  */
+      line-height: 70px;
+      outline: 1px solid red;
+      width: 100px;
+      height: 20px;
+      background-color: aqua;
+      display: inline-block
+    }
+    .line {
+      vertical-align:baseline;
+      overflow:visible;
+      display:inline-block;
+      width:1px;height:1px;
+    }
+    .middle-line {
+      vertical-align:middle;
+      overflow:visible;
+      display:inline-block;
+      width:1px;height:1px;
+    }
+    img {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="background-color:pink;">
+    <div class="line">
+      <div style="width:1000px;height:1px;background:red;"></div>
+    </div>
+    <div class="middle-line">
+      <div style="width:1000px;height:1px;background:green;"></div>
+    </div>
+    <!-- <span class="text">English</span> -->
+    <!-- 默认 baseline 对齐 top middle bottom text-top -->
+    <div class="inline-1"></div>
+    <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="">
+  </div>
+
+</body>
+
+</html>

@@ -1,9 +1,12 @@
+// 保持头尾两个指针向中间扫描，每次在头部找到大于pivot的值，同时在尾部找到小于pivot的值
 function partition(arr, begin, end) {
   let pivot = arr[begin];
   while (begin < end) {
     while (begin < end && arr[end] >= pivot) end --
+    //尾部找到小于pivot的值,移到低端
     arr[begin] = arr[end];
     while (begin < end && arr[begin] <= pivot) begin ++
+    //头部找到大于pivot的值,移到高端
     arr[end] = arr[begin];
   }
   arr[begin] = pivot;
@@ -30,5 +33,7 @@ function partition1(nums, left, right) {
 function swap(arr, i, j) {
   [arr[i], arr[j]] = [arr[j], arr[i]]
 }
-let arr = [10,-10,-15,9,2,1,4,7,5,8,3,6];
-console.log(partition(arr.slice(0), 0, arr.length - 1), partition1(arr.slice(0), 0, arr.length - 1))
+let arr = [8, 9, 7, -1, 5];
+partition(arr, 0, arr.length - 1);
+console.log(arr);
+// console.log(partition(arr.slice(0), 0, arr.length - 2), partition1(arr.slice(0), 0, arr.length - 2))

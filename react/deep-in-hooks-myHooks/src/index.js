@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 
 let currentIndex = 0;
+// 存储当前组件的 hook
 let currentComponent = {
   __hooks: []
 };
