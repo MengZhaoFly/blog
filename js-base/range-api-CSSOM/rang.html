@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="cls">0123<span>456</span>789</div>
+  <script>
+    const ele = document.querySelector('.cls');
+    var range = new Range();
+    var startOffset = 0;
+    range.setStart(ele.childNodes[0], 3);
+    range.setStart(ele.childNodes[2], 2);
+  </script>
+</body>
+</html>

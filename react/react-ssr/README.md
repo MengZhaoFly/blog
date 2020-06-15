@@ -68,3 +68,17 @@ import style from 'x.css';
 ```
 结合 上文 提到的 staticContext , 可以在 生命周期里面把
 css 塞进去，这样服务端就能拿到 css 字符串了
+
+
+## SEO
+react-helmet
+客户端使用
+服务端使用
+
+
+## 预渲染
+普通用户访问：一个正常的 SPA
+对于搜索引擎访问可搭建一个预渲染服务：在服务器上预渲染一次，返回给搜索引擎。
+两个服务可用 nginx 配置不同的代理
+可用一些第三方包 如：preRender 或者 headerLess chrome
+https://prerender.io/

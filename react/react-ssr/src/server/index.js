@@ -47,7 +47,9 @@ app.get('*', function (req, res) {
 
   Promise.all(promises).then(resArr => {
     // context 传给 路由的全局对象
-    let context = {}
+    let context = {
+      css: []
+    }
     let renderHtml = render(req, store, routes, context);
     console.log('服务端请求拿到数据之后的context：', context);
     // 如果 访问了 需要权限的页面   加载了 <Redirect /> 那么react-router 会加一个 action：REPLACE

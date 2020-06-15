@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Helmet} from "react-helmet";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { getCommentList } from '../../store/actions/homeAction.js';
 
@@ -16,6 +17,11 @@ class Home extends Component {
     const { commentList } = this.props;
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>blog</title>
+          <meta name="description" content="my blog" />
+        </Helmet>
         hotComment:
         <ul>
           {

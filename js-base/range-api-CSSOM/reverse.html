@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <div class="a">
+      <div tag="1">1</div>
+      <span tag="2">2</span>
+      <p tag="3">3</p>
+    </div>
+    <script>
+      const ele = document.querySelector(".a");
+      function reverser(ele) {
+        // const childs = Array.prototype.filter
+        // .call(ele.childNodes, (e) => {
+        //   return e.nodeType === 1
+        // })
+        const childs = ele.childNodes;
+        let len = childs.length - 1;
+        while (len >= 0) {
+          ele.appendChild(childs[len]);
+          len--;
+          debugger;
+        }
+      }
+      reverser(ele);
+    </script>
+  </body>
+</html>

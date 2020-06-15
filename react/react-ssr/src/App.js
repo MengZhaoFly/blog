@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './commonComponents/Header';
 import { renderRoutes } from 'react-router-config';
+import WithServerStyle from './Hoc/WithServerStyle'
 import * as actionCreator from './store/actions/loginAction';
 import styles from './app.css';
 /**
@@ -10,11 +11,11 @@ import styles from './app.css';
  * 2. 渲染当前路径下面的 子路由
  */
 class App extends Component {
-  componentWillMount() {
-    if (this.props.staticContext) {
-      this.props.staticContext.css = styles._getCss();
-    }
-  }
+  // componentWillMount() {
+  //   if (this.props.staticContext) {
+  //     this.props.staticContext.css.push(styles._getCss());
+  //   }
+  // }
   render() { 
     const props = this.props;
     return (
@@ -35,4 +36,4 @@ App.loadData = (store) => {
 }
 
 
-export default App;
+export default WithServerStyle(App, styles);

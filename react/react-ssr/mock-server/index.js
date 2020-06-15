@@ -28,6 +28,7 @@ app.use(async (ctx, next) => {
 })
 router.get('/islogin', (ctx, next) => {
   const login = ctx.cookies.get('login');
+  console.log('mock -server', login)
   if (login) {
     ctx.body = {
       islogin: true

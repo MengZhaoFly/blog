@@ -1,6 +1,11 @@
 body {
   background-color: aqua;
 }
+button {
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
 .test {
   background-color: red;
 }

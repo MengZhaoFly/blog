@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>井字棋</title>
+  <style>
+    #board {
+      width: 350px;
+      user-select: none;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      background-color: green;
+      display: inline-block;
+      vertical-align: middle;
+
+      line-height: 100px;
+      font-size: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="board"></div>
+  <script>
+    // state === 2 ? '❌'
+    // state === 1 ? '○'
+    const map = {
+      2: '❌',
+      1: '○'
+    }
+    let pattern = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+    const LEN = pattern.length;
+    let color = 1;
+    function show() {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      for (let i = 0; i < pattern.length; i ++) {
+        for (let j = 0; j < 3; j ++) {
+          let state = pattern[i][j]
+          let cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.innerHTML = 
+          state === 2 ? '❌' :
+          state === 1 ? '○' :
+          ""
+          // i j 反过来，代表为 x y
+          cell.addEventListener('click', () => move(j, i))
+          board.appendChild(cell);
+        }
+      }
+    }
+
+    function move(x, y) {
+      if (pattern[y][x] !== 0) {
+        return ;
+      }
+      pattern[y][x] = color;
+      show();
+      // 当前这一步 是不是 赢了
+      if (check(pattern, color)) {
+        console.log(`${map[color]} is success`);
+        return;
+      }
+      color = 3 - color;
+      // 判断下一步下棋的人 是不是快赢了
+      // if (willWin(pattern, color)) {
+      //   console.log(`${map[color]} is will win`);
+      // }
+      // AI：用户下一颗棋，程序自己下一颗棋
+      computerMove()
+    }
+    function check(pattern, color) {
+      // 行 检测
+      for (let i = 0; i < LEN; i ++) {
+        let win = true;
+        for (let j = 0; j < LEN; j ++) {
+          if (pattern[i][j] !== color) {
+            win = false;
+            break;
+          }
+        }
+        if (win) return true;
+      }
+      // 列 检测
+      for (let i = 0; i < LEN; i ++) {
+        let win = true;
+        for (let j = 0; j < LEN; j ++) {
+          if (pattern[j][i] !== color) {
+            win = false;
+            break;
+          }
+        }
+        if (win) return true;
+      }
+      // 斜对角
+      {
+        let win = true;
+        for (let j = 0; j < LEN; j ++) {
+          if (pattern[j][j] !== color) {
+            win = false;
+            break;
+          }
+        }
+        if (win) return true;
+      }
+      // 斜对角
+      {
+        let win = true;
+        for (let j = 0; j < LEN; j ++) {
+          if (pattern[j][2 - j] !== color) {
+            win = false;
+            break;
+          }
+        }
+        if (win) return true;
+      }
+      return false;
+    }
+    function clone(pattern) {
+      return JSON.parse(JSON.stringify(pattern))
+    }
+    function willWin(pattern, color) {
+      for (let i = 0; i < pattern.length; i ++) {
+        for (let j = 0; j < 3; j ++) {
+          if (pattern[i][j] === 0) {
+            let tmp = clone(pattern);
+            tmp[i][j] = color;
+            if (check(tmp, color)) {
+              // return true;
+              return [j, i]
+            }
+          }
+        }
+      }
+      // return false;
+      return null;
+    }
+    function computerMove() {
+      let choice = bestChoice(pattern, color);
+      // 找到 最好的点
+      if (choice.point) {
+        let point = choice.point
+        pattern[point[1]][point[0]] = color;
+      }
+      if (check(pattern, color)) {
+        console.log(`${map[color]} is success`);
+      }
+      color = 3 - color;
+      show();
+    }
+    function bestChoice(pattern, color) {
+      // 程序 找一下 有没有 将会赢的点
+      // 有的话 最好的选择 就是它
+      let point = willWin(pattern, color);
+      if (point) {
+        return {
+          point: point,
+          result: 1
+        }
+      }
+      // 自己处于最坏的情况
+      let result = -1;
+      // 检查每个可能的点
+      for (let i = 0; i < pattern.length; i ++) {
+        for (let j = 0; j < 3; j ++) {
+          if (pattern[i][j] !== 0) {
+            continue ;
+          }
+          let tmp = clone(pattern);
+          // 程序 在当前这个点 填充一个 选择
+          tmp[i][j] = color;
+          // 程序 预测一下 你（对手）  填充另一个 选择
+          // -1 0 1
+          // （预判了你的预判）
+          let opp = bestChoice(tmp, 3 - color);
+          // 你  填充另一个 选择 得到 0 或者 1 -1
+          console.log(opp.result, result);
+          // 对手比最好的情况，就是自己的选择（把对别人好的情况选了）
+          if ( - opp.result >= result) {
+            point = [j, i]
+            // 你输了 那我就赢了 你和对手 是相反的
+            result = - opp.result
+          }
+        }
+      }
+      return {
+        point: point,
+        result: point ? result : 0
+      }
+
+    }
+    show()
+  </script>
+</body>
+</html>
