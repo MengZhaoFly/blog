@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="box1">
+    box1
+  </div>
+  <div class="box2">
+    box2
+  </div>
+  <div class="box3">
+    box3
+  </div>
+  <script>
+    const DomA = document.querySelector('.box1');
+    const DomB = document.querySelector('.box2');
+    const DomC = document.querySelector('.box3');
+    const timer = () => {
+      // DomC.style.height = '200px'
+      // DomA.offsetWidth 有dom相关属性受到影响 Layout Forced
+      DomA.style.width = DomA.offsetWidth + 1 + 'px'
+      // 有dom相关属性受到影响 Layout Forced
+      DomB.style.width = DomA.offsetWidth + 1 + 'px'
+      // 有dom相关属性受到影响 Layout Forced
+      DomC.style.width = DomA.offsetWidth + 1 + 'px'
+    }
+    setTimeout(() => {
+      timer();
+    }, 1000);
+  </script>
+</body>
+</html>

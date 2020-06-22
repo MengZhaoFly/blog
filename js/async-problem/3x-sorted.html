@@ -1,0 +1,138 @@
+<style>
+  .cell {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: gray;
+    border-bottom: solid 1px white;
+    border-right: solid 1px white;
+    vertical-align: middle;
+  }
+
+  #container {
+    width: 701px;
+  }
+</style>
+<div id="container"></div>
+<button onclick="localStorage.map = JSON.stringify(map)">save</button>
+
+<script>
+  class Sorted {
+    constructor(data, compare) {
+      this.data = data;
+      this.compare = compare;
+    }
+    take() {
+      if (!this.data.length) {
+        return;
+      }
+      let min = this.data[0];
+      let minIndex = 0;
+      // 找到最小值
+      for (let i = 1; i < this.data.length; i ++) {
+        if (this.compare(this.data[i], min) > 0) {
+          min = this.data[i];
+          minIndex = i;
+        }
+      }
+      // 
+      // this.data[minIndex] = this.data[this.length - 1]
+      // this.data.pop();
+      this.data.splice(minIndex, 1);
+      return min;
+    }
+    insert(v) {
+      this.data.push(v)
+    }
+    get length() {
+      return this.data.length;
+    }
+  }
+      function sleep(t) {
+        return new Promise((resolve, reject)=> {
+            setTimeout(resolve, t);
+        })
+    }
+  var map = localStorage.map ? JSON.parse(localStorage.map) : new Array(10000).fill(0);
+  let container = document.getElementById("container");
+  for (let y = 0; y < 100; y++) {
+    for (let x = 0; x < 100; x++) {
+      let cell = document.createElement("div");
+      cell.classList.add("cell");
+      // 如果为1 代表 在轨迹之上 黑背景
+      if (map[y * 100 + x] === 1)
+        cell.style.backgroundColor = 'black';
+      // 开始滑动
+      cell.addEventListener("mouseover", () => {
+        if (mouse) {
+          if (clear) {
+            cell.style.backgroundColor = '';
+            map[y * 100 + x] = 0;
+          } else {
+            cell.style.backgroundColor = 'black';
+            map[y * 100 + x] = 1;
+          }
+        }
+
+      })
+
+      container.appendChild(cell);
+    }
+  }
+  let mouse = false;
+  let clear = false;
+  // 按下鼠标划线
+  document.addEventListener('mousedown', e => {
+    mouse = true
+    clear = (e.which === 3);
+  })
+  document.addEventListener('mouseup', () => mouse = false)
+
+  document.addEventListener('contextmenu', e => e.preventDefault())
+
+  async function findPath(map, start, end) {
+    let [enx, endy] = end;
+    function distance([x, y]) {
+      return (enx - x) **2 + (endy - y) ** 2
+    }
+    map = map.slice(0);
+    // let queue = [start];
+    let collection = new Sorted([start], (a, b) => distance(b) - distance(a));
+    async function insert(x, y, pre) {
+      // 0 可以走
+      if (map[100 * y + x] !== 0) return;
+      if (x < 0 || y < 0 || x >= 100 || y >= 100) return;
+      // 走过 做一些标记
+      // map[100 * y + x] = 2;
+      // 走过 做一些标记: 存入当前这个点从哪里过来的
+      map[100 * y + x] = pre;
+      container.children[100 * y + x].style.backgroundColor = 'green';
+      await sleep(1)
+      collection.insert([x, y]);
+    }
+    while (collection.length) {
+      // let [x, y] = queue.shift();
+      let [x, y] = collection.take();
+      if (x === end[0] && y === end[1]) {
+        let path = [];
+        while(x !== start[0] || y !== start[1]) {
+          path.push([x, y]);
+          container.children[100 * y + x].style.backgroundColor = 'pink';
+          [x, y] = map[100 * y + x];
+        }
+        return path;
+      }
+      await insert(x - 1, y, [x, y])
+      await insert(x + 1, y, [x, y])
+      await insert(x, y - 1, [x, y])
+      await insert(x, y + 1, [x, y])
+
+      // await insert(x - 1, y - 1, [x, y])
+      // await insert(x + 1, y + 1, [x, y])
+      // await insert(x - 1, y - 1, [x, y])
+      // await insert(x + 1, y + 1, [x, y])
+    }
+    return false;
+  }
+  findPath(map, [0, 0], [50, 50])
+</script>
