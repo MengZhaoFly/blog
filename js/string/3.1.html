@@ -1,0 +1,38 @@
+<script>
+  function find(souce, pattern) {
+    let table = new Array(pattern.length).fill(0);
+    let k = 0;
+    for (let j = 1; j < pattern.length; j ++) {
+      if (pattern[j] === pattern[k]) {
+        k ++;
+      }
+       else {
+         k = 0;
+       }
+       table[j] = k;
+    }
+    console.log(table);
+    let j = 0;
+    for (let i = 0; i < souce.length; i++) {
+      if (souce[i] === pattern[j]) {
+        j ++
+      } else {
+        // j 到底回到哪
+        j = 0;
+        // j = table[j - 1];
+        if (souce[i] === pattern[j]) {
+          j ++;
+        }
+      }
+      if (j === pattern.length) {
+        return true;
+      }
+    }
+    return false;
+  }
+  // console.log(find('abc', 'ab'))
+  // console.log(find('xxxy', 'xy'))
+  // console.log(find('xxxy', 'ab'))
+  // console.log(find('xxxy', 'ab'))
+  console.log(find('abcabcabx', 'abcabx'))
+</script>

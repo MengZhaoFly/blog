@@ -62,7 +62,7 @@
   async function findPath(map, start, end) {
     let table = Object.create(map)
     map = map.slice(0);
-    let queue = [start];
+    let stack = [start];
     async function insert(x, y, pre) {
       // 0 可以走
       if (map[100 * y + x] !== 0) return;
@@ -73,10 +73,10 @@
       map[100 * y + x] = pre;
       container.children[100 * y + x].style.backgroundColor = 'green';
       await sleep(1)
-      queue.push([x, y]);
+      stack.push([x, y]);
     }
-    while (queue.length) {
-      let [x, y] = queue.shift();
+    while (stack.length) {
+      let [x, y] = stack.pop();
       if (x === end[0] && y === end[1]) {
         let path = [];
         while(x !== start[0] || y !== start[1]) {

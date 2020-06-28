@@ -1,0 +1,128 @@
+<script>
+  var dictionary = ['number', 'whiteSpace', 'lineter', '+', '-', '*', '/'];
+  // 关键词 空白 变量名 括号
+  let regExp = /([0-9\.]+)|([ ])|([\r\n]+)|(\+)|(\-)|(\*)|(\/)/g
+  function* tokenize(source) {
+    let res = null;
+    let lastIndex = 0;
+    do {
+      lastIndex = regExp.lastIndex;
+      // [0]	匹配的全部字符串
+      // [1], ...[n ]	括号中的分组捕获
+      res = regExp.exec(source);
+
+      if (!res) break;
+      // 当前匹配的这个 token 和上一次的 token 相比，位置偏移得过多说明，多了一些 正则不知道的 词
+      if (regExp.lastIndex - lastIndex > res[0].length) {
+        throw new Error(`unexpected token: ${source.slice(lastIndex, regExp.lastIndex - res[0].length)}`);
+      }
+      let token = {
+        type: null,
+        value: null
+      }
+      for (let i = 0; i < dictionary.length; i++) {
+        if (res[i + 1]) {
+          // 这个 token 是什么类型的
+          // console.log('token type:', dictionary[i])
+          token.type = dictionary[i]
+        }
+      }
+      // 这个 token 的值
+      // console.log(res[0])
+      token.value = res[0]
+      yield token;
+    } while (res)
+    yield { type: 'EOF' }
+  }
+  function MultiplicativeExpression(source) {
+    if (source[0].type === 'number') {
+      let node = {
+        type: 'MultiplicativeExpression',
+        children: source.shift()
+      }
+      source.unshift(node)
+      return MultiplicativeExpression(source);
+    }
+    if (source[0].type === 'MultiplicativeExpression' && 
+    source.length > 1 && source[1].type === '*' ) {
+      let node = {
+        type: 'MultiplicativeExpression',
+        children: [source.shift(), source.shift(), source.shift()]
+      }
+      source.unshift(node)
+      return MultiplicativeExpression(source);
+    }
+    if (source[0].type === 'MultiplicativeExpression' && 
+    source.length > 1 && source[1].type === '/' ) {
+      let node = {
+        type: 'MultiplicativeExpression',
+        children: [source.shift(), source.shift(), source.shift()]
+      }
+      source.unshift(node)
+      return MultiplicativeExpression(source);
+    }
+    if (source[0].type === 'MultiplicativeExpression') {
+      return source[0]
+    }
+  }
+  function AddicativeExpression(source) {
+    if (source[0].type === 'number') {
+      MultiplicativeExpression(source);
+      return AddicativeExpression(source);
+    }
+    if (source[0].type === 'MultiplicativeExpression') {
+      let node = {
+        type: 'AddicativeExpression',
+        children: [source.shift()]
+      }
+      source.unshift(node);
+      return AddicativeExpression(source);
+    }
+    if (source[0].type === 'AddicativeExpression'&& 
+    source.length > 1 && source[1].type === '+') {
+      let node = {
+        type: 'AddicativeExpression',
+        children: [source.shift(), source.shift()]
+      }
+      MultiplicativeExpression(source);
+      node.children.push(source.shift());
+      source.unshift(node);
+      return AddicativeExpression(source);
+    }
+    if (source[0].type === 'AddicativeExpression'&& 
+    source.length > 1 && source[1].type === '-') {
+      let node = {
+        type: 'AddicativeExpression',
+        children: [source.shift(), source.shift()]
+      }
+      MultiplicativeExpression(source);
+      node.children.push(source.shift());
+      source.unshift(node);
+      return AddicativeExpression(source);
+    }
+    if (source[0].type === 'AddicativeExpression') {
+      return source[0];
+    }
+  }
+  function Expression(source) {
+    if (source[0].type === 'AddicativeExpression'
+    && source[1].type === 'EOF'
+    ) {
+      let node = {
+        type: 'expression',
+        children: [source.shift(), source.shift()]
+      }
+      source.unshift(node);
+      return node;
+    }
+    AddicativeExpression(source);
+    return Expression(source);
+  }
+  let source = []
+  // tokenize('1024 + 10 * 25');
+  for (let token of tokenize('25 + 1024 * 10')) {
+    // console.log(token);
+    if (token.type !== 'whiteSpace' && token.type !== 'lineter') source.push(token)
+  }
+  Expression(source)
+</script>

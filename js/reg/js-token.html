@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .keywords {
+      color: #d73a49;
+    }
+    .identifier {
+      color: #6f41c1;
+    }
+  </style>
+</head>
+<body>
+  <pre id="container"></pre>
+  <script>
+    function sleep(t){
+      return new Promise(function(resolve){
+          setTimeout(resolve, t);
+      });
+    }
+    let code = `
+    function sleep(t){
+      return new Promise(function(resolve){
+          setTimeout(resolve, t);
+      });
+    }
+    `
+    const container = document.getElementById('container')
+    let token = null;
+    var dictionary = ['keywords', 'whiteSpace', 'identifier', 'punctuator'];
+    // 关键词 空白 变量名 括号
+    let reg = /(function|new|return)|([ \t\r\n]+)|([a-zA-Z][a-zA-Z0-9]*)|([\(\)\{\}\,\;])/g
+    do {
+      lastIndex = reg.lastIndex;
+      // [0]	匹配的全部字符串
+      // [1], ...[n ]	括号中的分组捕获
+      token = reg.exec(code);
+
+      if (!token) break;
+      let text = document.createElement('span');
+      text.textContent = token[0];
+      for (let i = 1; i <= 4; i ++) {
+        if (token[i]) {
+          text.classList.add(dictionary[i - 1]);
+        }
+
+      }
+      container.appendChild(text);
+    } while(token)
+  </script>
+</body>
+</html>

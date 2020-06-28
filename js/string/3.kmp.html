@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>123</p>
+  <script>
+    function find(souce, pattern) {
+      for (let i = 0; i < souce.length; i++) {
+        let matched = true;
+        for (let j = 0; j < pattern.length; j++) {
+          if (souce[i + j] !== pattern[j]) {
+            matched = false;
+            break;
+          }
+        }
+        if (matched) return true;
+      }
+      return false;
+    }
+    console.log(find('abc', 'ab'))
+    console.log(find('xxxy', 'xy'))
+    console.log(find('xxxy', 'ab'))
+  </script>
+</body>
+</html>

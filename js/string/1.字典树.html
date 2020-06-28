@@ -1,0 +1,46 @@
+<script>
+  /*
+  空间换时间
+  1w个字符串，找出出现频率最多的10个
+  */
+  class Trie {
+    constructor() {
+      this.root = Object.create(null);
+    }
+    insert(word) {
+      let node = this.root;
+      for (let c of word) {
+        if (!node[c]) {
+          node[c] = Object.create(null);
+        }
+        node = node[c];
+      }
+      if (!('$' in node)) {
+        node['$'] = 0;
+      }
+      node['$'] ++;
+    }
+    most() {
+      let max = 0;
+      let maxWord = null;
+      function walk(node, word) {
+        if (node.$ && node.$ > max) {
+          max = node.$;
+          maxWord = word;
+        }
+        for (let p in node) {
+          walk(node[p], word + p);
+        }
+      }
+      walk(this.root, '');
+      console.log(max, maxWord);
+    }
+  }
+  let t = new Trie();
+  t.insert('abc');t.insert('abc');t.insert('def');
+  t.insert('def');
+  t.insert('def');
+  t.insert('def');
+  t.insert('def');
+  t.most();
+</script>
