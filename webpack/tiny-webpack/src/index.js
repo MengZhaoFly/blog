@@ -1,5 +1,5 @@
-const a = require('./a.js');
-const b = require('./b.js');
+import a from './a.js';
+import b from './b.js';
 
 console.log(a());
 b();

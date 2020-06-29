@@ -90,10 +90,11 @@
 /*!******************!*\
   !*** ./src/a.js ***!
   \******************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("module.exports = function () {\n  console.log('a');\n  return 'aaaaa';\n}\n\n//# sourceURL=webpack:///./src/a.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  console.log('a');\n  return 'aaaaa';\n});\n\n//# sourceURL=webpack:///./src/a.js?");
 
 /***/ }),
 
@@ -101,10 +102,11 @@ eval("module.exports = function () {\n  console.log('a');\n  return 'aaaaa';\n}\
 /*!******************!*\
   !*** ./src/b.js ***!
   \******************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("module.exports = function () {\n  console.log('b');\n}\n\n//# sourceURL=webpack:///./src/b.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  console.log('b');\n});\n\n//# sourceURL=webpack:///./src/b.js?");
 
 /***/ }),
 
@@ -112,10 +114,11 @@ eval("module.exports = function () {\n  console.log('b');\n}\n\n//# sourceURL=we
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const a = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\nconst b = __webpack_require__(/*! ./b.js */ \"./src/b.js\");\n\nconsole.log(a());\nb();\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _a_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\n/* harmony import */ var _b_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./b.js */ \"./src/b.js\");\n\n\n\nconsole.log(Object(_a_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\nObject(_b_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
