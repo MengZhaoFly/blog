@@ -1,0 +1,19 @@
+<script>
+  let arr = [
+    Promise.reject('err'),
+    Promise.resolve(1),
+    Promise.resolve(1), 
+  ]
+  // Promise.allSettled(arr).then(res => {
+  //   console.log('allSettled')
+  // })
+  // .catch(console.log)
+  // Promise.all(arr).then(res => {
+  //   console.log('allSettled')
+  // })
+  // .catch(console.log)
+  Promise.race(arr).then(res => {
+    console.log('allSettled')
+  })
+  .catch(console.log)
+</script>

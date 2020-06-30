@@ -1,0 +1,11 @@
+<script>
+  const reg = /[a-z]/g;
+  const str =  'abc';
+  // console.log(reg.exec(str))
+  // let info = reg.exec(str);
+  // while(info) {
+  //   console.log(info);
+  //   info = reg.exec(str);
+  // }
+  console.log([...str.matchAll(reg)])
+</script>
