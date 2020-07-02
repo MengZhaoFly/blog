@@ -35,6 +35,3 @@ let sum = function (a, b) {
 //注意传的参数也必须是字符串，因为整数无法精确保留
 console.log(sum("101", "99"));
 console.log(sum("9", "99"));
-
-;
-// 时间复杂度：O（n）
