@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    setTimeout(() => {
+      let b = window.open('./b.html')
+      setTimeout(() => {
+        b.postMessage('from a', 'http://localhost:8080');
+      }, 3000);
+      window.b = b;
+    }, 3000);
+    window.onmessage = function(e) {
+      console.log(e)
+    }
+  </script>
+</body>
+</html>

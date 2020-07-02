@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    window.addEventListener("storage", function(ev){
+      console.log(ev);
+      if (ev.key == 'message') {
+          // removeItem同样触发storage事件，此时ev.newValue为空
+          if(!ev.newValue)
+              return;
+          var message = JSON.parse(ev.newValue);
+          console.log(message);
+      }
+  });
+  </script>
+</body>
+</html>
