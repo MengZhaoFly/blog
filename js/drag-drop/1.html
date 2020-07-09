@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #dragable {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    先来说说这个课程难易程度的问题，看到你乎一堆人嫌太简单这事倒也不是特别意外，毕竟百万年薪是知乎入门水平，我还是懂知乎的规矩的。不过其实我觉得吧，对常人来说还挺难的……所以我认真地不推荐纯白板前端买，课程定位目标人群是1-3年经验的前端，因为整个课程是按照重学设计的，默认学的人对前端各方面都有基本了解，所以不会太注意顺序问题，各个课程知识交叉依赖很多。然后我来谈一个观点，答复一些所谓“免费知识收费”，“所有的知识都能够在标准中找到”的论调。我认为知识是人类共有的、免费的，知识的表现形式才是教育的本体，正如我们学习牛顿三定律不会去翻《自然哲学的数学原理》，我们上淘宝买东西不会通过淘宝API，在我看来，教育就是知识的前端——这也是一种前端的工作。我和极客时间的编辑、录音导演一起工作，把离散的知识以更好的交互形式带给学习课程的人，而不是直接把w3c和mdn的链接丢出来然后收钱，这是我们收费的依据。当然，你觉得我们的劳动值不值这个钱，
+作者：winter
+链接：https://www.zhihu.com/question/309110848/answer/574775262
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+  </div>
+  <div id="dragable"></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+    const dragable = document.getElementById('dragable');
+    let baseX = 0, baseY = 0;
+    dragable.addEventListener('mousedown', (e) => {
+      let startX = e.clientX, startY = e.clientY;
+      function handleMove(event) {
+        // event.clientX - startX 只是一个偏移量，还需要记上以前的位置
+        // let x = baseX + event.clientX - startX, y = baseY + event.clientY - startY;
+        // dragable.style.transform = `translate(${x}px, ${y}px)`;
+
+        // range 操作
+        let range = nearest(event.clientX, event.clientY);
+        // console.log(range);
+        range.nearest.insertNode(dragable)
+      }
+      function handleUp(event) {
+        // 保存新位置
+        console.log('upup')
+        baseX = baseX + event.clientX - startX, baseY = baseY + event.clientY - startY;
+        // document.removeEventListener('mousemove', _.throttle(handleMove, 300))
+        document.removeEventListener('mousemove', handleMove)
+        document.removeEventListener('mouseup', handleUp)
+      }
+      document.addEventListener('mousemove', handleMove)
+      document.addEventListener('mouseup', handleUp)
+    })
+
+    let ranges = [];
+    let container = document.getElementById('container')
+    for (let i = 0; i < container.childNodes[0].textContent.length; i ++) {
+      let range = document.createRange();
+      range.setStart(container.childNodes[0], i);
+      range.setEnd(container.childNodes[0], i);
+      ranges.push(range);
+    }
+    function nearest(x0, y0) {
+      let nearest = null;
+      let distance = Number.MAX_VALUE;
+      for (let range of ranges) {
+        let {x, y} = range.getBoundingClientRect()
+        let d = (x0 - x) ** 2 + (y0 - y) ** 2;
+        if (d < distance) {
+          nearest = range;
+          distance = d;
+        }
+      }
+      return {
+        nearest, distance
+      }
+    }
+    document.addEventListener('selectstart', e => e.preventDefault())
+  </script>
+</body>
+
+</html>

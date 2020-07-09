@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <script src="./2.js"></script>
+  <script>
+    const container = document.body;
+    let pre = + new Date();
+    function getUserAction() {
+      let current = + new Date();
+      console.log('req....', current - pre);
+      pre = current
+    }
+    container.onmousemove = throttle(getUserAction, 3000, {
+      leading: false
+    });
+  </script>
+</body>
+</html>

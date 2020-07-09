@@ -1,0 +1,17 @@
+{
+  "name": "es-module",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "a.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup ./tree-shaking/index.js --file bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^2.20.0"
+  }
+}

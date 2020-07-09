@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  app
+  <div id="app">
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+  </div>
+  app1
+  <div id="app1"></div>
+  <script>
+    // nodeList 是一个 live collection
+    // querySelectorAll 选中的 nodeList 非实时查询的，类似一个快照
+    // getElementsByTagName 选中的 nodeList 是实时查询的,每次访问nodeList 都会进行一次查询
+    // const lis = document.getElementsByClassName('item');
+    const lis = document.querySelectorAll('.item');
+    let app = document.querySelector('#app')
+    let app1 = document.querySelector('#app1')
+    // app.removeChild(app.lastElementChild);
+    // app1.appendChild(app.lastElementChild)
+    app.lastElementChild.className = 'item1'
+    console.log(lis);
+  </script>
+</body>
+</html>

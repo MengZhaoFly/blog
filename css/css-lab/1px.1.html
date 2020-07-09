@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .border {
+      border-bottom: 1px solid black;
+      margin-bottom: 10px;
+      transform: scale(0.5);
+    }
+
+    #container[data-device="2"] {
+      position: relative;
+    }
+
+    #container[data-device="2"]::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      content: "";
+      transform: scale(0.5);
+      transform-origin: left top;
+      box-sizing: border-box;
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="border"></div>
+  <div id="container" data-device="2"></div>
+</body>
+
+</html>
