@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片本地预览示例</title>
+  </head>
+  <body>
+    <h3>图片本地预览示例</h3>
+    <form action="/api" method="post" enctype="multipart/form-data">
+      <input type="text" value="123">
+      <input type="file" accept="image/*" onchange="loadFile(event)" />
+      <input type="submit"  value="提交"/>
+    </form>
+    <img id="previewContainer" />
+
+    <script>
+      const loadFile = function (event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          var pic_typedArray = new Uint8Array(reader.result);
+          console.log(pic_typedArray)
+          // console.log(pic_typedArray);
+          // console.log(pic_typedArray.buffer);
+          var blob = new Blob( [ pic_typedArray ], { type: "image/png" } );
+          var urlCreator = window.URL || window.webkitURL;
+          var imageUrl = urlCreator.createObjectURL( blob );
+          var img = document.querySelector( "#previewContainer" );
+          img.src = imageUrl;
+        };
+        reader.readAsArrayBuffer(event.target.files[0]);
+      };
+      // document.forms[0].onsubmit = (e) => {
+      //   e.preventDefault();
+      // }
+    </script>
+  </body>
+</html>

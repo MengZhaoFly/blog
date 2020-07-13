@@ -1,0 +1,12 @@
+<script>
+  const buf = new ArrayBuffer(4);
+
+  let u8Type = new Uint8Array(buf);
+  u8Type[0] = 0
+  u8Type[1] = 1
+  u8Type[2] = 2
+  u8Type[3] = 3
+  let u16Type = new Uint16Array(buf);
+  console.log(u16Type);
+  console.log(u8Type);
+</script>
