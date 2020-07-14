@@ -1,0 +1,65 @@
+<script>
+  const chars = "0123456789";
+  var add = function (str1, str2) {
+    let a = str1.split(''), b = str2.split('');
+    let alength = a.length;
+    let blength = b.length;
+    let m = Math.max(alength, blength);
+    let inc = 0;
+    let clength = chars.length;
+    let result = "";
+    for (let i = 0; i < m; i++) {
+      // 低位开始相加
+      // 当前位所在的 10 进制数
+      let ia = i < alength ? chars.indexOf(a[alength - i - 1]) : 0;
+      let ib = i < blength ? chars.indexOf(b[blength - i - 1]) : 0;
+      let add = ia + ib + inc;
+      // > 36
+      if (add >= clength) {
+        inc = 1;
+      } else {
+        inc = 0;
+      }
+      result = chars.charAt(add % clength) + result;
+    }
+    if (inc > 0) {
+      result = chars.charAt(inc) + result;
+    }
+    return result;
+  }
+  /**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+  var multiply = function (num1, num2) {
+    let res = '0';
+    for (let j = num2.length - 1; j >= 0; j--) {
+      let carry = 0, num = 0, str = '';
+      for (let i = num1.length - 1; i >= 0; i--) {
+        let a = num2[j].codePointAt(0) - 48;
+        let b = num1[i].codePointAt(0) - 48;
+        let r = a * b + carry;
+        if (r > 9) {
+          carry = Math.floor(r / 10);
+        } else {
+          carry = 0;
+        }
+        r = r % 10;
+        str = r + str;
+      }
+      if (carry !== 0) {
+        str = carry + str;
+      }
+      str = str + '0'.repeat(num2.length - 1 - j);
+      res = add(res, str);
+      // console.log(1, res)
+    }
+    // console.log(res)
+    if ([...res].every(r => r === '0')) {
+      return '0';
+    }
+    return res;
+  };
+  multiply('498828660196', '840477629533')
+</script>

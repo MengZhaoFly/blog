@@ -20,6 +20,22 @@
       }
       node['$'] ++;
     }
+    longestCommonPrefix() {
+      let str = '', k = '';
+      let node = this.root;
+      while(node) {
+        if (Object.keys(node).length > 1) {
+          return str;
+        }
+        for (let key in node) {
+          if (key === '$') return str;
+          k = key;
+          str += key;
+        }
+        node = node[k];
+      }
+      return str;
+    }
     most() {
       let max = 0;
       let maxWord = null;
@@ -37,10 +53,8 @@
     }
   }
   let t = new Trie();
-  t.insert('abc');t.insert('abc');t.insert('def');
-  t.insert('def');
-  t.insert('def');
-  t.insert('def');
-  t.insert('def');
-  t.most();
+  // t.insert('flower');t.insert('flow');t.insert('flight');
+  // ["dog","racecar","car"]
+  t.insert('');
+  console.log(t.longestCommonPrefix())
 </script>
