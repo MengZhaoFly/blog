@@ -1,0 +1,16 @@
+<template>
+  <div>
+    <h2>hahahhaha</h2>
+    <div>
+      <p>7777777</p>
+  </div>
+  </div>
+</template>
+<script>
+export default {
+
+}
+</script>
+<style>
+
+</style>

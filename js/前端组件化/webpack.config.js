@@ -1,5 +1,5 @@
 module.exports = {
-	entry: './3-main.js',
+	entry: './4-main.js',
 	module: {
 		rules: [
 			{
@@ -24,6 +24,12 @@ module.exports = {
 							]
 						]
 					}
+				},
+			},
+			{
+				test: /\.view/,
+				use: {
+					loader: require.resolve("./myloader.js")
 				}
 			}
 		]

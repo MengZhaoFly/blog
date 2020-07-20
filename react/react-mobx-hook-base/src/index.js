@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { storesContext } from './Context';
+import { storesContext, stores } from './Context';
 
 ReactDOM.render(
-  <storesContext.Provider>
+  <storesContext.Provider value={{...stores}}>
     <App />
   </storesContext.Provider>,
   document.getElementById('root')

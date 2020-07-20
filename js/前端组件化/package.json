@@ -17,5 +17,9 @@
     "babel-loader": "^8.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "htmlparser2": "^4.1.0",
+    "parse5": "^6.0.0"
   }
 }

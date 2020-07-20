@@ -1,37 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import { useObserver } from 'mobx-react'
+import { useObserver, observer } from 'mobx-react'
 import { storesContext } from './Context';
+import Header from './Header';
+
 function useStores() {
   return React.useContext(storesContext)
 }
-function useUserData() {
-  const { user, order } = useStores()
-  return useObserver(() => ({
-    username: user.name,
-    orderId: order.id,
-  }))
-}
+// function useUserData() {
+//   const { counterStore, themeStore } = useStores()
+//   return useObserver(() => ({
+//     double: counterStore.doubleCount,
+//     orderId: order.id,
+//   }))
+// }
 function App() {
+  // const { counterStore, themeStore } = useStores()
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     themeStore.setTheme('yellow')
+  //   }, 3000);
+  // }, [])
+  // return (
+  //   <div className="App" style={{ color: themeStore.theme }}>
+  //     { counterStore.count }
+  //     { themeStore.theme }
+  //   </div>
+  // );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      推荐 居家
     </div>
-  );
+  )
 }
 
-export default App;
+export default observer(App);
+
+// 第1次render
+// function App() {
+//   const fun = () => {
+//     console.log(1)
+//   }
+//   return ()
+// }
+// // 第2次render
+// function App() {
+//   const fun = () => {
+//     console.log(1)
+//   }
+//   return ()
+// }
+// // 第3次render
+// function App() {
+//   const fun = () => {
+//     console.log(1)
+//   }
+//   return ()
+// }

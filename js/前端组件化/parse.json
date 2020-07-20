@@ -1,0 +1,118 @@
+[ Element {
+  type: 'tag',
+  parent: null,
+  prev: null,
+  next:
+   DataNode {
+     type: 'text',
+     parent: null,
+     prev: [Circular],
+     next: [Element],
+     startIndex: null,
+     endIndex: null,
+     data: '\n\n' },
+  startIndex: null,
+  endIndex: null,
+  children: [ [DataNode], [Element], [DataNode] ],
+  name: 'template',
+  attribs: {} },
+DataNode {
+  type: 'text',
+  parent: null,
+  prev:
+   Element {
+     type: 'tag',
+     parent: null,
+     prev: null,
+     next: [Circular],
+     startIndex: null,
+     endIndex: null,
+     children: [Array],
+     name: 'template',
+     attribs: {} },
+  next:
+   Element {
+     type: 'script',
+     parent: null,
+     prev: [Circular],
+     next: [DataNode],
+     startIndex: null,
+     endIndex: null,
+     children: [Array],
+     name: 'script',
+     attribs: {} },
+  startIndex: null,
+  endIndex: null,
+  data: '\n\n' },
+Element {
+  type: 'script',
+  parent: null,
+  prev:
+   DataNode {
+     type: 'text',
+     parent: null,
+     prev: [Element],
+     next: [Circular],
+     startIndex: null,
+     endIndex: null,
+     data: '\n\n' },
+  next:
+   DataNode {
+     type: 'text',
+     parent: null,
+     prev: [Circular],
+     next: [Element],
+     startIndex: null,
+     endIndex: null,
+     data: '\n\n' },
+  startIndex: null,
+  endIndex: null,
+  children: [ [DataNode] ],
+  name: 'script',
+  attribs: {} },
+DataNode {
+  type: 'text',
+  parent: null,
+  prev:
+   Element {
+     type: 'script',
+     parent: null,
+     prev: [DataNode],
+     next: [Circular],
+     startIndex: null,
+     endIndex: null,
+     children: [Array],
+     name: 'script',
+     attribs: {} },
+  next:
+   Element {
+     type: 'style',
+     parent: null,
+     prev: [Circular],
+     next: null,
+     startIndex: null,
+     endIndex: null,
+     children: [Array],
+     name: 'style',
+     attribs: {} },
+  startIndex: null,
+  endIndex: null,
+  data: '\n\n' },
+Element {
+  type: 'style',
+  parent: null,
+  prev:
+   DataNode {
+     type: 'text',
+     parent: null,
+     prev: [Element],
+     next: [Circular],
+     startIndex: null,
+     endIndex: null,
+     data: '\n\n' },
+  next: null,
+  startIndex: null,
+  endIndex: null,
+  children: [ [DataNode] ],
+  name: 'style',
+  attribs: {} } ]

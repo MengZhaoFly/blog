@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 
 export class ThemeStore {
   @observable
-  theme = 'light'
+  theme = 'red';
 
   @action
   setTheme(newTheme) {

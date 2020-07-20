@@ -1,0 +1,55 @@
+<style>
+  #el, #el3, #el4 {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+  }
+
+  #el2 {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    transition: transform linear 5s;
+  }
+</style>
+<div id="el"></div>
+<!-- <div id="el3"></div> -->
+<div id="el4"></div>
+css 动画
+<div id="el2"></div>
+<button id="pause">pause</button>
+<button id="resume">resume</button>
+<button id="addEl4">addEl4</button>
+<script type="module">
+
+  import { Timeline, Animation } from "./animation.js";
+  import { cubicBezier } from "./cubicBezier.js";
+
+  let linear = t => t;
+  let ease = cubicBezier(.25, .1, .25, 1);
+
+  let el = document.getElementById("el")
+  let el4 = document.getElementById("el4")
+  let tl = new Timeline;
+
+  tl.add(new Animation(el.style, "transform", v => `translateX(${v}px)`, 0, 200, 5000, 0, linear))
+
+  tl.start();
+  document.getElementById("el2").style.transform = "translateX(200px)";
+
+
+
+
+
+
+  document.getElementById('pause').addEventListener('click', () => {
+    tl.pause();
+  })
+  document.getElementById('resume').addEventListener('click', () => {
+    tl.resume();
+  })
+  document.getElementById('addEl4').addEventListener('click', () => {
+    tl.add(new Animation(el4.style, "transform", v => `translateX(${v}px)`, 0, 200, 5000, 0, linear));
+  })
+
+</script>

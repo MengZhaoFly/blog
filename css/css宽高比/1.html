@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+    比如我们容器的长宽比是16:9，那么根据计算：100% * 9 / 16可以得到56.25%。如果你希望的是4:3，那么对应的就是100% * 3 / 4。著作权归作者所有。
+商业转载请联系作者获得授权,非商业转载请注明出处。
+原文: https://www.w3cplus.com/css/aspect-ratio.html?expire=1594914418&code=7LkHCjEpDEo&sign=a87ae8fccc7b4a2814def723e9994253#paywall © w3cplus.com
+     */
+    .aspectration {
+      position: relative;
+      /*因为容器所有子元素需要绝对定位*/
+      height: 0;
+      /*容器高度是由padding来控制，盒模型原理告诉你一切*/
+      width: 100%;
+    }
+
+    .aspectration[data-ratio="16:9"] {
+      padding-top: 56.25%;
+    }
+    /* 自动算 */
+    /* .aspectration[data-ratio="16:9"] { padding-top: calc(100% * 9 / 16); } */
+
+    .aspectration[data-ratio="4:3"] {
+      padding-top: 75%;
+    }
+    .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="aspectration" data-ratio="16:9"> 
+    <div class="content">content</div>
+  </div>
+</body>
+
+</html>
