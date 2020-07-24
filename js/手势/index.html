@@ -1,0 +1,29 @@
+
+<style>
+#my {
+  transform: translate3d(0, 0, 0);
+  width: 100px;
+  height: 100px;
+  background-color: sandybrown;
+}
+</style>
+<div id="my">
+</div>
+<script src="./event.js"></script>
+<script>
+  const my = document.getElementById('my')
+  window.addEventListener('contextmenu', e => e.preventDefault())
+  enableEvent(my)
+  let x = 0, y = 0
+  my.addEventListener('pan', e => {
+    // console.log(e);
+    const detail = e.detail;
+    my.style.transform = `translate3d(${x + detail.clientX - detail.startX}px, ${x + detail.clientY - detail.startY}px, 0)`;
+    
+  })
+  my.addEventListener('panend', e => {
+    const detail = e.detail;
+    x = (x + detail.clientX - detail.startX);
+    y = (y + detail.clientY - detail.startY);
+  })
+</script>

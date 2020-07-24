@@ -12,6 +12,7 @@ component.subTitle = 'i am sub title'
 
 component.mountTo(document.body);
 
+
 // console.log(component);
 // component.id = 'a';
 // component.setAttribute('id', 'a');

@@ -109,14 +109,14 @@ class Carousel {
       last.style.transition = 'none';
       next.style.transition = 'none';
       // 0 0px 1 -500px  2 -1000px 以此类推
-      current.style.transform = `translateX(${-500 * positon}px)`;          // 当前图片的正确的位置
-      last.style.transform = `translateX(${-500 - 500 * lastPosition}px)`;  // 前一个
-      next.style.transform = `translateX(${500 - 500 * nextPositon}px)`;   // 后一个
+      current.style.transform = `translateX(${-750 * positon}px)`;          // 当前图片的正确的位置
+      last.style.transform = `translateX(${-750 - 750 * lastPosition}px)`;  // 前一个
+      next.style.transform = `translateX(${750 - 750 * nextPositon}px)`;   // 后一个
 
       let move = event => {
-        current.style.transform = `translateX(${event.clientX - startX - 500 * positon}px)`;
-        last.style.transform = `translateX(${event.clientX - startX - 500 - 500 * lastPosition}px)`;
-        next.style.transform = `translateX(${event.clientX - startX + 500 - 500 * nextPositon}px)`;
+        current.style.transform = `translateX(${event.clientX - startX - 750 * positon}px)`;
+        last.style.transform = `translateX(${event.clientX - startX - 750 - 750 * lastPosition}px)`;
+        next.style.transform = `translateX(${event.clientX - startX + 750 - 750 * nextPositon}px)`;
 
         // console.log(event.clientX - startX, event.clientY - startY);
       }
@@ -136,9 +136,9 @@ class Carousel {
         last.style.transition = 'ease 0.2s';
         next.style.transition = 'ease 0.2s';
 
-        current.style.transform = `translateX(${offset * 500 - 500 * positon}px)`;
-        last.style.transform = `translateX(${offset * 500 - 500 - 500 * lastPosition}px)`;
-        next.style.transform = `translateX(${offset * 500 + 500 - 500 * nextPositon}px)`;
+        current.style.transform = `translateX(${offset * 750 - 750 * positon}px)`;
+        last.style.transform = `translateX(${offset * 750 - 750 - 750 * lastPosition}px)`;
+        next.style.transform = `translateX(${offset * 750 + 750 - 750 * nextPositon}px)`;
         // offset 负值 为 左滑
         positon = (positon - offset + this.data.length) % this.data.length;
 
@@ -157,10 +157,10 @@ class Carousel {
 }
 
 let component = <Carousel class="carousel" data={[
-  "https://static001.geekbang.org/resource/image/bb/21/bb38fb7c1073eaee1755f81131f11d21.jpg",
-  "https://static001.geekbang.org/resource/image/1b/21/1b809d9a2bdf3ecc481322d7c9223c21.jpg",
-  "https://static001.geekbang.org/resource/image/b6/4f/b6d65b2f12646a9fd6b8cb2b020d754f.jpg",
-  "https://static001.geekbang.org/resource/image/73/e4/730ea9c393def7975deceb48b3eb6fe4.jpg",
+  "https://yanxuan.nosdn.127.net/e1d32c538a9fcf420411592746098ad2.jpg?type=webp&amp;imageView&amp;quality=75&amp;thumbnail=750x0",
+  "https://yanxuan.nosdn.127.net/7e01b30c2c440e118cf09e14c7a69266.jpg?type=webp&imageView&quality=75&thumbnail=750x0",
+  "https://yanxuan.nosdn.127.net/94408b4d014ce6774e8f768bdf9b6f60.jpg?type=webp&amp;imageView&amp;quality=75&amp;thumbnail=750x0",
+  "https://yanxuan.nosdn.127.net/e14d684c9dc43de2af5215c3d49b6870.jpg?type=webp&amp;imageView&amp;quality=75&amp;thumbnail=750x0",
 ]} />
 
 component.subTitle = 'i am sub title'
