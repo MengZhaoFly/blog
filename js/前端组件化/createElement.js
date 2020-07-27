@@ -1,3 +1,4 @@
+import enableEvent from './lib/events';
 export function createElement(Cls, attributes, ...children) {
   // console.log(arguments);
   let o;
@@ -59,7 +60,14 @@ export class Element {
 
   setAttribute(name, value) {    // attribute
     // console.log('Parent::setAttribute', name, value);
+    if (name.match(/^on([\s\S]+)$/)) {
+      this.root.addEventListener(RegExp.$1.toLowerCase(), value);
+      return;
+    }
     this.root.setAttribute(name, value);
+    if (name === 'enableEvent') {
+      enableEvent(this.root);
+    }
   }
 
   appendChild(child) {   // children

@@ -1,5 +1,5 @@
 module.exports = {
-	entry: './3-main.js',
+	entry: './5-end-version.js',
 	module: {
 		rules: [
 			{

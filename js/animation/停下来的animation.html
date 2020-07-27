@@ -1,0 +1,33 @@
+<style>
+  #el, #el3, #el4 {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    animation: move 5s linear;
+  }
+
+  #el2 {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    transition: transform linear 5s;
+  }
+  @keyframes move {
+    to {
+      transform: translate3d(400px, 400px, 0);
+    }
+  }
+</style>
+<div id="el"></div>
+<button id="pause">暂停</button>
+<script>
+  const el = document.getElementById('el');
+  const pause = document.getElementById('pause');
+  pause.addEventListener('click', () => {
+    // console.log(window.getComputedStyle(el).transform);
+    const { x, y } = el.getBoundingClientRect();
+    el.style.animation = 'none';
+    console.log(x, y, `translate3d(${x}px, ${y}px, 0);`)
+    el.style.transform = `translate3d(${x}px, ${y}px, 0)`
+  })
+</script>
