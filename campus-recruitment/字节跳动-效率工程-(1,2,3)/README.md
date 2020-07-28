@@ -2,7 +2,7 @@
 
 1. html
 
-1.html
+1. html
 
 2. 类数组
 ```js

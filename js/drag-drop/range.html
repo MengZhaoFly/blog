@@ -9,12 +9,15 @@
   <div id="app">
     hello {{name}}
   </div>
+  <div id="app1"></div>
   <script>
     const container = document.getElementById('app');
     let range = document.createRange();
-    range.setStart(container.childNodes[0], 7)
-    range.setEnd(container.childNodes[0], 7)
+    range.setStart(container.childNodes[0], 11)
+    range.setEnd(container.childNodes[0], 19)
     console.log(range);
+    const app1 = document.getElementById('app1');
+    app1.appendChild(range.extractContents())
   </script>
 </body>
 </html>
