@@ -1,5 +1,5 @@
 module.exports = {
-	entry: './5-end-version.js',
+	entry: './Panel.js',
 	module: {
 		rules: [
 			{
@@ -30,6 +30,12 @@ module.exports = {
 				test: /\.view/,
 				use: {
 					loader: require.resolve("./myloader.js")
+				}
+			},
+			{
+				test: /\.css/,
+				use: {
+					loader: require.resolve("./mycssloader.js")
 				}
 			}
 		]

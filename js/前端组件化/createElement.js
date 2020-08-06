@@ -86,11 +86,14 @@ export class Element {
 
   mountTo(parent) {
     parent.appendChild(this.root);
-    for (let child of this.children) {
-      if (typeof child === 'string') {
-        child = new Text(child);
+    if (this.children) {
+      for (let child of this.children) {
+        if (typeof child === 'string') {
+          child = new Text(child);
+        }
+        child.mountTo(this.root);
       }
-      child.mountTo(this.root);
     }
+    
   }
 }

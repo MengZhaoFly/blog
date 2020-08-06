@@ -1,84 +1,93 @@
 <style>
-    div {
-        background-color:grey;
-        display:inline-block;
-        margin:30px;
-        width:100px;
-        height:100px;
-        border-radius: 50px;;
-    }
-    .green.light {
-        background-color:green;
-    }
-    .yellow.light {
-        background-color:yellow;
-    }
-    .red.light {
-        background-color:red;
-    }
+	div {
+		background-color: grey;
+		display: inline-block;
+		margin: 30px;
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		;
+	}
+
+	.green.light {
+		background-color: green;
+	}
+
+	.yellow.light {
+		background-color: yellow;
+	}
+
+	.red.light {
+		background-color: red;
+	}
 </style>
 
-<div class="green"></div>
-<div class="yellow"></div>
-<div class="red"></div>
 
-<button id="next">next</button>
+<div class="red"></div>
+<div class="yellow"></div>
+<div class="green"></div>
+
+
+<button id="next" onclick="go();">开始</button>
 
 <script>
-    function green(){
-        var lights = document.getElementsByTagName("div");
-        for(var i = 0; i < 3; i++)
-            lights[i].classList.remove("light")
-        document.getElementsByClassName("green")[0].classList.add('light')
-    }
-    function red(){
-        var lights = document.getElementsByTagName("div");
-        for(var i = 0; i < 3; i++)
-            lights[i].classList.remove("light")
-        document.getElementsByClassName("red")[0].classList.add('light')
-    }
-    function yellow(){
-        var lights = document.getElementsByTagName("div");
-        for(var i = 0; i < 3; i++)
-            lights[i].classList.remove("light")
-        document.getElementsByClassName("yellow")[0].classList.add('light')
-    }
+	function green() {
+		var lights = document.getElementsByTagName("div");
+		for (var i = 0; i < 3; i++)
+			lights[i].classList.remove("light")
+		document.getElementsByClassName("green")[0].classList.add('light')
+	}
+	function red() {
+		var lights = document.getElementsByTagName("div");
+		for (var i = 0; i < 3; i++)
+			lights[i].classList.remove("light")
+		document.getElementsByClassName("red")[0].classList.add('light')
+	}
+	function yellow() {
+		var lights = document.getElementsByTagName("div");
+		for (var i = 0; i < 3; i++)
+			lights[i].classList.remove("light")
+		document.getElementsByClassName("yellow")[0].classList.add('light')
+	}
 
-    function sleep(t) {
-        return new Promise((resolve, reject)=> {
-            setTimeout(resolve, t);
-        })
-    }
+	function sleep(t) {
+		return new Promise((resolve, reject) => {
+			setTimeout(resolve, t);
+		})
+	}
 
-    function* go(){
-        while(true){
-            green();
-            yield sleep(1000)
-            yellow();
-            yield sleep(2000)
-            red();
-            yield sleep(3000)
-        }
-    }
-    
-    function run(iterator){
-        let {value, done} = iterator.next();
-        if(done)
-            return;
-        if(value instanceof Promise)    
-            value.then(() => {
-                run(iterator)
-            })
-    }
-    
+	function* go() {
+		// while(true){
 
-    function co(generator){
-        return function(){
-            return run(generator());
-        }
-    }
+		// }
+		for (let i = 0; i < 6; i++) {
+			red();
+			yield sleep(1000)
+			yellow();
+			yield sleep(2000)
+			green();
+			yield sleep(3000)
+		}
+	}
 
-    go = co(go);
+	function run(iterator) {
+		let { value, done } = iterator.next();
+		if (done)
+			return;
+		if (value instanceof Promise)
+			value.then(() => {
+				run(iterator)
+			})
+	}
+
+
+	function co(generator) {
+		return function () {
+			return run(generator());
+		}
+	}
+
+	go = co(go);
 
 
 

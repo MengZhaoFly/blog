@@ -1,0 +1,7 @@
+.child {
+  width: 300px;
+  min-height: 300px;
+}
+* {
+  background-color: red;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <div>
+      This is a static template, there is no bundler or bundling involved!
+    </div>
+    <script>
+      const node = document.querySelector("div");
+      node.addEventListener("mousemove", e => {
+        console.log(e);
+      });
+    </script>
+  </body>
+</html>

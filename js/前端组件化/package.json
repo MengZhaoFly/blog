@@ -19,6 +19,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "css": "^3.0.0",
     "htmlparser2": "^4.1.0",
     "parse5": "^6.0.0"
   }
