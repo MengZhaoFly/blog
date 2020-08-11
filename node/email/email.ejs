@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .center {
+      text-align: center;
+    }
+    .red {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <p class="center red">
+    hello <%=userName%>
+  </p>
+  <p class="center red">
+    <%=desc%>
+  </p>
+  1237890000
+  <% for(var j = 0; j<threeDaysData.length; j++) { %>
+    <div class="weather-item center">
+        <span class="day"><%= threeDaysData[j].day %></span>
+        <div class="wtext">
+            <span><%= threeDaysData[j].weatherText %></span>
+        </div>
+        <span style="width:25%; text-align:center;"><%= threeDaysData[j].temperature %></span>
+    </div>
+    <% } %>
+</body>
+</html>

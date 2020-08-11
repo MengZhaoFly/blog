@@ -1,0 +1,16 @@
+{
+  "name": "email",
+  "version": "1.0.0",
+  "description": "https://github.com/liuxing/node-abc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "nodemailer": "^6.4.11"
+  }
+}
