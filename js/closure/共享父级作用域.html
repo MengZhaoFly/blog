@@ -1,0 +1,21 @@
+<script>
+  function foo() {
+    let a = 1;
+    let b = 2;
+    function bar() {
+      if (a) {}
+    }
+    function baz() {
+      // debugger
+    }
+    function bbb() {
+      // 在 V8 中，一旦不同的作用域位于同一个父级作用域下，那么它们会共享这个父级作用域
+      // closure: a
+      // debugger;
+      // if (b) {}
+    }
+    return baz
+  }
+  let fn = foo();
+  fn()
+</script>

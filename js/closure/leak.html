@@ -1,0 +1,23 @@
+<script>
+  var theThing = null;
+  var replaceThing = function () {
+    var originalThing = theThing;
+    var unused = function () {
+      if (originalThing) { }
+    };
+    theThing = {
+      longStr: Date.now() + Array(1000000).join('*'),
+      someMethod: function () {
+        debugger;
+       }
+    };
+    // 第0次 originalThing = null，同时 theThing = { someMethod 引用着 originalThing = null }
+    // 第1次 originalThing 被赋值theThing 也就是说： originalThing  = { someMethod 引用着 originalThing = null }
+    // 这个时候 theThing 又被赋值一次  theThing = { someMethod 引用着（上一步的originalThing=  { someMethod 引用着 originalThing = null }） }
+    // 第三次 originalThing 被赋值theThing 也就是说： originalThing  =  { someMethod 引用着（上一步的originalThing=  { someMethod 引用着 originalThing = null }） }
+    // 
+
+    // originalThing 虽然没有任何意义和作用，却永远不会被回收，这导致无法被回收的无用 originalThing 越堆积越多，最终导致严重的内存泄漏
+  };
+  setInterval(replaceThing, 30);
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      transition: all .5s;
+    }
+    .enter {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    .enter-active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+  <script>
+    function foo() {
+      const box = document.querySelector('.box');
+    box.classList.add('enter')
+    box.scrollTop;
+    /* https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L115 */
+    // enter 之后 为 entering 如果直接  box.classList.add('enter') box.classList.add('enter-active')
+    // 则会造成 被覆盖 只有后一个类名生效
+    // 采用 force relayout 强制让前一个类名生效
+    box.classList.add('enter-active')
+    // setTimeout(() => {
+      
+    // }, 0);
+    }
+    foo()
+  </script>
+</body>
+</html>
