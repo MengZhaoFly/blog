@@ -38,7 +38,7 @@ if (shelljs.exec('npm run test').code !== 0) {
 }
 
 // 构建
-sendNotify('开始构建');
+// sendNotify('开始构建');
 console.log(colors.yellow('☕️ 开始构建'));
 if (shelljs.exec('npm run build').code !== 0) {
   shelljs.echo('error: npm install error.');
@@ -47,7 +47,7 @@ if (shelljs.exec('npm run build').code !== 0) {
 
 // 部署
 console.log(colors.yellow('🐛️ 开始部署'));
-sendNotify('开始部署');
+// sendNotify('开始部署');
 const rsync = Rsync.build({
   source: path.join(__dirname, '../', '.vuepress/dist/*'),
   destination: host_map[targetName],
