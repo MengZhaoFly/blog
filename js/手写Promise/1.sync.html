@@ -1,0 +1,28 @@
+<script>
+  function MyPromise(fn) {
+    let self = this; // 缓存当前promise实例
+    self.value = null; //成功时的值
+    self.error = null; //失败时的原因
+    self.onFulfilled = null; //成功的回调函数
+    self.onRejected = null; //失败的回调函数
+
+    function resolve(value) {
+      self.value = value;
+    }
+
+    function reject(error) {
+      self.error = error;
+    }
+    fn(resolve, reject);
+  }
+  MyPromise.prototype.then = function (onFulfilled, onRejected) {
+    //在这里给promise实例注册成功和失败回调
+    onFulfilled && onFulfilled(this.value)
+    onRejected && onRejected(this.error)
+  }
+  new MyPromise((resolve, reject) => {
+    resolve("同步任务执行")
+  })
+  .then(console.log)
+  console.log(1);
+</script>

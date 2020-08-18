@@ -1,0 +1,60 @@
+<script>
+  //定义三种状态
+  const PENDING = "pending";
+  const FULFILLED = "fulfilled";
+  const REJECTED = "rejected";
+
+  function MyPromise(fn) {
+    let self = this;
+    self.value = null;
+    self.error = null;
+    self.status = PENDING;
+    self.onFulfilledCallbacks = [];
+    self.onRejectedCallbacks = [];
+
+    function resolve(value) {
+      //如果状态是pending才去修改状态为fulfilled并执行成功逻辑
+      if (self.status === PENDING) {
+        // setTimeout(function () {
+
+        // })
+        self.status = FULFILLED;
+        self.value = value;
+        // self.onFulfilled(self.value);
+        self.onFulfilledCallbacks.forEach((callback) => callback(self.value));
+      }
+    }
+
+    function reject(error) {
+      //如果状态是pending才去修改状态为rejected并执行失败逻辑
+      if (self.status === PENDING) {
+        // setTimeout(function () {
+        // })
+        self.status = REJECTED;
+        self.error = error;
+        // self.onRejected(self.error);
+        self.onRejectedCallbacks.forEach((callback) => callback(self.error));
+      }
+    }
+    fn(resolve, reject);
+  }
+  MyPromise.prototype.then = function (onFulfilled, onRejected) {
+    if (this.status === PENDING) {
+      this.onFulfilledCallbacks.push(onFulfilled);
+      this.onRejectedCallbacks.push(onRejected);
+    } else if (this.status === FULFILLED) {
+      onFulfilled(this.value)
+    } else {
+      onRejected(this.error)
+    }
+    return this;
+  }
+  new MyPromise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("任务执行")
+    }, 2000);
+  })
+    .then(console.log)
+    .then(console.log)
+    .then(console.log)
+</script>

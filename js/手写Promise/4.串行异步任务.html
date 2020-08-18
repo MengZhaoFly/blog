@@ -1,0 +1,99 @@
+<script>
+  //定义三种状态
+  const PENDING = "pending";
+  const FULFILLED = "fulfilled";
+  const REJECTED = "rejected";
+
+  function MyPromise(fn) {
+    let self = this;
+    self.value = null;
+    self.error = null;
+    self.status = PENDING;
+    self.onFulfilledCallbacks = [];
+    self.onRejectedCallbacks = [];
+
+    function resolve(value) {
+      //如果状态是pending才去修改状态为fulfilled并执行成功逻辑
+      if (self.status === PENDING) {
+        // setTimeout(function () {
+          self.status = FULFILLED;
+          self.value = value;
+          // self.onFulfilled(self.value);
+          self.onFulfilledCallbacks.forEach((callback) => callback(self.value));
+        // })
+      }
+    }
+
+    function reject(error) {
+      //如果状态是pending才去修改状态为rejected并执行失败逻辑
+      if (self.status === PENDING) {
+        // setTimeout(function () {
+          self.status = REJECTED;
+          self.error = error;
+          // self.onRejected(self.error);
+          self.onRejectedCallbacks.forEach((callback) => callback(self.error));
+        // })
+      }
+    }
+    fn(resolve, reject);
+  }
+  // 返回一个新的 promise 
+  // 但是 下一个 then 什么时候调用 需要看 上一个 Promise 有没有完成
+  MyPromise.prototype.then = function (onFulfilled, onRejected) {
+
+    if (this.status === PENDING) {
+      // this.onFulfilledCallbacks.push((value) => {
+      //   let x = onFulfilled(value);
+      //   if (x instanceof MyPromise) {
+      //     return p = new MyPromise((resolve, reject) => {
+      //       x.then(resolve, reject);
+      //     })
+      //   }
+      // });
+      // this.onRejectedCallbacks.push(onRejected);
+      // return p;
+      let p = new MyPromise((resolve, reject) => {
+        this.onFulfilledCallbacks.push((value) => {
+          let x = onFulfilled(this.value)
+          if (x instanceof MyPromise) {
+            x.then(resolve, reject)
+          }
+        })
+      })
+      this.onRejectedCallbacks.push(onRejected);
+      return p;
+    } else if (this.status === FULFILLED) {
+      let x = onFulfilled(this.value)
+      if (x instanceof MyPromise) {
+        return new MyPromise((resolve, reject) => {
+          x.then(resolve, reject);
+        })
+      }
+    } else {
+      onRejected(this.error)
+    }
+    // return this;
+  }
+    new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("任务执行1")
+      }, 2000);
+    })
+    .then((a) => {
+      console.log(a)
+      return new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("任务执行2")
+        }, 2000);
+      })
+    })
+    .then((b) => {
+      console.log(b)
+      return new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("任务执行3")
+        }, 2000);
+      })
+    })
+    .then(console.log)
+</script>
