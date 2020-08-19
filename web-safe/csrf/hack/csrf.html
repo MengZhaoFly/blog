@@ -4,9 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="prerender" href="http://zhaomeng.com:9090/transfer"/> -->
   <title>Document</title>
 </head>
 <body>
-  <img src="http://localhost:8080/transfer" alt=""/>
+  <!-- <img src="http://zhaomeng.com:9090/transfer" alt="" > -->
+  <form action="http://zhaomeng.com:9090/transfer">
+   
+  </form>
+  <!-- <form 
+  action="http://localhost:8080/transfer"
+  method="post">
+    <input type="text" name="from" value="1">
+    <input type="submit" >
+  </form> -->
+  <script>
+  document.forms[0].submit()
+  // 前端 不行
+  // fetch('/transfer')
+  // .then(res => )
+  // 强加交互：验证码
+  // referer: 当前的域名 a.com b.com
+  // cookie: same-site=strict
+  // csrf-token: 用户登录完之后，生成 随机的 token，
+  // 这个 token 属于 哪个用户的，
+  // 前端存在 localStorage/sessionStorage
+  // 后续的接口 前端 都会加一个 token
+  
+  </script>
 </body>
 </html>

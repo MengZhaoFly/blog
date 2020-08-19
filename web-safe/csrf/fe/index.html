@@ -9,13 +9,17 @@
 <body>
   <div>
     <p>合法页面的操作</p>
-    <button>转账</button>
-    <a href="http://localhost:8080/count">查看余额</a>
+    
+    <a href="/transfer">转账</a>
+    <a href="/count">查看余额</a>
     <p>hack 操作</p>
-    <a href="http://127.0.0.1:57333/csrf.html">哇</a>
   </div>
   <script>
-  document.cookie = `islogin=true;samesite=strict;max-age=${60}`
+    // session 表
+    // [ { sessionID: 1, uid: 100, login: true } ]
+    // document.cookie = 'login=true;samesite=none'
+    // 只会 a.com 提交，b.com 不会提交
+    // document.cookie = 'sessionID=1'
   </script>
 </body>
 </html>

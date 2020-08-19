@@ -1,22 +1,27 @@
 const Koa = require('koa');
 const path = require('path');
-const serve = require('koa-static');
 const router = require('koa-router')();
 const app = new Koa();
 
-let count = 10000
-app.use(serve(__dirname));
+let count = 10000;
+
+router.get('/', async (ctx) => {
+  const fs = require('fs');
+  const html = fs.readFileSync('./index.html', 'utf-8')
+  ctx.cookies.set('login', 'hahaha', { 'sameSite': 'lax' });
+  ctx.body = html;
+})
 router.get('/transfer', async (ctx) => {
-  const isLogin = ctx.cookies.get('islogin');
-  console.log(isLogin);
-  if (isLogin) {
+  const login = ctx.cookies.get('login');
+  console.log('login', login);
+  if (login) {
     count -= 100
     ctx.body = {
       code: 0
     };
   } else {
     ctx.body = {
-      code: 1
+      code: 404
     };
   }
 })
@@ -28,6 +33,6 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 
-app.listen(8080, () => {
-  console.log('server is running 8080');
+app.listen(9090, () => {
+  console.log('server is running 9090');
 });
