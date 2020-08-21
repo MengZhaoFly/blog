@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <img src="" onerror="alert(1)"/> -->
+  <textarea name="" id="text" cols="30" rows="10"></textarea>
+  <button id="comment">comment</button>
+  <div id="content"></div>
+  <script>
+    const content = document.getElementById('content');
+    const text = document.getElementById('text');
+    const comment = document.getElementById('comment');
+    // 
+    const url = new URL(window.location);
+    // const page = url.searchParams.get('page');
+    comment.addEventListener('click', () => {
+      content.innerHTML = text.value
+    })
+  </script>
+  <script src="https://zhaoboy.com/index.js"></script>
+</body>
+</html>

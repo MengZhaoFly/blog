@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  xss 演示：
+
+  <a 
+  href="http://localhost:8080?xss=<script>alert(document.cookie)</script>">
+  demo1
+  </a>
+  <a 
+  href="http://localhost:8080?xss=<style>a{color: red}</style>">demo2</a>
+  <a href="http://localhost:8080?xss=<iframe src='http://www.baidu.com' frameborder='0'></iframe>">
+    demo3
+  </a>
+
+  <!-- <img src="" alt="" onerror="alert(123)" /> -->
+  <p onclick="">点我</p>
+  
+  <!-- - 不转义 = 转义 -->
+  <%- xss %>
+</body>
+</html>

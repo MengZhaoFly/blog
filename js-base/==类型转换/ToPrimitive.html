@@ -1,0 +1,13 @@
+<script>
+  let obj = {
+    toString() { return '1' },
+    valueOf() { return 1 },
+    [Symbol.toPrimitive]: (h) => {
+      console.log(h)
+      return 'hahah'
+    }
+  }
+  String(obj)
+  Number(obj)
+  // ToPrimitive(A)通过尝试调用 A 的A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值（Primitive）
+</script>
