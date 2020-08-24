@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="toogle">toogle</button>
+  <div id="mask">
+    mask
+  </div>
+  <script>
+
+    const mask = document.getElementById('mask');
+    const toogle = document.getElementById('toogle');
+    let flag = false;
+    toogle.addEventListener('click', (e) => {
+      mask.style.display = flag ? 'block' : 'none'
+      flag = !flag;
+      e.stopPropagation()
+    })
+    document.body.addEventListener('click', (e) => {
+      mask.style.display = 'none'
+      
+    })
+    mask.addEventListener('click', (e) => {
+      e.stopPropagation()
+    })
+  </script>
+</body>
+</html>

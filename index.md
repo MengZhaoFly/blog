@@ -14,6 +14,7 @@ hook-capture-value：https://codesandbox.io/dashboard/all/react
 yeo-man搭建命令：js/工具链/generator-demoyo1
 webpack搭建react开发环境：js/工具链/generator-demoyo1
 nginx 路径，反向代理，pm2 上线：https://juejin.im/post/6844904005160681486#heading-13、https://juejin.im/post/6844904048768843784
+DOM检查，页面加载时间检查：js/工具链/检查
 
 
 ## web 安全
