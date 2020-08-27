@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="../request-idle-callback/tree.png" alt="">
+  <script>
+    // 所有的调用栈 由浏览器管理
+    const a1 = { name: 'a1' };
+    const b1 = { name: 'b1' };
+    const b2 = { name: 'b2' };
+    const b3 = { name: 'b3' };
+    const c1 = { name: 'c1' };
+    const c2 = { name: 'c2' };
+    const d1 = { name: 'd1' };
+    const d2 = { name: 'd2' };
+
+    a1.child = b1; b1.return = a1;
+    b1.sibling = b2; b2.return = a1;
+    b2.sibling = b3; b3.return = a1;
+
+    b2.child = c1; c1.return = b2;
+
+    c1.child = d1; d1.return = c1;
+    d1.sibling = d2; d2.return = c1;
+
+    b3.child = c2; c2.return = b3;
+
+    console.log(a1);
+    // 以链表的形式表达一棵树
+
+    function walk(tree) {
+      let node = tree;
+      while(true) {
+        console.log(node.name)
+        let child = node.child;
+        //1 先深度优先 去到最深的 child
+        if (child) {
+          node = child;
+          continue;
+        }
+        if (node === tree) {
+          return;
+        }
+        // 3 
+        while (!node.sibling) {
+          if (!node.return || node.return === tree) {
+            return;
+          }
+          node = node.return;
+        }
+        //2 之后看 child 的 sibling
+        node = node.sibling;
+      }
+    }
+    walk(a1);
+
+  </script>
+</body>
+
+</html>

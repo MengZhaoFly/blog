@@ -1,6 +1,10 @@
 ## react
 react-transition-group: js/react-transition-group
 hook-capture-value：https://codesandbox.io/dashboard/all/react
+race-condition: react/biz-hooks/
+实现简单的 react-hooks: react/deep-in-hooks-myHooks
+数组模拟长任务 RIC 遍历数组: react/react-fiber/数组模拟长任务使用RIC调度
+react-fiber结构，RIC渐进式遍历：react/react-fiber/stack-fiber
 
 ## js
 闭包内存占用过高分析：js/closure

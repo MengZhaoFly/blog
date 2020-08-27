@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var preorderTraversal = function (root) {
+      let res = [], stack = [];
+      if (!root) return res;
+      stack.push(root);
+      while (stack.length) {
+        let top = stack.pop();
+        if (top.val) res.push(top.val);
+        if (top.right) stack.push(top.right);
+        if (top.left) stack.push(top.left);
+      }
+      return res;
+    }
+  </script>
+</body>
+
+</html>

@@ -20,7 +20,8 @@ function RaceCon2() {
   useEffect(() => {
     const fetchData = async () => {
       // 发起一个请求时，序号加 1
-      const curId = ++seqenceId;
+      seqenceId ++;
+      const curId = seqenceId;
 
       const delay = query === "react1" ? 2000 : 500;
       const result = await getData(query, delay);

@@ -22,7 +22,9 @@ function RaceCon() {
       const delay = query === 'react1' ? 2000 : 500;
       
       const result = await getData(query, delay);
-      
+      // 不处理 race-condition
+      // setResult(result);
+      // 处理 race-condition
       if (!didCancel) {
         setResult(result); 
       }
@@ -30,6 +32,7 @@ function RaceCon() {
 
     fetchData();
     return () => {
+      // 如果 新的关键词 来了，那么 设为 true，请求即便后回来了，也不会 set
       didCancel = true;
     }
   }, [query]);

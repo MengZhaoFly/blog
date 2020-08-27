@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<title>Scheduling background tasks using requestIdleCallback</title>
+<script>
+var requestId = 0;
+var pointsTotal = 0;
+var pointsInside = 0;
+
+function piStep() {
+  var r = 10;
+  var x = Math.random() * r * 2 - r;
+  var y = Math.random() * r * 2 - r;
+  return (Math.pow(x, 2) + Math.pow(y, 2) < Math.pow(r, 2))
+}
+function refinePi(deadline) {
+  while (deadline.timeRemaining() > 0) {
+    if (piStep())
+      pointsInside++;
+    pointsTotal++;
+  }
+  currentEstimate = (4 * pointsInside / pointsTotal);
+  textElement = document.getElementById("piEstimate");
+  textElement.innerHTML="Pi Estimate: " + currentEstimate;
+  requestId = window.requestIdleCallback(refinePi);
+}
+function start() {
+  requestId = window.requestIdleCallback(refinePi);
+}
+function stop() {
+  if (requestId)
+    window.cancelIdleCallback(requestId);
+  requestId = 0;
+}
+</script>
+<button onclick="start()">Click me to start!</button>
+<button onclick="stop()">Click me to stop!</button>
+<div id="piEstimate">Not started</div>

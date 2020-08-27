@@ -1,5 +1,5 @@
 {
-  "name": "spa-webpack",
+  "name": "<%= appname %>",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,7 +28,6 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "lodash-es": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
