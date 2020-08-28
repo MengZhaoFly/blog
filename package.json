@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "[you don't know html](https://github.com/MengZhaoFly/blog/issues/1)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"test pass\"",
+    "eslint": "echo \"lint pass\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MengZhaoFly/blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MengZhaoFly/blog/issues"
+  },
+  "homepage": "https://github.com/MengZhaoFly/blog#readme"
+}
