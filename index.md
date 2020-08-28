@@ -23,6 +23,7 @@ nginx 路径，反向代理，pm2 上线：https://juejin.im/post/68449040051606
 DOM检查，页面加载时间检查：js/工具链/检查
 webpack(图片压缩-splitchunk): webpack/react-webpack
 webpack(dll-externals-MiniCssExtract): webpack/webpack-optimation
+git-hook(pre-commit/pre-push): .git/hooks
 
 
 
