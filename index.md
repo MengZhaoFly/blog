@@ -9,6 +9,8 @@ react-fiber结构，RIC渐进式遍历：react/react-fiber/stack-fiber
 ## js
 闭包内存占用过高分析：js/closure
 手写 Promise：js/手写Promise
+tab之间通信：tab-message
+
 
 ## css
 瀑布流布局(多列布局、flex)：css/瀑布流布局
@@ -19,8 +21,11 @@ yeo-man搭建命令：js/工具链/generator-demoyo1
 webpack搭建react开发环境：js/工具链/generator-demoyo1
 nginx 路径，反向代理，pm2 上线：https://juejin.im/post/6844904005160681486#heading-13、https://juejin.im/post/6844904048768843784
 DOM检查，页面加载时间检查：js/工具链/检查
+webpack(图片压缩-splitchunk): webpack/react-webpack
+webpack(dll-externals-MiniCssExtract): webpack/webpack-optimation
+
 
 
 ## web 安全
-
+xss: /web-safe/web-xss
 csrf：/web-safe/csrf
