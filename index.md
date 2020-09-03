@@ -5,11 +5,13 @@ race-condition: react/biz-hooks/
 实现简单的 react-hooks: react/deep-in-hooks-myHooks
 数组模拟长任务 RIC 遍历数组: react/react-fiber/数组模拟长任务使用RIC调度
 react-fiber结构，RIC渐进式遍历：react/react-fiber/stack-fiber
+同构：react/react-ssr
 
 ## js
 闭包内存占用过高分析：js/closure
 手写 Promise：js/手写Promise
 tab之间通信：tab-message
+compose: js/fp-core/compose
 
 
 ## css
@@ -24,7 +26,7 @@ DOM检查，页面加载时间检查：js/工具链/检查
 webpack(图片压缩-splitchunk): webpack/react-webpack
 webpack(dll-externals-MiniCssExtract): webpack/webpack-optimation
 git-hook(pre-commit/pre-push): .git/hooks
-
+webpack-loader(md-loader,.vue-loader):  js/前端组件化/myloader.js, js/前端组件化/md-loader.js
 
 
 ## web 安全
