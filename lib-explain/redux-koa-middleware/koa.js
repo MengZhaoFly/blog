@@ -13,23 +13,11 @@ run();
 function run() {
   const dispatch = (index) => {
     const fn = middleWares[index];
+    if (!fn) return;
     // 处理 next 让他去到下一个中间件
     fn({}, () => {
       dispatch(index + 1);
     })
   }
-  /**
-  async (ctx) => {
-    console.log(1);
-    await async(ctx) => {
-      console.log(3)
-      await async(ctx) => {
-        console.log(4)
-        await async(ctx) => {
-        }
-      }
-    }
-  }
-  */
   dispatch(0);
 }

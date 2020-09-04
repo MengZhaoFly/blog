@@ -12,7 +12,12 @@ react-fiber结构，RIC渐进式遍历：react/react-fiber/stack-fiber
 手写 Promise：js/手写Promise
 tab之间通信：tab-message
 compose: js/fp-core/compose
+手写 bind：campus-recruitment/字节跳动-效率工程-(1,2,3)/一/6.html
 
+## 第三方Lib
+redux原理：lib-explain/redux
+koa中间件、redux 中间件：lib-explain/redux-koa-middleware
+react-redux: /lib-explain/react-redux
 
 ## css
 瀑布流布局(多列布局、flex)：css/瀑布流布局
@@ -32,3 +37,6 @@ webpack-loader(md-loader,.vue-loader):  js/前端组件化/myloader.js, js/前�
 ## web 安全
 xss: /web-safe/web-xss
 csrf：/web-safe/csrf
+
+
+## 算法

@@ -17,13 +17,6 @@ var backtrack = function(nums, templist, resList) {
     templist.pop();
   }
 }
-/**
- * 
- 1. []  backtrack
- 2. [1]  [backtrack, backtrack]
- 3. [1, 1]   [backtrack, backtrack, backtrack]
- 4. [1, 1, 2] [backtrack, backtrack, backtrack]
- */
 var permute = function(nums) {
   let res = [];
   backtrack(nums, [], res);
