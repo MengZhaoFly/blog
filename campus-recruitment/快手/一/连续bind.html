@@ -1,0 +1,40 @@
+<script>
+  function foo() {
+    console.log(this)
+  }
+  let a = { a: 1}, b = { b: 1}, c = { c: 1}
+  foo.bind(a).bind(b).bind(c)()
+  var slice = Array.prototype.slice
+  Function.prototype.mybind = function() {
+    var thatFunc = this, thatArg = arguments[0];
+    var args = slice.call(arguments, 1);
+
+    function fn(){
+      console.log(this)
+      var isNewCall = this instanceof fn;
+      var funcArgs = args.concat(slice.call(arguments))
+      return thatFunc.apply(isNewCall ? this : thatArg, funcArgs);
+    };
+    fn.prototype = Object.create(thatFunc.prototype);
+    return fn;
+  };
+  let fn = foo.mybind(a)   
+  /*
+  fn = function() {
+    foo.apply(a);
+  }
+  */
+  let fn1 = fn.mybind(b)
+  /*
+  fn1 = function() {
+    fn1.apply(b);
+  }
+  */
+  let fn3 = fn1.mybind(c)
+  fn3()
+  /*
+  fn3 = function() {
+    fn1.apply(this)
+  }
+  */
+</script>
