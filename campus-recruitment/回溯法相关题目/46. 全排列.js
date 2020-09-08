@@ -13,7 +13,7 @@ var backtrack = function(nums, templist, resList) {
     // 放进去一个
     templist.push(num);
     // 第二步 第三步 第四步 n .... 
-    backtrack(nums, templist, resList);
+    backtrack(nums, templist.slice(0), resList);
     templist.pop();
   }
 }
