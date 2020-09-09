@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" value="123" id="name" />
+  <div id="showName"></div>
+  <script src="https://unpkg.com/mobx@5.15.6/lib/mobx.umd.js"></script>
+  <script>
+    let p = mobx.observable({
+      name: '123'
+    })
+    mobx.autorun(() => {
+      document.getElementById('showName').innerHTML = p.name;
+    })
+    document.getElementById('name').addEventListener('change', (e) => {
+      p.name = e.target.value
+    })
+  </script>
+</body>
+
+</html>

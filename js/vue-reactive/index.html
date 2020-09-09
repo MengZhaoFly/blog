@@ -1,4 +1,7 @@
 <input type="text" id="name">
+<div id="uname"></div>
+<input type="text" id="valueInput">
+<div id="val"></div>
 <script>
   let handlers = new Map();
   let reactives = new Map();
@@ -36,26 +39,43 @@
     return proxy
   }
   function effect(handler) {
+    // 当前这一个 effect
     usedReactivities = [];
-    handler();
+    handler();   // 触发 get， 收集 当前这个 effect 需要 哪个 对象以及key
     for (let [obj, prop] of usedReactivities) {
+      console.log(obj, prop);
       if (!handlers.has(obj)) {
         handlers.set(obj, new Map())
-      }
+      }          // 这个对象之前没有收集过
       if (!handlers.get(obj).has(prop)) {
         handlers.get(obj).set(prop, []);
-      }
-      handlers.get(obj).get(prop).push(handler);
+      }          // 这个对象的key之前没有收集过
+      handlers.get(obj).get(prop).push(handler);   // 需要 这个对象的key 的 effect 都收集在一起
     }
   }
 
   let p = reactive({
-    name: '123'
+    name: '123',
+    obj: {
+      value: '789'
+    }
+  })
+  const uname = document.getElementById('uname');
+  const val = document.getElementById('val');
+  const valueInput = document.getElementById('valueInput');
+  effect(() => {
+    console.log('run name effect')
+    document.getElementById('name').value = p.name
+    uname.innerHTML = p.name;
   })
   effect(() => {
-    document.getElementById('name').value = p.name
+    console.log('run value effect')
+    val.innerHTML = p.obj.value
   })
   document.getElementById('name').addEventListener('change', (e) => {
     p.name = e.target.value
+  })
+  valueInput.addEventListener('change', (e) => {
+    p.obj.value = e.target.value
   })
 </script>
