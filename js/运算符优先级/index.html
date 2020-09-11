@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Bar() {
+      console.log(1);
+    }
+    function Foo() {
+      // console.log('foo exec')
+      getName = function () { console.log(1); };
+      return this;
+    }
+    Foo.getName = function () { console.log(2); };
+    Foo.prototype.getName = function () { 
+      // console.log('.getName exec')
+      console.log(3); };
+    var getName = function () { console.log(4); };
+    function getName() { console.log(5); }
+
+    // 请写出以下输出结果：
+    Foo.getName();  // 2
+    getName();  // 4
+    Foo().getName();   // 1
+    getName();  // 1
+    // 成员访问  19级
+    // new Foo 结合属于 new 无参数列表 18 级 
+    console.log(new (Foo.getName)());  // 3   x 正确答案：2 
+
+   // 成员访问  19级
+   // new Foo() 结合属于 new 有参数列表的情况 19级
+   // 按照从左到右的顺序依次计算
+    new Foo().getName();  // 3  
+    new new Foo().getName();   // X 正确答案：3
+    // debugger;
+    console.log(new ((new Foo()).getName)() )
+    // new Bar;
+    // new Bar();
+    new (function() {console.log('nnnnnnn')})()
+  </script>
+</body>
+
+</html>
