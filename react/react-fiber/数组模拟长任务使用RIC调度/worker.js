@@ -1,16 +1,3 @@
-<style>
-  .box {
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    animation: move ease 4s infinite;
-    position: relative;
-  }
-</style>
-<input type="text" />
-<div class="box"></div>
-<script>
-
 function sleep(delay) {
   for (let start = Date.now(); Date.now() - start <= delay;) {}
 }
@@ -24,7 +11,7 @@ for (let i = 0; i < 20; i ++) {
   })
 }
 
-window.requestIdleCallback(workLoop, { timeout: 100});
+// window.requestIdleCallback(workLoop, { timeout: 100});
 
 function workLoop(deadLine) {
   console.log('本帧的剩余时间剩', parseInt(deadLine.timeRemaining()));
@@ -46,16 +33,10 @@ function workLoop(deadLine) {
 function performUnitOfWork() {
   works.shift()(); // 取出第一个元素执行
 }
-// function async() {
-//   for (let w of works) {
-//     w();
-//   }
-// }
-// async();
-let i = 0
-let timer = setInterval(() => {
-  i ++;
-  document.querySelector('.box').style.left = `${i}px`;
-  if (i > 500) clearInterval(timer);
-}, 16);
-</script>
+function async() {
+  for (let w of works) {
+    w();
+  }
+}
+async();
+self.postMessage('success')

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .box {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      animation: move ease 4s infinite;
+      position: relative;
+    }
+  </style>
+  <input type="text" />
+  <div class="box"></div>
+  <script>
+    let w = new Worker("./worker.js");
+    w.onmessage = function(msg) {
+      console.log('任务完成', msg)
+    }
+
+    let i = 0
+    let timer = setInterval(() => {
+      i ++;
+      document.querySelector('.box').style.left = `${i}px`;
+      if (i > 500) clearInterval(timer);
+    }, 16);
+  </script>
+</body>
+</html>
