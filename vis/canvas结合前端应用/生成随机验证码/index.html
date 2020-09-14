@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas_code"></canvas>
+  <canvas id="canvas_example" width="400" height="400"></canvas>
+  <script src="./index.js"></script>
+  <script>
+    new Gcode('#canvas_code', {
+      lineNum: 6
+    })
+  </script>
+  <script>
+    const canvas = document.getElementById('canvas_example');
+    const ctx = canvas.getContext('2d');
+    ctx.width = '400px';
+    ctx.height = '400px';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(100, 200);
+    ctx.lineTo(400, 400);
+    ctx.strokeStyle = 'rgb(' + 255 * Math.random() + ',' + 255 * Math.random() + ',' + 255 * Math.random() + ')';
+    ctx.closePath();
+    ctx.stroke();
+    // 字
+    ctx.fillStyle = 'rgb(' + 255 * Math.random() + ',' + 255 * Math.random() + ',' + 255 * Math.random() + ')';
+    ctx.font = '30px Helvetica';
+    ctx.textBaseline = 'top'; // middle bottom
+    ctx.fillText('Hello World', 0, 0);
+  </script>
+</body>
+
+</html>

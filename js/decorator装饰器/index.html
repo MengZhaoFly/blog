@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="di"></div>
+  <div class="di"></div>
+  <button id="btn">btn</button>
+  <!-- <script src="./dist/main.js"></script> -->
+  <!-- <script src="./dist/property.js"></script> -->
+  <!-- <script src="./dist/class.js"></script> -->
+  <script>
+    Function.prototype.after = function (fn) {
+      const self = this
+      return function () {
+        self.apply(this, arguments)
+        return fn.apply(this, arguments)
+      }
+    }
+    const wear1 = function () {
+      console.log('穿上第一件衣服')
+    }
+    const wear2 = function () {
+      console.log('穿上第二件衣服')
+    }
+    const wear3 = function () {
+      console.log('穿上第三件衣服')
+    }
+    /*
+    wear1.after() 返回了一个方法 方法体 {  wear1 wear2 wear3 }
+    */
+    const wear = wear1.after(wear2).after(wear3)
+    // wear()
+
+  </script>
+</body>
+
+</html>

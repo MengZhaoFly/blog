@@ -1,0 +1,10 @@
+{
+  // "presets": [
+  //   "@babel/preset-env"
+  // ],
+  // 把装饰器语法转成es5
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+  ]
+}

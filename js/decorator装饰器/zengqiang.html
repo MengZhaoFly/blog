@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var woniu = {
+      xiangqing: function() {
+        console.log('嫁给我好吗？');
+      }
+    }
+    const originalXq = woniu.xiangqing;
+
+    woniu.xiangqing = function() {
+      console.log('我家在红谷滩有2套房');
+      originalXq();
+    }
+    woniu.xiangqing();
+
+    class A {
+      a() {
+        console.log(1);
+      }
+      b = () => {
+        console.log(2)
+      }
+    }
+  </script>
+</body>
+
+</html>
