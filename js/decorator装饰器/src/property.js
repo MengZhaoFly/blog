@@ -40,7 +40,8 @@ function decDebounce(wait) {
     };
   }
 }
-
+// value
+// get set
 class Btn {
   @decDebounce(1000)
   handleClick = () => {
