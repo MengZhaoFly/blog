@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.5">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let doc = document;
+    function refreshRem() {
+      // 获取文档对象(根元素）
+      const docEl = doc.documentElement;
+      // 获取视图容器宽度
+      const docWidth = docEl.getBoundingClientRect().width;
+      console.log(docWidth)
+      // rem 取值为视图容器宽度的十分之一大小
+      // const rem = width / 10;
+      // // 设置 rem 大小
+      // docEl.style.fontSize = rem + 'px';
+    }
+    refreshRem();
+  </script>
+</body>
+
+</html>

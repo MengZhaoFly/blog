@@ -34,7 +34,14 @@ module.exports = {
       remotes: {
         app2: 'app2',
       },
-      shared: ['react', 'react-dom'],  
+      shared: {
+        'react': {
+          eager: true,
+        },
+        "react-dom": {
+          eager: true,
+        }
+      }
       // 为了避免远程加载的模块和当前模块有相同的依赖而被重复打包和引用, 本质上其实是把依赖 external 掉了，然后映射到同一个 webpack 的模块 id 上
     }),
     new HTMLWebpackPlugin({ template: './public/index.html' }),

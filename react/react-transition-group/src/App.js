@@ -22,5 +22,8 @@ function App() {
     </div>
   );
 }
+App.loadData = function() {
+  console.log(1)
+}
 
 export default App;

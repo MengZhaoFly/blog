@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="chat">
+    <ul id="chatList">
+    </ul>
+    <form>
+      <input type="text" name="chatContent" id="chatContent" />
+      <input type="button" id="sendChatContent" value="发送" />
+    </form>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"> </script>
+  <script>
+    // var url = window.location.protocol + '//' + window.location.host;
+    var socket = io.connect("ws://localhost:3000");
+    // 点击“发送”，向服务器发送聊天信息
+    $('#sendChatContent').click(function (ev) {
+      var username = $('#username').text();
+      var chatContent = $('#chatContent').val().trim();
+      if (!chatContent) {
+        return;
+      }
+      if (socket) {
+        // 向服务器 chat 事件，发送信息
+        socket.emit('chat', { username: username, chatContent: chatContent });
+      }
+      $('#chatContent').val('');
+    });
+    // 监听服务器发送来的 chat 事件
+    socket.on('chat', function (chatinfo) {
+      $('#chatList').append('<li><span class="chatusername">' + chatinfo.username + '</span>：<span class="chatcontent">' + chatinfo.chatContent + '</span></li>');
+      $('#chatList').scrollTop(10000);
+    });
+  </script>
+</body>
+</html>
