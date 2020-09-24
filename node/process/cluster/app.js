@@ -1,7 +1,7 @@
 const http = require('http');
 let t = [];
 module.exports = http.createServer((req, res) => {
-  let content = require('fs').readFileSync('./123.pdf');
+  let content = require('fs').readFileSync('./index.html');
   t.push(content);
   res.end('hello world');
   // console.log(a);

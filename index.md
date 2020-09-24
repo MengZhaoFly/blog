@@ -8,6 +8,8 @@ react-fiber结构，RIC渐进式遍历：react/react-fiber/stack-fiber
 同构：react/react-ssr
 react-key:
 react-error-bounding:
+redux-结合hooks 新用法：/react/redux-hooks-api-todo
+react-concurrent-mode: https://codesandbox.io/s/with-concurrent-mode-s9ojx?file=/src/index.js
 
 ## js
 闭包内存占用过高分析：js/closure
@@ -16,6 +18,9 @@ tab之间通信：tab-message
 compose: js/fp-core/compose
 手写 bind：campus-recruitment/字节跳动-效率工程-(1,2,3)/一/6.html, campus-recruitment/快手/一
 装饰器
+
+## node
+多进程：https://juejin.im/post/6844903908385488903#heading-18
 
 ## 第三方Lib
 redux原理：lib-explain/redux

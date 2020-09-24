@@ -53,7 +53,7 @@ if (cluster.isMaster) {
   // 当进程出现会崩溃的错误
   process.on('uncaughtException', function (err) {
     // 这里可以做写日志的操作
-    console.log(err);
+    console.log('err', err);
     // 退出进程
     process.exit(1);
   });
