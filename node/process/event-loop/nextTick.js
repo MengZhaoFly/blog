@@ -21,8 +21,6 @@ setImmediate(() => console.log('timeout4'));    // 7
 // 
 
 
-
-
 /**
 node v11 之前：上述代码是先进入 check 阶段，执行所有 setImmediate
 timeout1

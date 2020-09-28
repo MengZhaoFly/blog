@@ -17,6 +17,7 @@
       height: 0;
       /*容器高度是由padding来控制，盒模型原理告诉你一切*/
       width: 100%;
+      background-color: red;
     }
 
     .aspectration[data-ratio="16:9"] {
@@ -25,9 +26,20 @@
     /* 自动算 */
     /* .aspectration[data-ratio="16:9"] { padding-top: calc(100% * 9 / 16); } */
 
-    .aspectration[data-ratio="4:3"] {
+    /* .aspectration[data-ratio="4:3"] {
       padding-top: 75%;
+    } */
+    /* 
+    !import   1,0,0,0
+    inline-style  0,1,0,0
+    id    0,0,1,0
+    class 0,0,0,1  * 10  =>   0,0,0,10
+    .b {}
+    .a.b {
+
     }
+    <div class="a"> <div class="b"></div> </div>
+     */
     .content {
       position: absolute;
       width: 100%;
