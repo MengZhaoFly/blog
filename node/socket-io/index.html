@@ -34,6 +34,9 @@
       }
       $('#chatContent').val('');
     });
+    // 全双工
+    // http：client -》server    TCP 实现
+    // 股票趋势图
     // 监听服务器发送来的 chat 事件
     socket.on('chat', function (chatinfo) {
       $('#chatList').append('<li><span class="chatusername">' + chatinfo.username + '</span>：<span class="chatcontent">' + chatinfo.chatContent + '</span></li>');

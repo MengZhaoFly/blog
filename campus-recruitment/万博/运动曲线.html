@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ball {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      margin: 300px 300px;
+      transform-origin: center 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ball"></div>
+  <script>
+    var ball = document.querySelector(".ball");
+    ball.style.position = "absolute";
+    var s = 0;
+    var v = 1;
+    // 匀速直线运动
+    // setInterval(() => {
+    //   s += v;
+    //   ball.style.top = s + "px";
+    // })
+    //匀速圆周运动
+    setInterval(() => {
+      s += v;
+      ball.style.transform = `rotate(${s}deg)`;
+    })
+//自由落体运动
+  </script>
+</body>
+
+</html>

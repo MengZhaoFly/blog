@@ -1,0 +1,1 @@
+yarn add -D webpack webpack-cli webpack-merge webpack-node-externals @babel/core babel-loader @babel/plugin-syntax-dynamic-import @babel/preset-env vue-loader vue-style-loader

@@ -62,7 +62,7 @@ class Carousel {
       next.style.transition = 'none';
       // 动画：图片的起始位置
       current.style.transform = `translateX(${-100 * positon}%)`;     // 0
-      next.style.transform = `translateX(${100 - 100 * nextPositon}%)`;  // 1
+      next.style.transform = `translateX(${100 - 100 * nextPositon}%)`;  // 0 往后一个位置 1
       // 执行完这些代码，浏览器会在下一帧让其生效
 
 
@@ -92,7 +92,7 @@ class Carousel {
       //     });
       // });
     }
-    // setInterval(nextPic, 3000);
+    setInterval(nextPic, 3000);
 
     root.addEventListener('mousedown', event => {
       // 滑动需要 【前一张图片 当前这张图片 下一张图片】 相互配合完成

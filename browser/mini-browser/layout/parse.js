@@ -59,6 +59,7 @@ function computerCss(element) {
   if (!element.computerStyle) {
     element.computerStyle = {};
   }
+
   // 从所有 rules 里面找到 符合该 选择器的 rule 添加到 该元素身上
   // rules: [body div #myid, body div img]
   // element: div
@@ -84,7 +85,7 @@ function computerCss(element) {
       for (let declaration of rule.declarations) {
         let { property, value} = declaration;
         if (!computerStyle[property]) {
-          computerStyle[property] = {};
+          computerStyle[property] = {}; 
         }
         computerStyle[property].value = declaration.value;
       }

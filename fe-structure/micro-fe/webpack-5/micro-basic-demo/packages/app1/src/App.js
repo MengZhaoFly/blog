@@ -1,5 +1,6 @@
 import React from 'react';
 const { lazy, Suspense } = React;
+// 从 app 2 共享
 const RemoteButton = lazy(() => import('app2/Button'));
 const App = () => (
   <div>

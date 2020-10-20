@@ -1,5 +1,5 @@
 module.exports = {
-	entry: './Panel.js',
+	entry: './3-main.js',
 	module: {
 		rules: [
 			{
