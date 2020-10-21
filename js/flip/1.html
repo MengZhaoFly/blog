@@ -85,10 +85,13 @@
         cb()
       })
     }
+    var tick1 = (cb) => {
+      cb()
+    }
     function addNode(addCount = 2) {
       const prevImgs = document.querySelectorAll('.img-wrap');
       const prevPositions = getRects(prevImgs)
-      tick(async () => {
+      tick1(async () => {
         let images = await preload(getImages(addCount))
         images.forEach(img => {
           const imgNode = document.createElement('img')
@@ -100,8 +103,9 @@
       })
 
     }
+    
     function startAnimation(prevPositions, prevImgs) {
-      tick(() => {
+      tick1(() => {
         const currentPositions = getRects(prevImgs)
         // console.log(wrap.childNodes.length)
         prevImgs.forEach((imgRef, imgIndex) => {

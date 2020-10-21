@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" style="background-color: red;">123</div>
+  <script>
+    const keyframes = [
+      { transform: "translate(0)" },
+      {
+        transform: `translate(400px, 500px)`,
+      }
+    ]
+    const options = {
+      duration: 300,
+      easing: "cubic-bezier(0,0,0.32,1)",
+    }
+    const animation = document.getElementById('app').animate(keyframes, options)
+  </script>
+</body>
+
+</html>

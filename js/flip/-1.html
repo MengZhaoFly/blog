@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">123</div>
+  <script>
+    const el = document.getElementById('app');
+    // 获取当前元素的边界
+    const prevPosition = el.getBoundingClientRect()
+
+    // 通过给元素添加一个类名，设置元素最后状态的位置和大小 （在.totes-at-the-end中添加相应的样式规则）
+    // 布局发生了变化
+    let divNode = document.createElement('div');
+    divNode.style.width = '200px';
+    divNode.style.height = '200px';
+    divNode.style.backgroundColor = 'red'
+    document.body.insertBefore(divNode, el)
+    // debugger;
+
+    // 记录元素最后状态的位置和尺寸大小
+    const currentPosition = el.getBoundingClientRect()
+
+    const invert = {
+      left: prevPosition.left - currentPosition.left,
+      top: prevPosition.top - currentPosition.top,
+    }
+    const keyframes = [
+      {
+        transform: `translate(${invert.left}px, ${invert.top}px)`,
+      },
+      { transform: "translate(0)" },
+    ]
+    const options = {
+      duration: 300,
+      easing: "cubic-bezier(0,0,0.32,1)",
+    }
+    el.animate(keyframes, options);
+  </script>
+</body>
+
+</html>

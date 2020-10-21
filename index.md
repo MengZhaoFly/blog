@@ -17,7 +17,10 @@ react-concurrent-mode: https://codesandbox.io/s/with-concurrent-mode-s9ojx?file=
 tab之间通信：tab-message
 compose: js/fp-core/compose
 手写 bind：campus-recruitment/字节跳动-效率工程-(1,2,3)/一/6.html, campus-recruitment/快手/一
-装饰器
+装饰器: /js/decorator装饰器
+防抖
+节流
+
 
 ## node
 多进程：https://juejin.im/post/6844903908385488903#heading-18
