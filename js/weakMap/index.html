@@ -1,0 +1,22 @@
+<script>
+  let weakmap = new WeakMap();
+  function foo() {
+    let o = {};
+    weakmap.set(o, "A");
+    console.log(weakmap.get(o));   // 存在
+  }
+  foo();
+  console.log(weakmap);   // 不存在
+
+
+
+  const weakmap1 = new WeakMap();
+  let keyObject = { id: 1 };
+  const valObject = { score: 100 };
+  weakmap1.set(keyObject, valObject);
+  console.log(weakmap1.get(keyObject));  // 存在
+  //output { score: 100 }
+  keyObject = null;
+  console.log(weakmap1.has(keyObject));   // 不存在
+//output false
+</script>

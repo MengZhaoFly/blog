@@ -16,7 +16,8 @@
 
     // 通过给元素添加一个类名，设置元素最后状态的位置和大小 （在.totes-at-the-end中添加相应的样式规则）
     // 布局发生了变化
-    let divNode = document.createElement('div');
+    setTimeout(() => {
+      let divNode = document.createElement('div');
     divNode.style.width = '200px';
     divNode.style.height = '200px';
     divNode.style.backgroundColor = 'red'
@@ -41,6 +42,7 @@
       easing: "cubic-bezier(0,0,0.32,1)",
     }
     el.animate(keyframes, options);
+    }, 3000);
   </script>
 </body>
 

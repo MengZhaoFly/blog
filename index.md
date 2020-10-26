@@ -25,6 +25,9 @@ compose: js/fp-core/compose
 ## node
 多进程：https://juejin.im/post/6844903908385488903#heading-18
 
+## Vue
+vue-compition用法：/blog/vue/vue-compition
+
 ## 第三方Lib
 redux原理：lib-explain/redux
 koa中间件、redux 中间件：lib-explain/redux-koa-middleware
@@ -35,7 +38,7 @@ koa源码
 ## css
 瀑布流布局(多列布局、flex)：css/瀑布流布局
 css包含块：https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block
-
+flip：/js/flip
 
 ## 前端工程化
 yeo-man搭建命令：js/工具链/generator-demoyo1
