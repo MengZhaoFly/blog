@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  * {
+  margin: 0; padding: 0;
+  }
+  body {
+    width: 100%;height: 100%;position: absolute;
+  }
+  img {
+    width: 750px;
+    height: 315px;
+    background-color: aqua;
+  }
+  </style>
+</head>
+
+<body>
+  <img src="" data-src="http://img61.ddimg.cn/upload_img/00087/geq/750x315_dl_1012-1571709126.jpg">
+  <img src="" data-src="http://img63.ddimg.cn/topic_img/gys_0014951/SQT_750_315.jpg">
+  <img src="" data-src="http://img63.ddimg.cn/upload_img/00087/geq/750x315_dl_1020-1571802545.jpg">
+  <img src="" data-src="http://img61.ddimg.cn/upload_img/00316/by/750X315-1571135236.jpg">
+  <img src="" data-src="http://img63.ddimg.cn/upload_img/00796/xssd201910/750x315-1569380470.jpg">
+  <img src="" data-src="http://img62.ddimg.cn/upload_img/00727/wangsiyu/750dingxiang315-1566185011.jpg">
+  <img src="" data-src="http://img60.ddimg.cn/ddreader/dangebook/dq750x315.jpg">
+  <img src="" data-src="http://img63.ddimg.cn/topic_img/gys_0014426/dabingguai750315.jpg">
+  <script>
+  const intersecObs = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          target.src = target.dataset.src;
+          observer.unobserve(target);
+        }
+      })
+    }
+  )
+  document.querySelectorAll('img')
+  .forEach(img => {
+    intersecObs.observe(img);
+  })
+  </script>
+</body>
+
+</html>

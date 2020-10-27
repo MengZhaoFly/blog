@@ -39,6 +39,7 @@ koa源码
 瀑布流布局(多列布局、flex)：css/瀑布流布局
 css包含块：https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block
 flip：/js/flip
+选择器优先级：css/css-selector-priority
 
 ## 前端工程化
 yeo-man搭建命令：js/工具链/generator-demoyo1

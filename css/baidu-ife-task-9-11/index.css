@@ -1,0 +1,79 @@
+* {
+  margin: 0;padding: 0;
+}
+header {
+  background: 
+  url(./images/mount.png) no-repeat;
+  background-size: 100% 100%;
+}
+header .mask {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(20, 20, 20, .65);
+}
+.content {
+  width: 970px;
+  margin: 208px auto 0;
+}
+.title {
+  text-align: center;
+  font-size:62px;
+  font-weight:200;
+  color:rgba(255,255,255,1);
+  line-height:72px;
+}
+.hello .text {
+  width:766px;
+  /* margin: 0 auto */
+  margin: 86px auto 0;
+  font-size:20px;
+  font-weight:200;
+  color:rgba(255,255,255,.7);
+  line-height:32px;
+  text-align: center;
+}
+/* form */
+.create {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid
+   rgba(255, 255, 255, .2);
+  border-radius: 2px;
+  margin-top: 104px;
+  padding: 61px 100px 52px;
+}
+.create .title {
+  text-align: center;
+  font-size: 16px;
+  line-height: 28px;
+}
+.create .profile {
+  text-align: center;
+  font-size: 12px;
+  font-weight:300;
+  color:rgba(255, 255, 255, 0.3);
+  margin: 19px auto 45px;
+}
+.create .input {
+  display: flex;
+  justify-content: space-between;
+}
+.create .input input {
+  outline: 0;
+  border: 1px solid 
+  rgba(255, 255, 255, .2);
+  border-radius: 2px;
+  width: 292px;
+  height: 50px;
+  color: #fff;
+  text-indent: 22px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.create .input input[type="button"] {
+  width: 125px;
+  background-color: #fff;
+  color: #000;
+  text-indent: 0;
+  cursor: pointer;
+}
