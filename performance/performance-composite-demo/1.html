@@ -1,0 +1,133 @@
+<html>
+
+<head>
+  <title> 观察 will-change</title>
+  <style>
+    .box {
+      will-change: transform, opacity;
+      display: block;
+      float: left;
+      width: 40px;
+      height: 40px;
+      margin: 15px;
+      padding: 10px;
+      border: 1px solid rgb(136, 136, 136);
+      background: rgb(187, 177, 37);
+      border-radius: 30px;
+      transition: border-radius 1s ease-out;
+    }
+    body {
+      font-family: Arial;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div id="controls">
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+  </div>
+  <div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+    <div class="box"> 旋转盒子 </div>
+  </div>
+  <script>
+
+    let boxes = document.querySelectorAll('.box');
+    let boxes1 = document.querySelectorAll('.box1');
+    let start = document.getElementById('start');
+    let stop = document.getElementById('stop');
+    let stop_flag = false
+
+
+    start.addEventListener('click', function () {
+      stop_flag = false
+      requestAnimationFrame(render);
+    })
+
+
+    stop.addEventListener('click', function () {
+      stop_flag = true
+    })
+
+
+    let rotate_ = 0
+    let opacity_ = 0
+    function render() {
+      if (stop_flag)
+        return 0
+      rotate_ = rotate_ + 6
+      if (opacity_ > 1)
+        opacity_ = 0
+      opacity_ = opacity_ + 0.01
+      let command = 'rotate(' + rotate_ + 'deg)';
+      for (let index = 0; index < boxes.length; index++) {
+        boxes[index].style.transform = command
+        boxes[index].style.opacity = opacity_
+      }
+      requestAnimationFrame(render);
+    }
+  </script>
+</body>
+
+
+</html>
