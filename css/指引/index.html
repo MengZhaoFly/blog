@@ -1,0 +1,115 @@
+<!-- https://mp.weixin.qq.com/s/vpleRP0tJyQ3MFp7A1DQEg -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novice guide</title>
+  <meta description="" />
+  <!-- <iframe src="//player.bilibili.com/player.html?bvid=BV1LK4y1e7Zt&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> -->
+  <style>
+    .guide-mask {
+      z-index: 1;
+      background-color: #000;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      position: fixed;
+      opacity: 0.8;
+    }
+
+    .guide-helper-layer {
+      position: absolute;
+      z-index: 3;
+      background-color: #FFF;
+      background-color: rgba(255, 255, 255, .9);
+      border-radius: 4px;
+    }
+
+    /* .guide-mark-relative {
+      position: relative;
+      z-index: 4 !important;
+    } */
+
+    .tooltip-box {
+      min-width: 100px;
+      height: 26px;
+      line-height: 26px;
+      background: white;
+      position: absolute;
+      border-radius: 40px;
+      padding: 5px 15px;
+      font-size: 14px;
+    }
+
+    .tooltip-box:before {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: -10px;
+      left: 20%;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 13px solid white;
+    }
+
+    .skill span {
+      padding: 0 10px;
+      background: burlywood;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 id="word">秋风的笔记</h2>
+  <!-- 文字 normal flow zindex4最高 比蒙层还高 -->
+  <div class="skill guide-mark-relative">
+    <span id="love">JavaScript</span>
+    <span>Node.js</span>
+    <span>Webpack</span>
+    <span>React</span>
+    <span>Vue</span>
+    <span>Nginx</span>
+    <span>...</span>
+  </div>
+  <!-- zindex 1 -->
+  <div class="guide-mask"></div>
+  <!-- 指引高亮层 3 夹在中间
+    根据需要高亮的元素 动态设置宽高
+    -->
+  <div class="guide-helper-layer">
+    <div class='tooltip-box'>
+      秋风的技能
+    </div>
+  </div>
+  <script>
+    const guideTarget = document.querySelector('.skill')
+    const word = document.getElementById('word');
+    let preTarget = null;
+    function light(target) {
+      if (preTarget) {
+        preTarget.style.zIndex = 0;
+      }
+      target.style.position = 'relative';
+      target.style.zIndex = 4;
+      const tooltip = document.querySelector('.tooltip-box')
+      var rect = target.getBoundingClientRect()
+      const helperLayer = document.querySelector('.guide-helper-layer')
+      helperLayer.style.left = rect.left - 3 + 'px'
+      helperLayer.style.top = rect.top - 3 + 'px'
+      helperLayer.style.width = rect.width + 3 * 2 + 'px'
+      helperLayer.style.height = rect.height + 3 * 2 + 'px'
+      tooltip.style.top = rect.height + 3 * 2 + 10 + 5 + 'px'
+      preTarget = target;
+    }
+    light(guideTarget)
+
+  </script>
+</body>
+
+</html>

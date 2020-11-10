@@ -1,0 +1,24 @@
+<script>
+  function getNext(s) {
+    let next = []
+    let j = 0;
+    next[0] = 0;
+    for (let i = 1; i < s.length; i++) {
+      debugger;
+      while (j > 0 && s[i] != s[j]) {
+        j = next[j - 1];
+      }
+      if (s[i] == s[j]) {
+        j++;
+      }
+      next[i] = j;
+    }
+    return next;
+  }
+  console.log(getNext('aabaaf'))
+
+// 作者：carlsun-2
+// 链接：https://leetcode-cn.com/problems/implement-strstr/solution/bang-ni-ba-kmpsuan-fa-xue-ge-tong-tou-ming-ming-ba/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</script>

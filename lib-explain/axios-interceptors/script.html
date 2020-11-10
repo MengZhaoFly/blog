@@ -18,7 +18,7 @@
   }
   //真正的请求
   Axios.prototype.request = function (config) {
-    let chain = [dispatchRequest, undefined];//这儿的undefined是为了补位，因为拦截器的返回有两个
+    let chain = [dispatchRequest, undefined]; //这儿的undefined是为了补位，因为拦截器的返回有两个
     let promise = Promise.resolve(config);
     //将两个拦截器中的回调加入到chain数组中
     this.interceptors.request.handler.forEach((interceptor) => {

@@ -1,0 +1,56 @@
+<script>
+  // 0 1 2 3 4 5 6
+  // 0 1 1 2 3 5 8
+  // 递归       10
+  // 数学？
+  // 动态规划
+  function fib(n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+  }
+  // console.log(fib(10000))
+  // 0 => 1
+  // 1 => 1  起始条件  => 2
+  // => 3  => 
+  function fib1(n) {
+    let res = [0n, 1n];
+    // let res = ['0', '1']
+    for (let i = 2; i < n; i++) {
+      res[i] = res[i - 1] + res[i - 2];
+    }
+    return res[n - 1]
+  }
+  console.log(fib1(10000));
+
+
+  var value = 'tom';
+  function foo() {
+    eval('var value = 1000');
+    console.log(value);
+  }
+  function bar() {
+    var value = 'bob';
+    foo();
+  }
+  bar();
+  // content-type:
+  // text/plain
+  // application/x-www-form-url-encoded
+  // multipart/formData
+  let arr = [1, [2, [3, [4, [5]]]], 6]
+  // 
+  function flat(a) {
+    let stack = [...a], res = [];
+    while(stack.length) {
+      let item = stack.pop();
+      if (Array.isArray(item)) {
+        stack.push(...item); 
+        // 2 [3, [4, [5]]] 
+      } else {
+        res.unshift(item)
+      }
+    }
+    return res;
+  }
+
+</script>
