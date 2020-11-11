@@ -20,6 +20,7 @@ compose: js/fp-core/compose
 装饰器: /js/decorator装饰器
 防抖
 节流
+进度条：/js/slide-progress
 
 
 ## node
@@ -56,7 +57,7 @@ webpack-mpa:
 webpack-5-模块联邦：/fe-structure/micro-fe/webpack-5
 babel-插件-转换react-router：/babel/babel-plugin-transform-react-router/
 babel-插件-转换import：/babel/babel-plugin-import-replace
-
+tree-shaking：/webpack/tree-shaking
 
 
 ## web 安全
