@@ -1,0 +1,32 @@
+<script>
+  // url1 => 100 url2 => 根据id,获取XX
+  // .then 链式调用
+  // .then() 返回的都是 promise
+  Promise.resolve(1)
+    .then((x) => {
+      // return 1;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(1);
+        }, 2000);
+      })
+    }, () => { })
+    .then(x => {
+      console.log(x);
+    }, (err) => {
+      console.log(err);
+    })
+
+    async function fn1() {
+      let a =  await 1
+      return a;
+    }
+    let b = fn1();
+    b.then(x => {
+      console.log(x);
+    })
+    async function bar() {
+      let c = await fn1();
+    }
+    // b 是个 promise
+</script>
