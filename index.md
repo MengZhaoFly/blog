@@ -21,6 +21,7 @@ compose: js/fp-core/compose
 防抖
 节流
 进度条：/js/slide-progress
+浮点数相加精度问题：/js/IEEE754
 
 
 ## node

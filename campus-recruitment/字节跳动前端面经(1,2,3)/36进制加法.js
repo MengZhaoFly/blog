@@ -1,4 +1,4 @@
-const chars = "0123456789ABCDEFGHIJKLMNOPGQRSTUVWXYZ";
+const chars = "0123456789ABCDEFGHIJKLMNOPGRSTUVWXYZ";
 var add = function (str1, str2) {
     let a = str1.split(''), b = str2.split('');
     let alength = a.length;
@@ -13,8 +13,7 @@ var add = function (str1, str2) {
         let ia = i < alength ? chars.indexOf(a[alength - i - 1]) : 0;
         let ib = i < blength ? chars.indexOf(b[blength - i - 1]) : 0;
         let add = ia + ib + inc;
-        // > 36
-        if (add > clength) {
+        if (add >= clength) {
             inc = 1;
         } else {
             inc = 0;
@@ -26,4 +25,5 @@ var add = function (str1, str2) {
     }
     return result;
 }
-console.log(add('122B', '2X'))
+console.log(add('122B', '2X').toLowerCase() === (parseInt('122B', 36) + parseInt('2X', 36)).toString(36).toLowerCase())
+console.log(add('Z', 'Z').toLowerCase() === (parseInt('Z', 36) + parseInt('Z', 36)).toString(36).toLowerCase())
