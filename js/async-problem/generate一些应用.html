@@ -1,0 +1,54 @@
+<script>
+  function* numbers() {
+    yield 1;
+    yield 2;
+    return 'numbers';
+  }
+  function* delegate() {
+    // yield* 的作用是代理 yield 表达式，将需要函数本身产生（yield）的值委托出去
+    // yield* 表达式的返回值，就是其后面可迭代对象迭代完毕时的返回值
+    var str = yield* numbers();
+    console.log(str);   // numbers
+    yield 3;
+    return 'delegate';
+  }
+    /*
+    let o = delegate()
+    o.next()
+    {value: 1, done: false}
+
+    o.next()
+    {value: 2, done: false}
+
+    o.next()
+    numbers
+    {value: 3, done: false}
+
+    o.next()
+    {value: "delegate", done: true}
+
+    o.next()
+    {value: undefined, done: true}
+    */
+  function* flat(arr, num) {
+    debugger;
+    if (num === undefined) num = 1;
+    for (const item of arr) {
+      if (Array.isArray(item) && num > 0) {   // num > 0
+        yield* flat(item, num - 1);
+      } else {
+        yield item;
+      }
+    }
+  }
+  let arr = [1, [2, [3, [4, [5]]]]]
+  let newArr = [...flat(arr, 99)]
+
+
+  function add(arg) {
+    let arr = [arg]
+    return function(arg1) {
+      
+    }
+  }
+</script>

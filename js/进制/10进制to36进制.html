@@ -1,0 +1,19 @@
+<script>
+  function toString(n, radis = 16) {
+    let chars = [];
+    for (let i = 0; i < 10; i ++) {
+      chars.push(String(i));
+    }
+    for (let i = 0; i < 16; i ++) {
+      chars.push(String.fromCharCode(65 + i))
+    }
+    // console.log(chars);
+    let res = ''
+    while (n > 0) {
+      let mod = n % 26;
+      res = chars[mod] + res;
+      n = Math.floor(n / 26)
+    }
+    return res;
+  }
+</script>
