@@ -1,3 +1,4 @@
+import MyArr from './Array';
 enum TokenType {
   Initial = 'Initial',
   GT = 'GT',
@@ -25,7 +26,7 @@ class SimpleToken {
   text: string = '';
 }
 class SimpleLexer {
-  private tokens: SimpleToken[] = []
+  private tokens: MyArr<SimpleToken> = new MyArr<SimpleToken>()
   private tokenText: string = ''
   private token: SimpleToken = new SimpleToken();
   public tokenize(code: string) {

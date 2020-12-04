@@ -32,7 +32,7 @@ class Calculator {
         token = tokens[0];
         if (token && token.type === TokenType.Assignment) {  // =
           token = tokens.shift();
-          let child: ASTNode = this.additive(tokens);  // //匹配一个表达式
+          let child: ASTNode = this.betterAdditive(tokens);  // //匹配一个表达式
           if (!child) {
             throw new Error('invalide variable initialization, expecting an expression');
           } else {
@@ -43,22 +43,48 @@ class Calculator {
     }
     return node;
   }
-  additive(tokens: SimpleToken[]): ASTNode {
-    // 1. 要匹配 加法表达式 需要先匹配 乘法表达式
+  // 结合性 暂时存在 问题
+  // additive(tokens: SimpleToken[]): ASTNode {
+  //   // 1. 要匹配 加法表达式 需要先匹配 乘法表达式
+  //   let child1: ASTNode = this.multiplicative(tokens);
+  //   let node: ASTNode = child1;  //如果没有第二个子节点，就返回这个
+  //   let token: SimpleToken = tokens[0];
+  //   if (child1 != null && token != null) {   // 不是 乘法表达式 不可能是 加法
+  //     if (token.type == TokenType.Plus) {
+  //       token = tokens.shift();
+  //       let child2 = this.additive(tokens); //递归地解析第二个节点
+  //       if (child2 != null) {
+  //         node = new ASTNode(ASTNodeType.Additive, token.text, []);
+  //         node.children.push(child1);
+  //         node.children.push(child2);
+  //       } else {
+  //         throw new Error("invalid additive expression, expecting the right part.");
+  //       }
+  //     }
+  //   }
+  //   return node;
+  // }
+  // 更好的产生式
+  betterAdditive(tokens: SimpleToken[]): ASTNode {
     let child1: ASTNode = this.multiplicative(tokens);
     let node: ASTNode = child1;  //如果没有第二个子节点，就返回这个
-    let token: SimpleToken = tokens[0];
-    if (child1 != null && token != null) {   // 不是 乘法表达式 不可能是 加法
-      if (token.type == TokenType.Plus) {
-        token = tokens.shift();
-        let child2 = this.additive(tokens); //递归地解析第二个节点
-        if (child2 != null) {
-          node = new ASTNode(ASTNodeType.Additive, token.text, []);
-          node.children.push(child1);
-          node.children.push(child2);
-        } else {
-          throw new Error("invalid additive expression, expecting the right part.");
-        }
+    if (child1) {
+      while (true) {
+        let token = tokens[0];
+        if (token && 
+          (token.type === TokenType.Plus || token.type === TokenType.Minus)) {
+            token = tokens.shift();
+            let child2 = this.multiplicative(tokens);
+            // 创建出一个节点
+            // 自己会作为 下一个节点的 子节点
+            node = new ASTNode(ASTNodeType.Additive, token.text);
+            node.children.push(child1);
+            node.children.push(child2);
+            child1 = node
+          }
+          else {
+            break;
+          }
       }
     }
     return node;
@@ -99,7 +125,7 @@ class Calculator {
         node = new ASTNode(ASTNodeType.Identifier, token.text);
       } else if (token.type == TokenType.LeftParen) {  // (
         tokens.shift();
-        node = this.additive(tokens);
+        node = this.betterAdditive(tokens);
         if (node != null) {
           token = tokens[0];
           if (token != null && token.type == TokenType.RightParen) {
@@ -154,7 +180,8 @@ class Calculator {
 
 let lex1 = new SimpleLexer();
 // lex1.tokenize('int a = 2 + 3 * 5');
-lex1.tokenize('int a = (2 * (3 + 4)) + 5 / 5');
+// lex1.tokenize('int a = (2 * (3 + 4)) + 5 / 5');
+lex1.tokenize('int a = 2 + 3 + 4 + 5');
 let cal = new Calculator();
 let ast = cal.intDeclare(lex1.getTokens())
 

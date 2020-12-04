@@ -1,89 +1,63 @@
 <style>
   * {
-  margin: 0; padding: 0;
+  margin: 0;padding: 0;
   }
-  .infinite-list-container {
+  .content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .wrap {
     height: 100%;
     overflow: auto;
     position: relative;
-    -webkit-overflow-scrolling: touch;
   }
-
-  .infinite-list-phantom {
+  .scroll {
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
+    left: 0;right: 0;bottom: 0;top: 0;
     z-index: -1;
   }
-
-  .infinite-list {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-  }
-
-  .infinite-list-item {
-    padding: 10px;
-    color: #555;
+  .item {
+    height: 100px;
+    border-bottom: 1px solid #000;
     box-sizing: border-box;
-    border-bottom: 1px solid #999;
+    width: 100%;
   }
 </style>
-<div class="infinite-list-container">
-  <div class="infinite-list-phantom"></div>
-  <div class="infinite-list">
-
-  </div>
+<!-- 10000条列表容器 -->
+<div class="wrap">
+  <!-- 滚动高度 -->
+  <div style="height: 10000px;" class="scroll"></div>
+  <!-- 内容 -->
+  <div class="content"></div>
 </div>
 <script>
-  const infiniteListContainer = document.querySelector('.infinite-list-container');
-  const infiniteList = document.querySelector('.infinite-list')
-  const infiniteListPhantom = document.querySelector('.infinite-list-phantom')
+  let total = 100000;
+  let scrollInfo = {
+    itemSize: 100
+  }
+  const wrap = document.querySelector('.wrap');
+  wrap.addEventListener('scroll', handleScroll);
+  let height = window.innerHeight;
+  let visiabelCount = Math.ceil(height / 100);
   let d = [];
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 100; i++) {
     d.push({ id: i, value: i });
   }
-  let scroll = {
-    itemSize: 100,
-    listData: d,
-    get screenHeight() {
-      return infiniteListContainer.clientHeight
-    },
-    //列表总高度
-    listHeight() {
-      return this.listData.length * this.itemSize;
-    },
-    //可显示的列表项数
-    visibleCount() {
-      return Math.ceil(this.screenHeight / this.itemSize)
-    },
-  }
-  infiniteListContainer.addEventListener('scroll', handleScroll)
-  handleScroll()
+  const content = document.querySelector('.content');
   function handleScroll() {
-    //当前滚动位置
-    let scrollTop = infiniteListContainer.scrollTop;
-    //此时的开始索引
-    scroll.start = Math.floor(scrollTop / scroll.itemSize);
-    //此时的结束索引
-    scroll.end = scroll.start + scroll.visibleCount();
-    //此时的偏移量
-    // scroll.startOffset = scrollTop - (scrollTop % scroll.itemSize);
-    scroll.startOffset = scroll.start * scroll.itemSize;
-    scroll.visibleData = scroll.listData.slice(scroll.start, Math.min(scroll.end, scroll.listData.length));
-
-    // infiniteList.style.transform = `translate3d(0,${scroll.startOffset}px,0)`;
-    infiniteListPhantom.style.height = `${scroll.listHeight()}px`;
-
-    let innerHTMLs = scroll.visibleData.map((e, i) => {
-      return `
-      <div class="infinite-list-item" 
-        style="height: ${scroll.itemSize}px;lineHeight: ${scroll.itemSize}epx"
-      >${e.value}</div>
-      `
-    })
-    infiniteList.innerHTML = innerHTMLs.join('');
+    let scrollTop = wrap.scrollTop;
+    // 区间 起点
+    let start = Math.floor(scrollTop / 100);
+    let end = start + visiabelCount;
+    console.log(start, end);
+    let list = d.slice(start, Math.min(end, d.length));
+    content.innerHTML = list.map((item) => {
+      return `<div class="item">${item.value}</div>`
+    }).join('');
+    // transform mt: 值 ？？
+    content.style.transform = `translate3d(0, ${start * 100}px, 0)`;
   }
+  handleScroll()
 </script>
-<!-- https://juejin.im/post/6844903982742110216 -->

@@ -1,0 +1,98 @@
+{
+  "type": "Programm",
+  "text": "pwc",
+  "children": [
+    {
+      "type": "IntDeclaration",
+      "text": "age",
+      "children": [
+        {
+          "type": "Additive",
+          "text": "+",
+          "children": [
+            {
+              "type": "IntLiteral",
+              "text": "45",
+              "children": [],
+              "parent": null
+            },
+            {
+              "type": "IntLiteral",
+              "text": "2",
+              "children": [],
+              "parent": null
+            }
+          ],
+          "parent": null
+        }
+      ],
+      "parent": null
+    },
+    {
+      "type": "AssignmentStmt",
+      "text": "age",
+      "children": [
+        {
+          "type": "Additive",
+          "text": "+",
+          "children": [
+            {
+              "type": "IntLiteral",
+              "text": "20",
+              "children": [],
+              "parent": null
+            },
+            {
+              "type": "IntLiteral",
+              "text": "1",
+              "children": [],
+              "parent": null
+            }
+          ],
+          "parent": null
+        }
+      ],
+      "parent": null
+    },
+    {
+      "type": "AssignmentStmt",
+      "text": "b",
+      "children": [
+        {
+          "type": "Additive",
+          "text": "+",
+          "children": [
+            {
+              "type": "Identifier",
+              "text": "age",
+              "children": [],
+              "parent": null
+            },
+            {
+              "type": "Multiplicative",
+              "text": "*",
+              "children": [
+                {
+                  "type": "IntLiteral",
+                  "text": "10",
+                  "children": [],
+                  "parent": null
+                },
+                {
+                  "type": "IntLiteral",
+                  "text": "2",
+                  "children": [],
+                  "parent": null
+                }
+              ],
+              "parent": null
+            }
+          ],
+          "parent": null
+        }
+      ],
+      "parent": null
+    }
+  ],
+  "parent": null
+}

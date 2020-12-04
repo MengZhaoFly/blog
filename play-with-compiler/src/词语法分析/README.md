@@ -46,3 +46,17 @@ multiplicativeExpression
     |   IntLiteral Star multiplicativeExpression
     ;
     
+
+原来的文法是“add -> add + mul”，
+现在我们改写成：
+```js
+add -> mul add
+'add' -> + mul add' | ε
+
+ε（读作 epsilon）是空集的意思
+```
+上面两条规则可以合并成一条：
+```js
+add -> mul (+ mul)*
+```
+对于 (+ mul)* 这部分，我们其实可以写成一个循环，而不是一次次的递归调用
