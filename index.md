@@ -22,6 +22,7 @@ compose: js/fp-core/compose
 节流
 进度条：/js/slide-progress
 浮点数相加精度问题：/js/IEEE754
+长列表: js/长列表
 
 
 ## node
@@ -48,6 +49,7 @@ yeo-man搭建命令：js/工具链/generator-demoyo1
 webpack搭建react开发环境：js/工具链/generator-demoyo1
 nginx 路径，反向代理，pm2 上线：https://juejin.im/post/6844904005160681486#heading-13、https://juejin.im/post/6844904048768843784
 DOM检查，页面加载时间检查：js/工具链/检查
+nginx安装：https://www.cnblogs.com/boonya/p/7907999.html
 webpack(图片压缩-splitchunk): webpack/react-webpack
 webpack(dll-externals-MiniCssExtract): webpack/webpack-optimation
 git-hook(pre-commit/pre-push): .git/hooks
